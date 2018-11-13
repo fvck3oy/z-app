@@ -1,0 +1,27 @@
+.fullCard{
+  width: auto;
+  height: auto;
+  margin: 0px 0px 20px 0px;
+}
+
+.ma{
+margin: 10px;
+}
+
+.card{
+  border: 1px solid #44c0e2 !important;
+  box-shadow: 3px 3px 10px -3px #78e1f4 !important;
+}
+
+.btn-vdi{
+  background-color: #44c0e2 !important ;
+  color: aliceblue !important;
+  border-color: #44c0e2 !important;
+}
+
+.btn-vdi:hover{
+  box-shadow: 3px 3px 10px 1px #78e1f4;
+}
+.card-img-top{
+  height: 250px;
+}

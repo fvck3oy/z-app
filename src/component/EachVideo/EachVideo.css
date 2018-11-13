@@ -1,0 +1,65 @@
+.vdi {
+	margin: 20px 20px 20px 20px;
+	width: 60px !important;
+	height: auto;
+	padding: 5px 5px 5px 5px;
+	/* border: 1px solid #44c0e2 !important;
+	box-shadow: 3px 3px 10px -3px #78e1f4 !important;
+	border-radius: 15px; */
+}
+
+.TitleVdi {
+	margin-top: 100px;
+	/* display: flex; */
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	background-color: aliceblue;
+	margin-bottom: 20px;
+}
+
+.mid {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.des {
+	font-size: 20px;
+	text-align: center;
+}
+
+.desFirstTitle {
+	font-size: 26px;
+	text-align: center;
+}
+.desFile {
+	font-size: 20px;
+	/* text-align: ; */
+	cursor: pointer;
+}
+
+.desFile:hover {
+	color: #2320db;
+	text-align: center;
+}
+
+.desTitle {
+	font-size: 24px;
+}
+
+.contact {
+	font-size: 20px;
+}
+
+.ProfileUsersOfCourse {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px !important;
+	border: 0.5px solid #44c0e2;
+	box-shadow: 3px 3px 10px -3px #78e1f4;
+	margin-bottom: 20px;
+}

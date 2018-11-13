@@ -1,0 +1,27 @@
+/* 
+.video-react {
+  display: block;
+  vertical-align: top;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: #000;
+  position: relative;
+  font-size: 10px;
+  line-height: 1;
+  font-family: serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 400px;
+  height: 300px;
+} */
+
+
+.con1{
+  width: 50%;
+}
+
+.con2{
+  width: 50%;
+}

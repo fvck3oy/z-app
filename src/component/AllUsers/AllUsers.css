@@ -1,0 +1,14 @@
+.delX {
+  cursor: pointer;
+  text-align: center;
+
+
+}
+
+.delX:hover{
+  color: red;
+}
+
+.allUsers{
+  margin-top: 100px;
+}

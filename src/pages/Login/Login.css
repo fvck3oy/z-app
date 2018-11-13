@@ -1,0 +1,126 @@
+.btsave {
+	margin-top: 20px;
+}
+
+.ipp {
+	display: flex;
+  margin-top: 10px;
+margin-left: 15px;
+}
+
+
+.textInput {
+	text-align: justify;
+	width: 120px;
+	font-size: 18px;
+	margin: auto;
+}
+.inputform {
+	font-size: 18px;
+	width: 250px !important;
+	height: 40px;
+	border-radius: 20px !important;
+	border: 0.5px solid #d2d2d2;
+	padding: 4px 0px 4px 19px;
+	box-shadow: 3px 3px 10px -3px #cacaca;
+}
+.inputform::placeholder {
+	font-size: 18px;
+}
+.inputform:focus {
+	border: 0.5px solid #5bc2e1;
+	outline-width: 0px;
+}
+
+.iconRealxiz {
+	font-size: 30px !important;
+	line-height: 80px;
+	color: #3a3a3a !important;
+}
+
+.err {
+	white-space: nowrap;
+	margin-top: 10px;
+	color: red;
+	font-size: 20px !important;
+}
+
+.btn-submit {
+	border: none !important;
+	font-size: 25px !important;
+	margin-top: 10px;
+	width: 100%;
+	border-radius: 30px !important;
+	background: #5bc2e1;
+	background: linear-gradient(to right, #44c0e2, #78e1f4);
+	color: white;
+	padding: 3px 0 3px 0 !important;
+	box-shadow: 3px 3px 10px -3px #cacaca;
+}
+.btn-submit:active {
+	background: linear-gradient(to right, #44c0e2, #78e1f4) !important;
+	background: #5bc2e1;
+}
+
+/* of resetPass */
+.please {
+	color: #9f9f9f !important;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.resetblock {
+	width: 270px;
+	flex-direction: column;
+	display: flex;
+	text-align: center;
+	align-items: center;
+}
+
+@media (max-width: 320.98px) {
+	.usernameIcon {
+		width: 50px !important;
+		height: 50px !important;
+		padding: 0px 10px 10px 10px;
+	}
+	.inputform {
+		font-size: 18px;
+	}
+}
+@media (min-width: 321px) and (max-width: 575.98px) {
+	.usernameIcon {
+		width: 50px !important;
+		height: 50px !important;
+		padding: 0px 10px 10px 10px;
+	}
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.usernameIcon {
+		width: 50px !important;
+		height: 50px !important;
+		padding: 0px 10px 10px 10px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.usernameIcon {
+		width: 50px !important;
+		height: 50px !important;
+		padding: 0px 10px 10px 10px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.usernameIcon {
+		width: 50px !important;
+		height: 50px !important;
+		padding: 0px 10px 10px 10px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.usernameIcon {
+		width: 50px !important;
+		height: 50px !important;
+		padding: 0px 10px 10px 10px;
+	}
+}

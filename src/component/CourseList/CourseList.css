@@ -1,0 +1,20 @@
+.course-list {
+	border: 1px solid #44c0e2;
+	box-shadow: 3px 3px 10px -3px #78e1f4;
+	width: 300px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 0px 20px 0px;
+}
+.list {
+  cursor: pointer;
+  width: 100%;
+ 
+
+}
+.list:hover {
+  color: #fff;
+  background-color: #5bc2e1;
+}

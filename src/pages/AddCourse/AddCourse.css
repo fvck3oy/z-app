@@ -1,0 +1,70 @@
+.con {
+	margin-top: 100px;
+	text-align: center;
+	width: 100vw;
+	height: 100vh;
+	max-width: 100%;
+}
+
+.lessonTags {
+	/* width: auto;
+  height: 100px;
+  border: 1px solid red; */
+	flex-direction: column;
+}
+
+.tag-full-w .ReactTags__tagInput {
+	width: 100% !important;
+	height: 100% !important;
+	font-size: 24px !important;
+}
+.tag-full-w div.ReactTags__selected span.ReactTags__tag {
+	font-size: 20px !important;
+	margin: 5px 5px 5px 0px !important;
+	padding: 2px 2px 2px 2px !important;
+	border: 0.5px solid #5bc2e1 !important;
+}
+
+.tag-full-w .ReactTags__tagInput .ReactTags__tagInputField:focus {
+	height: 40px !important;
+	font-size: 24px !important;
+	border: 0.5px solid #5bc2e1 !important;
+	outline-width: 0px !important;
+	padding: 0px 4px 0px 10px !important;
+}
+.tag-full-w .ReactTags__tagInput .ReactTags__tagInputField {
+	height: 40px !important;
+	font-size: 24px !important;
+	border: 1px solid #d2d2d2 !important;
+	padding: 0px 4px 0px 10px !important;
+}
+
+.ReactTags__selected {
+	width: 100%;
+	height: 80% !important;
+	padding-bottom: 0px;
+	display: flex;
+	flex-direction: column;
+}
+
+.tag-full-w .ReactTags__tagInputField {
+	width: 100% !important;
+	height: 50px !important;
+	display: block;
+	float: left;
+	border-radius: 5px !important;
+	border: 0.5px solid #d2d2d2 !important;
+	padding: 5px 0px 0px 10px !important;
+	font-size: 20px !important;
+}
+
+.ReactTags__remove {
+	font-size: 20px;
+	margin: 0px 5px 0px 5px;
+	color: red !important;
+	display: flex;
+	float: right;
+
+	/* border-radius: 5px !important; */
+	/* border: 0.5px solid red !important; */
+}

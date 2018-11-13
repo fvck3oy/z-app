@@ -1,0 +1,238 @@
+.MgTopSetting {
+	margin-top: 100px;
+}
+.bdSetting {
+	font-size: 25px;
+	border-radius: 20px !important;
+	/* border: 0.5px solid #44c0e2; */
+	/* box-shadow: 3px 3px 10px -3px #78e1f4; */
+  margin: 100px;
+  padding-bottom: 20px;
+  background-color: aliceblue;
+}
+.Middle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.editmembericon{
+  font-size: 15px;
+	cursor: pointer;
+	
+}
+
+.editmembericon:hover{
+	color: red;
+}
+
+.fr{
+	text-align: end;
+}
+@media (max-width: 320.98px) {
+	.ProfileSetting {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 200px;
+		height: 200px;
+		border-radius: 100px !important;
+		border: 0.5px solid #44c0e2;
+		box-shadow: 3px 3px 10px -3px #78e1f4;
+		margin-bottom: 20px;
+	}
+}
+@media (min-width: 321px) and (max-width: 575.98px) {
+	.percent {
+		position: relative;
+		left: 10px;
+		display: flex;
+		flex-direction: row;
+		top: 2px;
+		font-size: 10px;
+	}
+	/* .editbox {
+		position: relative;
+		display: flex;
+		left: 3px;
+		top: 8.5px;
+		width: 30px;
+	}
+	.Edit {
+		width: 10px;
+		bottom: 13px;
+		left: 15px;
+	}
+	.editing {
+		height: 20px;
+	} */
+	.progresscontainer {
+		bottom: 2px;
+	}
+	.ProfileSetting {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 200px;
+		height: 200px;
+		border-radius: 100px !important;
+		border: 0.5px solid #44c0e2;
+		box-shadow: 3px 3px 10px -3px #78e1f4;
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.percent {
+		position: relative;
+		left: 10px;
+		display: flex;
+		flex-direction: row;
+		font-size: 13px;
+	}
+	/* .editbox {
+		position: relative;
+		left: 3px;
+		top: 4px;
+		width: 25px;
+	}
+	.Edit {
+		width: 12px;
+		bottom: 8.5px;
+		left: 15px;
+	}
+	.editing {
+		height: 20px;
+	} */
+	.ProfileSetting {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 200px;
+		height: 200px;
+		border-radius: 100px !important;
+		border: 0.5px solid #44c0e2;
+		box-shadow: 3px 3px 10px -3px #78e1f4;
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.percent {
+		position: relative;
+		left: 10px;
+		bottom: 1px;
+		display: flex;
+		flex-direction: row;
+		font-size: 15px;
+	}
+	/* .editbox {
+		position: relative;
+		left: 3px;
+		top: 9.5px;
+		width: 25px;
+	}
+	.Edit {
+		width: 12px;
+		bottom: 13px;
+		left: 15px;
+	}
+	.editing {
+		height: 20px;
+	} */
+	.ProfileSetting {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 200px;
+		height: 200px;
+		border-radius: 100px !important;
+		border: 0.5px solid #44c0e2;
+		box-shadow: 3px 3px 10px -3px #78e1f4;
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.percent {
+		bottom: 7px;
+		position: relative;
+		left: 10px;
+		display: flex;
+		flex-direction: row;
+	}
+	/* .editbox {
+		position: relative;
+		top: 1px;
+		width: 37px;
+	}
+	.Edit {
+		width: 60%;
+		height: 60%;
+		bottom: 10px;
+		left: 16px;
+	}
+	.editing {
+		max-width: 30px;
+		display: 'inline-block';
+		margin: 0;
+		padding: 0;
+		font-size: 16px;
+		outline: 0;
+		height: 20px;
+	} */
+	.ProfileSetting {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 200px;
+		height: 200px;
+		border-radius: 100px !important;
+		border: 0.5px solid #44c0e2;
+		box-shadow: 3px 3px 10px -3px #78e1f4;
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.percent {
+		/* bottom: 6px; */
+		position: relative;
+		left: 10px;
+		display: flex;
+		flex-direction: row;
+	}
+	 .editbox {
+		position: relative;
+		/* top: 7px; */
+		width: 37px;
+		display: flex;
+    justify-content: flex-end;
+    /* bottom: 6px; */
+	}
+	.Edit {
+		width: 60%;
+		height: 60%;
+		/* bottom: 4px;
+		left: 5px; */
+	}
+	/* .editing {
+		max-width: 30px;
+		display: 'inline-block';
+		margin: 0;
+		padding: 0;
+		font-size: 16px;
+		outline: 0;
+		height: 20px;
+	}  */
+	.ProfileSetting {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 200px;
+		height: 200px;
+		border-radius: 100px !important;
+		/* border: 0.5px solid #44c0e2; */
+		/* box-shadow: 3px 3px 10px -3px #78e1f4; */
+		margin-bottom: 20px;
+	}
+}

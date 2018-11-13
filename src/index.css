@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  /* font-family: sans-serif; */
+  font-family: 'DB Helvethaica X' !important;
+}
+@font-face {
+	font-family: 'DB Helvethaica X';
+	font-style: normal;
+	font-weight: 700;
+	src: url('./fonts/DB Helvethaica X/DB Helvethaica X Ext v3.2.ttf');
+}
