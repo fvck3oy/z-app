@@ -1,9 +1,13 @@
 .con {
 	margin-top: 100px;
-	text-align: center;
+	/* text-align: center; */
 	width: 100vw;
-	height: 100vh;
+	height: auto;
+	margin-bottom: 20px;
+	padding-bottom: 15px;
 	max-width: 100%;
+	background-color: aliceblue;
+	border-radius: 20px !important;
 }
 
 .lessonTags {
@@ -19,22 +23,26 @@
 	font-size: 24px !important;
 }
 .tag-full-w div.ReactTags__selected span.ReactTags__tag {
+	width: 500px;
 	font-size: 20px !important;
 	margin: 5px 5px 5px 0px !important;
-	padding: 2px 2px 2px 2px !important;
+	padding: 2px 2px 2px 10px !important;
 	border: 0.5px solid #5bc2e1 !important;
+	border-radius: 5px;
+	background-color: #fff;
 }
 
 .tag-full-w .ReactTags__tagInput .ReactTags__tagInputField:focus {
 	height: 40px !important;
-	font-size: 24px !important;
+	font-size: 18px !important;
 	border: 0.5px solid #5bc2e1 !important;
 	outline-width: 0px !important;
 	padding: 0px 4px 0px 10px !important;
 }
 .tag-full-w .ReactTags__tagInput .ReactTags__tagInputField {
 	height: 40px !important;
-	font-size: 24px !important;
+	width: 500px !important;
+	font-size: 18px !important;
 	border: 1px solid #d2d2d2 !important;
 	padding: 0px 4px 0px 10px !important;
 }
@@ -54,12 +62,12 @@
 	float: left;
 	border-radius: 5px !important;
 	border: 0.5px solid #d2d2d2 !important;
-	padding: 5px 0px 0px 10px !important;
+	padding: 10px 0px 0px 10px !important;
 	font-size: 20px !important;
 }
 
 .ReactTags__remove {
-	font-size: 20px;
+	font-size: 24px;
 	margin: 0px 5px 0px 5px;
 	color: red !important;
 	display: flex;
@@ -67,4 +75,80 @@
 
 	/* border-radius: 5px !important; */
 	/* border: 0.5px solid red !important; */
+}
+
+.InputAddCourse {
+	font-size: 18px;
+	width: 500px;
+	height: 40px;
+	border-radius: 5px !important;
+	border: 0.5px solid #d2d2d2;
+	padding: 4px 0px 4px 10px;
+	box-shadow: 3px 3px 10px -3px #cacaca;
+}
+
+.InputAddCourse:focus {
+	border: 0.5px solid #5bc2e1;
+	outline-width: 0px;
+}
+
+.TextNewAddCourse {
+	text-align: center;
+	font-size: 24px;
+}
+
+.TextAddCourse {
+	font-size: 24px;
+	text-align: center;
+}
+.upPicture {
+	margin-top: 20px;
+	font-size: 18px;
+}
+.upVideo {
+	margin-top: 20px;
+	font-size: 18px;
+}
+
+.submitAddCourse {
+	border: none !important;
+	font-size: 25px !important;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	width: 350px;
+	border-radius: 30px !important;
+	background: #5bc2e1;
+	background: linear-gradient(to right, #44c0e2, #78e1f4);
+	color: white;
+	padding: 3px 0 3px 0 !important;
+	box-shadow: 3px 3px 10px -3px #cacaca;
+}
+
+.btn-mid {
+	display: flex;
+	justify-content: center;
+}
+
+@media (max-width: 320.98px) {
+}
+@media (min-width: 321px) and (max-width: 575.98px) {
+	.tag-full-w .ReactTags__tagInput .ReactTags__tagInputField {
+		width: 300px !important;
+	}
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.tag-full-w .ReactTags__tagInput .ReactTags__tagInputField {
+		width: 300px !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.tag-full-w .ReactTags__tagInput .ReactTags__tagInputField {
+		width: 300px !important;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+@media (min-width: 1200px) {
 }

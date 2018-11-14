@@ -41,7 +41,6 @@
 
 .desFile:hover {
 	color: #2320db;
-	text-align: center;
 }
 
 .desTitle {
@@ -53,13 +52,38 @@
 }
 
 .ProfileUsersOfCourse {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+
 	width: 200px;
 	height: 200px;
 	border-radius: 100px !important;
-	border: 0.5px solid #44c0e2;
-	box-shadow: 3px 3px 10px -3px #78e1f4;
+	/* border: 0.5px solid #44c0e2; */
+	/* box-shadow: 3px 3px 10px -3px #78e1f4; */
 	margin-bottom: 20px;
+}
+.middle{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+@media (max-width: 320.98px) {
+	
+}
+@media (min-width: 321px) and (max-width: 575.98px) {
+
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+}
+
+@media (min-width: 1200px) {
+	
 }

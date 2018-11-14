@@ -142,7 +142,9 @@ export default class Overview extends Component {
 										title={course.title}
 										subtitle={course.subtitle}
 										path={course.pathProfileCourse}
-										user={course.ofCourse[0].users.firstname}
+										fuser={course.ofCourse[0].users.firstname}
+										luser={course.ofCourse[0].users.lastname}
+										price={course.price}
 										// ofCourseId={course.ofCourse.id}
 									/>
 								)
@@ -151,6 +153,7 @@ export default class Overview extends Component {
 						</Row>
 					</Col>
 				</Row>
+
 			</Container>
 		)
 	}

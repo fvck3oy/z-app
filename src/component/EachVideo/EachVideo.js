@@ -139,8 +139,17 @@ export default class EachVideo extends Component {
 
 		console.log('Data', data)
 
-		if (!data) {
+		if (!data ) {
 			return <div>Loading</div>
+		}
+
+		if (this.state.data.users.pathProfile == '') {
+			console.log('-----', this.state.data.users.pathProfile)
+			console.log('dont had pic')
+			this.state.data.users.pathProfile = 'upload/image/default_profile.jpg'
+			console.log('')
+		} else {
+			console.log('had pic')
 		}
 		const url = 'http://localhost:3013/'
 
@@ -149,7 +158,12 @@ export default class EachVideo extends Component {
 				<Row>
 					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
 						{data.course.title}
-						<br />
+						
+					</Col>
+				</Row>
+				<Row>
+					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-2">
+						
 						{data.course.subtitle}
 					</Col>
 				</Row>
@@ -200,39 +214,39 @@ export default class EachVideo extends Component {
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile mt-2">
-						1. {this.state.iconFile} i-study1contenmainCH1.pdf (Content Marketing คืออะไร ){' '}
+						1. {this.state.iconFile} CH1.pdf (Content Marketing คืออะไร ){' '}
 					</Col>
 				</Row>
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						2. {this.state.iconFile} i-study1contenmainCH2.pdf (5 แนวทางทำ VALUE CONTENT){' '}
+						2. {this.state.iconFile} CH2.pdf (5 แนวทางทำ VALUE CONTENT){' '}
 					</Col>
 				</Row>
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						3. {this.state.iconFile} i-study1contenmainCH3.pdf (วางแผนกลยุทธ์ Content){' '}
+						3. {this.state.iconFile} CH3.pdf (วางแผนกลยุทธ์ Content){' '}
 					</Col>
 				</Row>
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						4. {this.state.iconFile} i-study1contenmainCH4.pdf (แหล่งหารูปมาใช้){' '}
+						4. {this.state.iconFile} CH4.pdf (แหล่งหารูปมาใช้){' '}
 					</Col>
 				</Row>
 				<Row />
 
 				<Row>
-					<Col md={{ size: 6, offset: 2 }} className="desTitle mt-2">
+					<Col md={{ size: 6, offset: 2 }} className="desTitle mt-3">
 						ติดต่อ คุณ {data.users.firstname} {data.users.lastname}
 					</Col>
 				</Row>
 
-				<Row md={12}>
-					<Col md={{ size: 10, offset: 2 }} className="desTitle mt-2">
+				<Row md={12} className="middle mt-2">
+					{/* <Col md={{ size: 10, offset: 2 }} className="mt-2"> */}
 						<Image className="ProfileUsersOfCourse" src={`${url}${data.users.pathProfile}`} />
-					</Col>
+					{/* </Col> */}
 				</Row>
 
 				<Row>

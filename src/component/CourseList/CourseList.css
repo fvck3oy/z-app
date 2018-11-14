@@ -7,6 +7,7 @@
 	justify-content: center;
 	align-items: center;
 	margin: 0px 0px 20px 0px;
+	border-radius: 5px;
 }
 .list {
   cursor: pointer;

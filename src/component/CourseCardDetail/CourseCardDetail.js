@@ -54,7 +54,7 @@ export default class CourseCardDetail extends Component {
 	}
 
 	render() {
-		const { id, title, subtitle, path ,user} = this.props
+		const { id, title, subtitle, path ,fuser , luser ,price} = this.props
 		const url2 = '/video/'
 		const url = 'http://localhost:3013/'
 		return (
@@ -63,8 +63,9 @@ export default class CourseCardDetail extends Component {
 					<CardImg top width="100%" src={`${url}${path}`} alt="Card image cap" />
 					<CardBody>
 						<CardTitle>{title}</CardTitle>
-						<CardSubtitle>by {user}</CardSubtitle>
+						<CardSubtitle>by {fuser} {luser} </CardSubtitle>
 						<CardText>{subtitle}</CardText>
+						{/* <CardText> ราคา {price}</CardText> */}
 						<Link to={`${url2}${id}`}>
 							<Button className="btn-vdi">คลิกเพื่อเข้าชม</Button>
 						</Link>

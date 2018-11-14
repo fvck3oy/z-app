@@ -38,6 +38,7 @@ export default class AddCourse extends Component {
 		this.videoUpload = this.videoUpload.bind(this)
 		this.onChange = this.onChange.bind(this)
 		this.sentData = this.sentData.bind(this)
+		this.upload = this.upload.bind(this)
 	}
 
 	async sentData(e) {
@@ -71,42 +72,44 @@ export default class AddCourse extends Component {
 			})
 
 			console.log('-----------uploading------------')
-
-			await this.fileUpload(this.state.file).then(response => {
-				console.log('res . data : ', response.data)
-				const dataPic = {
-					id: this.state.IdToPathProfileCourse,
-					pathProfileCourse: response.data.file.path
-				}
-				// const { data } = response.data
-				axios.post(`http://localhost:3013/z-api/course/SavePathPictureCourse`, dataPic).then($res => {
-					const { data } = $res
-					console.log('what is the path : ', data)
-
-					// const { data } = $res
-					// this.setState({ message: data.message })
-				})
-			})
-			await this.videoUpload(this.state.file_video).then(response => {
-				console.log('res . data : ', response.data)
-				const dataPic = {
-					id: this.state.IdToPathProfileCourse,
-					pathVideoCourse: response.data.file.path
-				}
-				// const { data } = response.data
-				axios.post(`http://localhost:3013/z-api/course/SavePathVideoCourse`, dataPic).then($res => {
-					const { data } = $res
-					console.log('what is the path : ', data)
-
-					// const { data } = $res
-					// this.setState({ message: data.message })
-				})
-			})
-
+			await this.upload().then(this.props.history.push(`/overview`))
 			console.log('-----------uploaded------------')
 		} catch (error) {
 			console.log('sent error')
 		}
+	}
+
+	async upload() {
+		await this.fileUpload(this.state.file).then(response => {
+			console.log('res . data : ', response.data)
+			const dataPic = {
+				id: this.state.IdToPathProfileCourse,
+				pathProfileCourse: response.data.file.path
+			}
+			// const { data } = response.data
+			axios.post(`http://localhost:3013/z-api/course/SavePathPictureCourse`, dataPic).then($res => {
+				const { data } = $res
+				console.log('what is the path : ', data)
+
+				// const { data } = $res
+				// this.setState({ message: data.message })
+			})
+		})
+		await this.videoUpload(this.state.file_video).then(response => {
+			console.log('res . data : ', response.data)
+			const dataPic = {
+				id: this.state.IdToPathProfileCourse,
+				pathVideoCourse: response.data.file.path
+			}
+			// const { data } = response.data
+			axios.post(`http://localhost:3013/z-api/course/SavePathVideoCourse`, dataPic).then($res => {
+				const { data } = $res
+				console.log('what is the path : ', data)
+
+				// const { data } = $res
+				// this.setState({ message: data.message })
+			})
+		})
 	}
 
 	handleInputChange = e => {
@@ -175,15 +178,21 @@ export default class AddCourse extends Component {
 					<Col md={12}>
 						<Form onSubmit={this.sentData}>
 							<Row md={12} className="mt-2">
-								<Col md={6} className="">
-									Title
+								<Col md={3} className="TextNewAddCourse">
+									New Your Course
 								</Col>
-								<Col md={6}>
+							</Row>
+
+							<Row md={12} className="mt-2">
+								<Col md={4} className="TextAddCourse">
+									หัวข้อ
+								</Col>
+								<Col md={8}>
 									<div className="d-flex">
 										<input
 											style={{ fontSize: '8px !important' }}
 											name="title"
-											className=""
+											className="InputAddCourse"
 											type="text"
 											placeholder=""
 											onChange={this.handleInputChange}
@@ -196,16 +205,16 @@ export default class AddCourse extends Component {
 							</Row>
 
 							<Row className="mt-2">
-								<Col md={6} className="">
-									SubTitle
+								<Col md={4} className="TextAddCourse">
+									คำเชิญชวน
 								</Col>
 
-								<Col md={6}>
+								<Col md={8}>
 									<div className="d-flex">
 										<input
 											style={{ fontSize: '8px !important' }}
 											name="subtitle"
-											className=""
+											className="InputAddCourse"
 											type="text"
 											placeholder=""
 											onChange={this.handleInputChange}
@@ -218,16 +227,17 @@ export default class AddCourse extends Component {
 							</Row>
 
 							<Row className="mt-2">
-								<Col md={6} className="">
-									Detail
+								<Col md={4} className="TextAddCourse">
+									รายละเอียด
 								</Col>
 
-								<Col md={6}>
+								<Col md={8}>
 									<div className="d-flex">
-										<input
+										<textarea
 											style={{ fontSize: '8px !important' }}
 											name="detail"
-											className=""
+											className="InputAddCourse"
+											style={{ height: '150px' }}
 											type="text"
 											placeholder=""
 											onChange={this.handleInputChange}
@@ -239,34 +249,17 @@ export default class AddCourse extends Component {
 								</Col>
 							</Row>
 
-							{/* <div className="">
-								<div className="">
-									Lesson
-									<input
-										style={{ fontSize: '8px !important' }}
-										name="lesson"
-										className=""
-										type="text"
-										placeholder="detail"
-										onChange={this.handleInputChange}
-										value={this.state.lesson}
-										// invalid={String(this.state.invalidemail)}
-										required
-									/>
-								</div>
-							</div> */}
-
 							<Row className="mt-2">
-								<Col md={6} className="">
-									About
+								<Col md={4} className="TextAddCourse">
+									เกี่ยวกับผู้สอน
 								</Col>
 
-								<Col md={6}>
+								<Col md={8}>
 									<div className="d-flex">
-										<input
-											style={{ fontSize: '8px !important' }}
+										<textarea
+											style={{ fontSize: '8px !important', height: '150px' }}
 											name="about"
-											className=""
+											className="InputAddCourse"
 											type="text"
 											placeholder=""
 											onChange={this.handleInputChange}
@@ -279,36 +272,46 @@ export default class AddCourse extends Component {
 							</Row>
 
 							<Row className="mt-2">
-								<Col md={6} className="">
-									Price
+								<Col md={4} className="TextAddCourse">
+									ราคา
 								</Col>
 
-								<Col md={6}>
+								<Col md={2}>
 									<div className="d-flex">
 										<input
-											style={{ fontSize: '8px !important' }}
+											style={{ fontSize: '8px !important', width: '200px' }}
 											name="price"
-											className=""
-											type="text"
+											className="InputAddCourse"
+											type="number"
 											placeholder=""
 											onChange={this.handleInputChange}
 											value={this.state.price}
 											// invalid={String(this.state.invalidemail)}
 											required
 										/>
-										บาท
 									</div>
+								</Col>
+								<Col md={5} className="TextAddCourse d-flex" style={{ paddingTop: '2px' }}>
+									บาท
 								</Col>
 							</Row>
 
 							<Row className="mt-2">
-								<Col md={6} className="">
+								<Col md={4} className="TextAddCourse">
 									Type
 								</Col>
-								<Col md={6}>
+								<Col md={8}>
 									<FormGroup>
-										<Input type="select" name="type" value={type} onChange={this.handleInputChange} required>
-											<option value="null">โปรดเลือก</option>
+										<Input
+											type="select"
+											name="type"
+											value={type}
+											defaultValue="0"
+											onChange={this.handleInputChange}
+											style={{ width: '160px' }}
+											required
+										>
+											<option value="0">โปรดเลือก</option>
 											<option value="1">ภาษา</option>
 											<option value="2">คอมพิวเตอร์</option>
 											<option value="3">สุขภาพ</option>
@@ -322,42 +325,58 @@ export default class AddCourse extends Component {
 								</Col>
 							</Row>
 
-							<Row className="lessonTags mt-2">
-								<div className="tag-full-w">
-									<Col md={12}>Lesson</Col>
-									<ReactTags
-										handleDelete={this.handleDelete}
-										handleAddition={this.handleAddition}
-										delimiters={delimiters}
-										className="taginput"
-										tags={tags}
-										labelField={'name'}
-										placeholder="เช่น บทที่ 1 การทำระบบยืนยันตัวตน (กด Enter เพื่อยืนยัน)"
-									/>
-								</div>
+							<Row className="mt-2">
+								{' '}
+								<Col md={4} className="TextAddCourse">
+									บทเรียน
+								</Col>{' '}
+								<Col md={8} className="lessonTags">
+									<div className="tag-full-w d-flex">
+										{/* <Col > */}
+										<ReactTags
+											handleDelete={this.handleDelete}
+											handleAddition={this.handleAddition}
+											delimiters={delimiters}
+											className="taginput"
+											tags={tags}
+											labelField={'name'}
+											placeholder="เช่น บทที่ 1 การทำระบบยืนยันตัวตน (กด Enter เพื่อยืนยัน) ได้มากกว่า 1 ข้อ"
+										/>
+										{/* </Col> */}
+									</div>
+								</Col>
 							</Row>
 
-							<FormGroup className="upPicture">
-								<Label for="exampleFile">Choose Your Picture</Label>
-								<Input type="file" name="file_picture" id="exampleFile" onChange={this.onChangePicture} />
-								<FormText color="muted">เลือกภาพหน้าปกของคอร์สเรียนของคุณ</FormText>
-							</FormGroup>
+							<Row className="upPicture">
+								<Col md={4} className="TextAddCourse middle">
+									เลือกภาพหน้าปกของคอร์ส
+								</Col>
+								<Col>
+									<Input type="file" name="file_picture" id="exampleFile" onChange={this.onChangePicture} />
+									<FormText color="muted">เลือกภาพหน้าปกของคอร์สเรียนของคุณ</FormText>
+								</Col>
+							</Row>
 
-							<FormGroup className="upVideo">
-								<Label for="exampleFile">Choose Your Video</Label>
-								<Input type="file" name="file_video" id="exampleFile2" onChange={this.onChangeVideo} />
-								<FormText color="muted">เลือกวิดิโอของคอร์สเรียนของคุณ</FormText>
-							</FormGroup>
+							<Row className="upVideo">
+								<Col md={4} className="TextAddCourse">
+									เลือกวิดิโอ
+								</Col>
+								<Col>
+									<Input type="file" name="file_video" id="exampleFile2" onChange={this.onChangeVideo} />
+									<FormText color="muted">เลือกวิดิโอของคอร์สเรียนของคุณ</FormText>
+								</Col>
+							</Row>
 
 							{/* <FormGroup className="upSheet">
 								<Label for="exampleFile">Choose Your Sheet</Label>
 								<Input type="file" name="fil_sheet" id="exampleFile" onChange={this.onChangeSheet} />
 								<FormText color="muted">เลือกเอกสารของคอร์สเรียนของคุณ</FormText>
 							</FormGroup> */}
-
-							<Button color="submit" size="lg" block>
-								Confirm
-							</Button>
+							<div className="btn-mid">
+								<Button className="submitAddCourse" size="lg">
+									Confirm
+								</Button>
+							</div>
 						</Form>
 					</Col>
 				</Row>
