@@ -11,7 +11,7 @@ import UploadFile from '../component/Uploadfile/UploadFile'
 class MainRoute extends Component {
 	render() {
 		return (
-			<div style={{ position: 'relative' }}>
+			<div style={{ position: 'relative' , overflow:'hidden' }}>
 				<PrivateRoute exact path="/overview" component={Overview} />
 				<PrivateRoute exact path="/setting" component={Setting} />
 				{/* <PrivateRoute exact path="/video" component={EachVideo} /> */}

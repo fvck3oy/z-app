@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MainRoute from './routes/MainRoute'
 import Header from './component/Header/Header'
+import Footer from './component/Footer/Footer'
 
 class Main extends Component {
 	render() {
@@ -8,6 +9,7 @@ class Main extends Component {
 			<div>
 				<Header />
 				<MainRoute />
+				{/* <Footer /> */}
 			</div>
 		)
 	}

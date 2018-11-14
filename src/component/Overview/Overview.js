@@ -6,6 +6,7 @@ import CourseList from '../CourseList/CourseList'
 import CourseCardDetail from '../CourseCardDetail/CourseCardDetail'
 import styled from 'styled-components'
 import './Overview.css'
+import Footer from '../../component/Footer/Footer'
 
 const Container = styled.div`
 	width: 100vw;
@@ -99,6 +100,9 @@ export default class Overview extends Component {
 				<Row className="mt-5 ml-1 mr-1">
 					<Col md={3}>
 						<div className="course-list d-flex flex-column">
+						<div className="p-2 title-list">
+								หมวดหมู่
+							</div>
 							<div className="p-2 list" onClick={() => this.getDataUsers()}>
 								หน้าแรก
 							</div>
@@ -153,7 +157,7 @@ export default class Overview extends Component {
 						</Row>
 					</Col>
 				</Row>
-
+				<Footer />
 			</Container>
 		)
 	}
