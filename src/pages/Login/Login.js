@@ -84,8 +84,7 @@ class Login extends Component {
 	}
 
 	render() {
-
-		const { email , password } = this.state
+		const { email, password } = this.state
 		return (
 			<Container>
 				<div
@@ -95,7 +94,7 @@ class Login extends Component {
 						textAlign: 'center'
 					}}
 				>
-					<div className="iconRealxiz">Course Online</div>
+					<div className="iconRealxiz">CourseHub</div>
 					<div className="iconRealxiz">เว็บไซต์แหล่งรวบรวมความรู้ออนไลน์</div>
 					<Form onSubmit={this.handleSubmit}>
 						<div className="ipp">

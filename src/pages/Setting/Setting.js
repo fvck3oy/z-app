@@ -96,20 +96,18 @@ export default class Setting extends Component {
 		})
 	}
 
-	// componentWillMount() {
-
-	//   setTimeout(() => {
-	//     this.setState({
-	//     loader: false
-	//   })
-	// }, 2000);
-	//   console.log('TTTTT');
-	// }
+	componentWillMount() {
+		setTimeout(() => {
+			this.setState({
+				loader: false
+			})
+		}, 500)
+	}
 
 	render() {
-		// if (this.state.loader) {
-		// 	return <Loader />
-		// }
+		if (this.state.loader) {
+			return <Loader />
+		}
 
 		const { data } = this.state
 		const { toggleAddModal, toggleAddModal2 } = this.state
@@ -126,7 +124,8 @@ export default class Setting extends Component {
 		}
 
 		return (
-			<div className="MgTopSetting">
+			<div id="setting" className="MgTopSetting">
+				{/* <div id="loader" className="loader" /> */}
 				<Container className="bdSetting">
 					Profile Setting
 					<Row>
@@ -180,7 +179,6 @@ export default class Setting extends Component {
 					{toggleAddModal && (
 						<EditProfile getData={() => this.getData(this.state.data)} id={this.state.data.id} onClose={() => this.toggleAddModal(false)} />
 					)}
-
 					{toggleAddModal2 && (
 						<EditPictureProfile
 							getData={() => this.getData(this.state.data)}
@@ -188,7 +186,6 @@ export default class Setting extends Component {
 							onClose={() => this.toggleAddModal2(false)}
 						/>
 					)}
-					
 				</Container>
 			</div>
 		)

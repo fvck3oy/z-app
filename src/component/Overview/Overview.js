@@ -2,17 +2,18 @@ import React, { Component } from 'react'
 import { Row, Col } from 'reactstrap'
 import auth from '../../service/index'
 import axios from 'axios'
-import CourseList from '../CourseList/CourseList'
+
 import CourseCardDetail from '../CourseCardDetail/CourseCardDetail'
 import styled from 'styled-components'
 import './Overview.css'
-import Footer from '../../component/Footer/Footer'
+
+import Loader from '../../component/Loader'
 
 const Container = styled.div`
 	width: 100vw;
 	height: 100vh;
 	max-width: 100%;
-	margin-top: 20px;
+	margin-top: 30px;
 	// margin-left:10px;
 	margin-right: 10px;
 	background-color: white;
@@ -22,10 +23,13 @@ const Container = styled.div`
 export default class Overview extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { data: [], fillter: '0' }
+		this.state = { data: [], fillter: '0' ,loader:true}
 	}
 
 	getDataUsers = api => {
+		this.setState({
+			loader: true
+		})
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
@@ -67,10 +71,22 @@ export default class Overview extends Component {
 		console.log('fetch', url)
 
 		await axios.get(url).then(res => {
+
+			this.loading()
 			console.log('data card : ', res)
 			const { data } = res
 			this.setState({ data })
 		})
+	}
+
+	loading = e => {
+		console.log('loading');
+		
+		setTimeout(() => {
+			this.setState({
+				loader: false
+			})
+		}, 500)
 	}
 
 	logOut = e => {
@@ -82,6 +98,10 @@ export default class Overview extends Component {
 	}
 
 	render() {
+		if (this.state.loader) {
+			return <Loader />
+		}
+
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		console.log(userDecoded)
@@ -97,37 +117,37 @@ export default class Overview extends Component {
 
 		return (
 			<Container>
+				{/* <Row className="mt-5 mb-5 ml-1 mr-1"><Col md={{ size: 6, offset: 2 }}>
+				<div className="banner">pic</div></Col></Row> */}
 				<Row className="mt-5 ml-1 mr-1">
 					<Col md={3}>
 						<div className="course-list d-flex flex-column">
-						<div className="p-2 title-list">
-								หมวดหมู่
-							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers()}>
+							<div className="title-list text-center">หมวดหมู่</div>
+							<div className="list" onClick={() => this.getDataUsers()}>
 								หน้าแรก
 							</div>
-							<div className="p-2 list " onClick={() => this.getDataUsers('1')}>
+							<div className="list " onClick={() => this.getDataUsers('1')}>
 								ภาษา
 							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers('2')}>
+							<div className="list" onClick={() => this.getDataUsers('2')}>
 								คอมพิวเตอร์
 							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers('3')}>
+							<div className="list" onClick={() => this.getDataUsers('3')}>
 								สุขภาพ
 							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers('4')}>
+							<div className="list" onClick={() => this.getDataUsers('4')}>
 								เกมส์
 							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers('5')}>
+							<div className="list" onClick={() => this.getDataUsers('5')}>
 								ทำอาหาร
 							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers('6')}>
+							<div className="list" onClick={() => this.getDataUsers('6')}>
 								กีฬา
 							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers('7')}>
+							<div className="list" onClick={() => this.getDataUsers('7')}>
 								ดนตรี
 							</div>
-							<div className="p-2 list" onClick={() => this.getDataUsers('8')}>
+							<div className="list" onClick={() => this.getDataUsers('8')}>
 								อื่น ๆ
 							</div>
 						</div>
@@ -149,15 +169,12 @@ export default class Overview extends Component {
 										fuser={course.ofCourse[0].users.firstname}
 										luser={course.ofCourse[0].users.lastname}
 										price={course.price}
-										// ofCourseId={course.ofCourse.id}
 									/>
 								)
 							})}
-							{/* <CourseCard /> */}
 						</Row>
 					</Col>
 				</Row>
-				<Footer />
 			</Container>
 		)
 	}

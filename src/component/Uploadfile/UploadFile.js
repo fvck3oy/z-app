@@ -11,7 +11,7 @@ export default class UploadFile extends Component {
 			data: ''
 		}
 		this.onFormSubmit = this.onFormSubmit.bind(this)
-
+		this.onChange = this.onChange.bind(this)
 		this.fileUpload = this.fileUpload.bind(this)
 	}
 	onFormSubmit(e) {
@@ -21,7 +21,7 @@ export default class UploadFile extends Component {
 		console.log(userDecoded)
 		let uId = userDecoded.id
 		let uEmail = userDecoded.email
-		
+
 		this.fileUpload(this.state.file).then(response => {
 			console.log('res . data : ', response.data)
 			const data = {

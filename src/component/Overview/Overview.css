@@ -17,26 +17,31 @@
 	border: 1px solid #44c0e2;
 	box-shadow: 3px 3px 10px -3px #78e1f4;
 	width: 300px;
-	text-align: center;
+	/* text-align: center; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0px 0px 20px 0px;
-	border-radius: 5px;
+  border-radius: 5px;
+	margin-left: 20px;
+	position: fixed;
 }
 .list {
-  cursor: pointer;
+	cursor: pointer;
   width: 100%;
- 
-
+  padding: 10px 20px 10px 50px;
 }
 .list:hover {
-  color: #fff;
+	color: #fff;
   background-color: #5bc2e1;
+
 }
-.title-list{
-  width: 300px;
-  color: #fff;
-  border-radius: 5px 5px 0px 0px;
-  background-color: #5bc2e1;
+.title-list {
+	font-size: 20px;
+	width: 300px;
+	color: #fff;
+	border-radius: 5px 5px 0px 0px;
+	background-color: #5bc2e1;
+	padding: 10px 0px 10px 0px;
+
 }

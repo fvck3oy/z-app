@@ -139,7 +139,7 @@ export default class EachVideo extends Component {
 
 		console.log('Data', data)
 
-		if (!data ) {
+		if (!data) {
 			return <div>Loading</div>
 		}
 
@@ -158,12 +158,10 @@ export default class EachVideo extends Component {
 				<Row>
 					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
 						{data.course.title}
-						
 					</Col>
 				</Row>
 				<Row>
 					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-2">
-						
 						{data.course.subtitle}
 					</Col>
 				</Row>
@@ -182,7 +180,7 @@ export default class EachVideo extends Component {
 
 				<Row>
 					<Col md={{ size: 6, offset: 2 }} className="desTitle mt-4">
-						เรียนรู้ในเนื้อหา 4 บท
+						เรียนรู้ในเนื้อหาตามบทเรียน ดังนี้
 					</Col>
 				</Row>
 
@@ -214,25 +212,25 @@ export default class EachVideo extends Component {
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile mt-2">
-						1. {this.state.iconFile} CH1.pdf (Content Marketing คืออะไร ){' '}
+						1. {this.state.iconFile} CH1.pdf
 					</Col>
 				</Row>
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						2. {this.state.iconFile} CH2.pdf (5 แนวทางทำ VALUE CONTENT){' '}
+						2. {this.state.iconFile} CH2.pdf
 					</Col>
 				</Row>
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						3. {this.state.iconFile} CH3.pdf (วางแผนกลยุทธ์ Content){' '}
+						3. {this.state.iconFile} CH3.pdf
 					</Col>
 				</Row>
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						4. {this.state.iconFile} CH4.pdf (แหล่งหารูปมาใช้){' '}
+						4. {this.state.iconFile} CH4.pdf
 					</Col>
 				</Row>
 				<Row />
@@ -245,7 +243,7 @@ export default class EachVideo extends Component {
 
 				<Row md={12} className="middle mt-2">
 					{/* <Col md={{ size: 10, offset: 2 }} className="mt-2"> */}
-						<Image className="ProfileUsersOfCourse" src={`${url}${data.users.pathProfile}`} />
+					<Image className="ProfileUsersOfCourse" src={`${url}${data.users.pathProfile}`} />
 					{/* </Col> */}
 				</Row>
 

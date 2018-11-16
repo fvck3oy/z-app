@@ -1,0 +1,12 @@
+.loader {
+  position: fixed;
+  z-index: 999;
+  border: 10px solid white; /* Light grey */
+  border-top: 10px solid #5bc2e1; /* Blue */
+  border-radius: 50%;
+  top: calc(50% - 75px);
+  left: calc(50% - 75px);
+  width: 150px;
+  height: 150px;
+  animation: spin 2s linear infinite;
+}
