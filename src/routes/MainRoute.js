@@ -7,6 +7,7 @@ import AllUsers from '../component/AllUsers/AllUsers'
 import AddCourse from '../pages/AddCourse/AddCourse'
 
 import UploadFile from '../component/Uploadfile/UploadFile'
+import ToPublicCourse from '../component/ToPublicCourse/ToPublicCourse';
 
 class MainRoute extends Component {
 	render() {
@@ -19,6 +20,8 @@ class MainRoute extends Component {
 				{/* <PrivateRoute exact path="/uploadfile" component={UploadFile} /> */}
 				<PrivateRoute exact path="/addcourse" component={AddCourse} />
 				<PrivateRoute path="/video/:id" component={EachVideo} />
+				<PrivateRoute path="/videounpublic/:id" component={EachVideo} />
+				<PrivateRoute exact path="/topublic" component={ToPublicCourse} />
 			</div>
 		)
 	}

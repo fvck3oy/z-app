@@ -1,0 +1,28 @@
+.fullCardUnPublic {
+	width: auto;
+	height: auto;
+	margin: 0px 0px 20px 0px;
+	border: 1px solid red !important;
+	box-shadow: 3px 3px 10px -3px red !important;
+}
+
+.fullCardUnPublic:hover {
+	box-shadow: 3px 3px 10px -3px rgb(255, 0, 234) !important;
+}
+
+.ma {
+	margin: 10px;
+}
+
+.btn-vdiUnPublic {
+	background-color: red !important ;
+	color: aliceblue !important;
+	border-color: red !important;
+}
+
+.btn-vdiUnPublic:hover {
+	box-shadow: 3px 3px 10px 1px red;
+}
+.card-img-top {
+	height: 220px;
+}

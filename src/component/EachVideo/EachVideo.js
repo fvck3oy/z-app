@@ -33,6 +33,7 @@ import { Collections } from 'styled-icons/material'
 import { FileAlt } from 'styled-icons/fa-regular/FileAlt'
 import { PhoneIphone } from 'styled-icons/material/PhoneIphone'
 import { Email } from 'styled-icons/material/Email'
+import { Check } from 'styled-icons/fa-solid/Check'
 import axios from 'axios'
 import auth from '../../service/index'
 
@@ -68,7 +69,17 @@ line-height: 84px;
 border-radius: 25%
 position: relative;
 `
-
+const CheckIcon = Check.extend`
+    width : 1.3rem;
+    height :1.3rem;
+    color : green;
+    display: flex;
+    cursor: pointer;
+    line-height: 84px;
+    border-radius: 25%
+		position: relative;
+		flex-direction: row-reverse;
+`
 export default class EachVideo extends Component {
 	constructor(props, context) {
 		super(props, context)
@@ -81,17 +92,16 @@ export default class EachVideo extends Component {
 			iconFile: <FileIcon className="icon" />,
 			iconPhone: <PhoneIcon className="icon" />,
 			iconEmail: <EmailIcon className="icon" />,
+			iconCheck: <CheckIcon className="icon" />,
 			data: null
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
 		this.getEachCourse = this.getEachCourse.bind(this)
+		this.onPublic = this.onPublic.bind(this)
 	}
 
 	async getEachCourse() {
-		let user = auth.getToken()
-		let userDecoded = auth.decodeToken(user)
-		let uId = userDecoded.id
 		axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			console.log('data card : ', res)
 			const { data } = res
@@ -119,6 +129,18 @@ export default class EachVideo extends Component {
 			playerSource: this.state.inputVideoUrl
 		})
 	}
+	async onPublic(e) {
+		console.log('kuykuyukyuky', e)
+		const data = {
+			id: e,
+			state: 0
+		}
+		await axios.put(`http://localhost:3013/z-api/course/ChangeStateCourse`, data).then($res => {
+			const { data } = $res
+			console.log('data after ChangeState : ', data)
+		})
+		this.props.history.push(`/overview`)
+	}
 
 	componentDidMount() {
 		console.log('ei ')
@@ -126,15 +148,11 @@ export default class EachVideo extends Component {
 		this.getEachCourse()
 	}
 	render() {
-		// if (this.state.data.pathVideo == '') {
-		// 	console.log('-----', this.state.data.pathVideo)
-		// 	console.log('dont had pic')
-		// 	// this.state.data.pathVideo = 'http://localhost:3013/upload/video/1540738147349_4114.mp4'
-		// 	console.log('')
-		// } else {
-		// 	console.log('had pic')
-		// }
-		// const {id} = this.props
+		let user = auth.getToken()
+		let userDecoded = auth.decodeToken(user)
+		let uId = userDecoded.id
+		let uRole = userDecoded.role
+
 		const { data } = this.state
 
 		console.log('Data', data)
@@ -155,6 +173,7 @@ export default class EachVideo extends Component {
 
 		return (
 			<Container className="TitleVdi">
+				<div className="check">{uRole == 1 && <div onClick={() => this.onPublic(data.course.id)}>{this.state.iconCheck}</div>}</div>
 				<Row>
 					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
 						{data.course.title}

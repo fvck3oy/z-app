@@ -209,6 +209,9 @@ class Header extends Component {
 		this.setState({ list: <ListAltSolidz className="icon" /> })
 		this.props.history.push('/overview')
 	}
+	toPublic = e => {
+		this.props.history.push('/topublic')
+	}
 	clear() {
 		let def = this.state.icondefault
 		this.setState({
@@ -318,6 +321,17 @@ class Header extends Component {
 							}}
 						>
 							{this.state.person}
+						</NavLink>
+					)}
+
+					{uRole == 1 && (
+						<NavLink
+							onClick={() => {
+								this.toPublic()
+							}}
+							style={{ cursor: 'pointer' }}
+						>
+							ToPublic
 						</NavLink>
 					)}
 

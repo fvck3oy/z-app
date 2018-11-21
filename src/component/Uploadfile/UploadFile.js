@@ -3,6 +3,7 @@ import axios, { post } from 'axios'
 import auth from '../../service/index'
 import './UploadFile.css'
 
+
 export default class UploadFile extends Component {
 	constructor(props) {
 		super(props)
