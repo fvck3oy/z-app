@@ -245,6 +245,12 @@ class Header extends Component {
 		auth.clearToken()
 		this.props.history.push('/')
 	}
+
+	myCourse=e=>{
+		console.log('my course');
+		this.props.history.push('/mycourse')
+		
+	}
 	componentWillReceiveProps() {
 		this.update()
 	}
@@ -349,7 +355,7 @@ class Header extends Component {
 							สวัสดีคุณ {uFn} {uLn}
 						</div>
 
-						<Image className="ProfilePicHeader" src={`${url}${data.pathProfile}`} />
+						<Image className="ProfilePicHeader" onClick={()=>{this.myCourse()}} src={`${url}${data.pathProfile}`} />
 
 						<NavLink
 							onClick={() => {

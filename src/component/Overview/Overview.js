@@ -23,7 +23,7 @@ const Container = styled.div`
 export default class Overview extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { data: [], fillter: '0' ,loader:true}
+		this.state = { data: [], fillter: '0', loader: true }
 	}
 
 	getDataUsers = api => {
@@ -71,7 +71,6 @@ export default class Overview extends Component {
 		console.log('fetch', url)
 
 		await axios.get(url).then(res => {
-
 			this.loading()
 			console.log('data card : ', res)
 			const { data } = res
@@ -80,8 +79,8 @@ export default class Overview extends Component {
 	}
 
 	loading = e => {
-		console.log('loading');
-		
+		console.log('loading')
+
 		setTimeout(() => {
 			this.setState({
 				loader: false

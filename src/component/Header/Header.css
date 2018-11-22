@@ -71,6 +71,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		cursor: pointer;
 		width: 40px;
 		height: 40px;
 		border-radius: 100px !important;
@@ -78,5 +79,8 @@
 		box-shadow: 3px 3px 10px -3px #78e1f4;
 		margin-left: 10px;
 		margin-right: 10px;
+	}
+	.ProfilePicHeader:hover{
+		border: 1px solid #fff;
 	}
 }
