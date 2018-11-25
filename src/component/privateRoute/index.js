@@ -11,10 +11,10 @@ export class PrivateRoute extends Component {
 			user = null
 		}
 
-		if(user.role.id !=1){
-			console.log('not admin');
-			// user=null
-		}
+		// if(user.role.id !=1){
+		// 	console.log('not admin');
+		// 	// user=null
+		// }
 
 		return !!(token && user)
 	}
