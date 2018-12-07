@@ -96,7 +96,7 @@ class Login extends Component {
 						textAlign: 'center'
 					}}
 				>
-				<div className="d-flex">
+				<div className="mid d-flex">
 			<Image className="Logo" src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/46882025_1929000807187859_437138648945655808_n.jpg?_nc_cat=110&_nc_ht=scontent.fbkk5-4.fna&oh=95558a03adea5dea67e6dd410a67ac09&oe=5CAC8BD0" />
 		</div>
 

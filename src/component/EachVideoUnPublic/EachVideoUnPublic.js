@@ -34,6 +34,7 @@ import { FileAlt } from 'styled-icons/fa-regular/FileAlt'
 import { PhoneIphone } from 'styled-icons/material/PhoneIphone'
 import { Email } from 'styled-icons/material/Email'
 import { Check } from 'styled-icons/fa-solid/Check'
+import { X } from 'styled-icons/octicons/X'
 import axios from 'axios'
 import auth from '../../service/index'
 
@@ -80,6 +81,18 @@ const CheckIcon = Check.extend`
 		position: relative;
 		flex-direction: row-reverse;
 `
+const DeleteIcon = X.extend`
+width : 1.5rem;
+height :1.5rem;
+color : red;
+display: flex;
+cursor: pointer;
+line-height: 84px;
+border-radius: 25%
+position: relative;
+flex-direction: row-reverse;
+`
+
 export default class EachVideoUnPublic extends Component {
 	constructor(props, context) {
 		super(props, context)
@@ -93,12 +106,14 @@ export default class EachVideoUnPublic extends Component {
 			iconPhone: <PhoneIcon className="icon" />,
 			iconEmail: <EmailIcon className="icon" />,
 			iconCheck: <CheckIcon className="icon" />,
+			iconDelete: <DeleteIcon className="icon" />,
 			data: null
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
 		this.getEachCourse = this.getEachCourse.bind(this)
 		this.onPublic = this.onPublic.bind(this)
+		this.onDelete = this.onDelete.bind(this)
 	}
 
 	async getEachCourse() {
@@ -141,11 +156,30 @@ export default class EachVideoUnPublic extends Component {
 		})
 		this.props.history.push(`/overview`)
 	}
+	async onDelete(e) {
+		console.log('DELETE ------ ', e)
+		const data = {
+			id: e,
+			isDisable: 1
+		}
+		await axios.put(`http://localhost:3013/z-api/course/delete`,data).then($res => {
+			const { data } = $res
+			console.log('data after Delete : ', data)
+		})
+		this.props.history.push(`/overview`)
+	}
 
 	componentDidMount() {
-		console.log('ei ')
-
-		this.getEachCourse()
+		let user = auth.getToken()
+		let userDecoded = auth.decodeToken(user)
+    let uId = userDecoded.id
+    let uRole = userDecoded.role
+		console.log('did mount')
+    if (uRole != 3) {
+			this.getEachCourse()
+    } else {
+      this.props.history.push(`/overview`)
+    }
 	}
 	render() {
 		let user = auth.getToken()
@@ -173,7 +207,9 @@ export default class EachVideoUnPublic extends Component {
 
 		return (
 			<Container className="TitleVdi">
-				<div className="check">{uRole == 1 && <div onClick={() => this.onPublic(data.course.id)}>{this.state.iconCheck}</div>}</div>
+				<div className="check">{uRole == 1 && <div onClick={() => this.onPublic(data.course.id)}>{this.state.iconCheck}</div>}</div><br/>
+				<div className="delete">{uRole == 1 && <div onClick={() => this.onDelete(data.course.id)}>{this.state.iconDelete}</div>}</div>
+		
 				<Row>
 					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
 						{data.course.title}

@@ -10,7 +10,7 @@ import {
 	VolumeMenuButton
 } from 'video-react'
 import 'video-react/dist/video-react.css'
-import './EachVideo.css'
+import './EachVideoDeleted.css'
 import {
 	Form,
 	FormGroup,
@@ -33,8 +33,7 @@ import { Collections } from 'styled-icons/material'
 import { FileAlt } from 'styled-icons/fa-regular/FileAlt'
 import { PhoneIphone } from 'styled-icons/material/PhoneIphone'
 import { Email } from 'styled-icons/material/Email'
-import { Check } from 'styled-icons/fa-solid/Check'
-import { X } from 'styled-icons/octicons/X'
+import { SettingsBackupRestore } from 'styled-icons/material/SettingsBackupRestore'
 import axios from 'axios'
 import auth from '../../service/index'
 
@@ -70,10 +69,10 @@ line-height: 84px;
 border-radius: 25%
 position: relative;
 `
-const CheckIcon = Check.extend`
-    width : 1.3rem;
-    height :1.3rem;
-    color : green;
+const CheckIcon = SettingsBackupRestore.extend`
+    width : 2rem;
+    height :2rem;
+    color : red;
     display: flex;
     cursor: pointer;
     line-height: 84px;
@@ -81,19 +80,7 @@ const CheckIcon = Check.extend`
 		position: relative;
 		flex-direction: row-reverse;
 `
-
-const DeleteIcon = X.extend`
-width : 1.5rem;
-height :1.5rem;
-color : red;
-display: flex;
-cursor: pointer;
-line-height: 84px;
-border-radius: 25%
-position: relative;
-flex-direction: row-reverse;
-`
-export default class EachVideo extends Component {
+export default class EachVideoUnPublic extends Component {
 	constructor(props, context) {
 		super(props, context)
 
@@ -105,13 +92,13 @@ export default class EachVideo extends Component {
 			iconFile: <FileIcon className="icon" />,
 			iconPhone: <PhoneIcon className="icon" />,
 			iconEmail: <EmailIcon className="icon" />,
-			iconCheck: <DeleteIcon className="icon" />,
+			iconCheck: <CheckIcon className="icon" />,
 			data: null
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
 		this.getEachCourse = this.getEachCourse.bind(this)
-		this.onDelete = this.onDelete.bind(this)
+		this.onRestore = this.onRestore.bind(this)
 	}
 
 	async getEachCourse() {
@@ -142,24 +129,30 @@ export default class EachVideo extends Component {
 			playerSource: this.state.inputVideoUrl
 		})
 	}
-	async onDelete(e) {
-		console.log('DELETE ------ ', e)
+	async onRestore(e) {
+		console.log('kuykuyukyuky', e)
 		const data = {
 			id: e,
-			isDisable: 1
+			isDisable: 0
 		}
-		await axios.put(`http://localhost:3013/z-api/course/delete`,data).then($res => {
+		await axios.put(`http://localhost:3013/z-api/course/restore`, data).then($res => {
 			const { data } = $res
-			console.log('data after Delete : ', data)
+			console.log('data after ChangeState : ', data)
 		})
 		this.props.history.push(`/overview`)
 	}
 
-
 	componentDidMount() {
-		console.log('ei ')
-
-		this.getEachCourse()
+    let user = auth.getToken()
+		let userDecoded = auth.decodeToken(user)
+    let uId = userDecoded.id
+    let uRole = userDecoded.role
+		console.log('did mount')
+    if (uRole != 3) {
+			this.getEachCourse()
+    } else {
+      this.props.history.push(`/overview`)
+    }
 	}
 	render() {
 		let user = auth.getToken()
@@ -187,7 +180,10 @@ export default class EachVideo extends Component {
 
 		return (
 			<Container className="TitleVdi">
-				<div className="check">{uRole == 1 && <div onClick={() => this.onDelete(data.course.id)}>{this.state.iconCheck}</div>}</div>
+
+					<div className="check">{uRole == 1 && <div onClick={() => this.onRestore(data.course.id)}>{this.state.iconCheck}</div>}</div>{' '}
+					<div className="check">Restore</div>
+
 				<Row>
 					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
 						{data.course.title}

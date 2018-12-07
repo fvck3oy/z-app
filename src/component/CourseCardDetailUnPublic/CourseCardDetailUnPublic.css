@@ -2,12 +2,12 @@
 	width: auto;
 	height: 100%;
 	margin: 0px 0px 20px 0px;
-	border: 1px solid red !important;
-	box-shadow: 3px 3px 10px -3px red !important;
+	border: 1px solid rgb(180, 180, 180) !important;
+	box-shadow: 3px 3px 10px -3px rgb(180, 180, 180) !important;
 }
 
 .fullCardUnPublic:hover {
-	box-shadow: 3px 3px 10px -3px rgb(255, 0, 234) !important;
+	box-shadow: 3px 3px 10px -3px rgb(99, 99, 99) !important;
 }
 
 .ma {
@@ -15,13 +15,13 @@
 }
 
 .btn-vdiUnPublic {
-	background-color: red !important ;
+	background-color: rgb(99, 99, 99) !important ;
 	color: aliceblue !important;
-	border-color: red !important;
+	border-color: rgb(99, 99, 99) !important;
 }
 
 .btn-vdiUnPublic:hover {
-	box-shadow: 3px 3px 10px 1px red;
+	box-shadow: 3px 3px 10px 1px rgb(99, 99, 99);
 }
 .card-img-top {
 	height: 220px;

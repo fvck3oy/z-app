@@ -1,0 +1,21 @@
+.fullCardMyCourse {
+	width: auto;
+	height: 100%;
+	margin: 0px 0px 20px 0px;
+	border: 1px solid rgb(62, 172, 117) !important;
+	box-shadow: 3px 3px 10px -3px rgb(178, 247, 198) !important;
+}
+
+.fullCardMyCourse:hover {
+	box-shadow: 3px 3px 10px -3px rgb(75, 197, 110) !important;
+}
+
+.btn-vdiMyCourse {
+	background-color: rgb(62, 172, 117) !important;
+	color: aliceblue !important;
+	border-color: rgb(62, 172, 117) !important;
+}
+
+.btn-vdiMyCourse:hover {
+	box-shadow: 3px 3px 10px 1px rgb(75, 197, 110) !important;
+}

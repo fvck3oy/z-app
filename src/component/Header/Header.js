@@ -210,7 +210,10 @@ class Header extends Component {
 		this.props.history.push('/overview')
 	}
 	toPublic = e => {
-		this.props.history.push('/topublic')
+		this.props.history.push('/unpublic')
+	}
+	coursedeleted = e => {
+		this.props.history.push('/coursedeleted')
 	}
 	clear() {
 		let def = this.state.icondefault
@@ -337,7 +340,18 @@ class Header extends Component {
 							}}
 							style={{ cursor: 'pointer'}}
 						>
-							ToPublic
+							UnPublic
+						</NavLink>
+					)}
+
+						{uRole == 1 && (
+						<NavLink
+							onClick={() => {
+								this.coursedeleted()
+							}}
+							style={{ cursor: 'pointer'}}
+						>
+							CourseDeleted
 						</NavLink>
 					)}
 

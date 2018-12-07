@@ -25,7 +25,9 @@ export default class AddCourse extends Component {
 			price: '',
 			type: '',
 			file: null,
-			file_video: '',
+			file_video: null,
+			file_sheet: null,
+			file_picture: null,
 			data: '',
 			// inputs: ['input-0']
 			tags: [],
@@ -36,6 +38,7 @@ export default class AddCourse extends Component {
 		}
 		this.fileUpload = this.fileUpload.bind(this)
 		this.videoUpload = this.videoUpload.bind(this)
+		this.sheetUpload = this.sheetUpload.bind(this)
 		this.onChange = this.onChange.bind(this)
 		this.sentData = this.sentData.bind(this)
 		this.upload = this.upload.bind(this)
@@ -110,6 +113,23 @@ export default class AddCourse extends Component {
 				// this.setState({ message: data.message })
 			})
 		})
+
+		await this.sheetUpload(this.state.file_sheet).then(response => {
+			console.log('res . data : ', response.data)
+			const dataPic = {
+				id: this.state.IdToPathProfileCourse,
+				pathFile: response.data.file.path
+			}
+			// const { data } = response.data
+			axios.post(`http://localhost:3013/z-api/course/SavePathFileCourse`, dataPic).then($res => {
+				const { data } = $res
+				console.log('what is the path : ', data)
+
+				// const { data } = $res
+				// this.setState({ message: data.message })
+			})
+		})
+
 	}
 
 	handleInputChange = e => {
@@ -140,8 +160,8 @@ export default class AddCourse extends Component {
 	onChangeVideo = e => {
 		this.setState({ file_video: e.target.files[0] })
 	}
-	onChangeSheet = e => {
-		this.setState({ file: e.target.files[0] })
+	onChangeFile = e => {
+		this.setState({ file_sheet: e.target.files[0] })
 	}
 
 	fileUpload(file) {
@@ -162,6 +182,19 @@ export default class AddCourse extends Component {
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('videoData', file)
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data'
+			}
+		}
+		return post(url, formData, config)
+	}
+
+	sheetUpload(file) {
+		const url = 'http://localhost:3013/z-api/course/UploadFileCourse'
+		const formData = new FormData()
+		// formData.append('file', file)
+		formData.append('fileData', file)
 		const config = {
 			headers: {
 				'content-type': 'multipart/form-data'
@@ -291,7 +324,7 @@ export default class AddCourse extends Component {
 										/>
 									</div>
 								</Col>
-								<Col md={5} className="TextAddCourse d-flex" style={{ paddingTop: '2px' }}>
+								<Col md={6} className="TextAddCourse d-flex" style={{ paddingTop: '2px' }}>
 									บาท
 								</Col>
 							</Row>
@@ -301,7 +334,7 @@ export default class AddCourse extends Component {
 									Type
 								</Col>
 								<Col md={8}>
-									<FormGroup>
+									<div>
 										<Input
 											type="select"
 											name="type"
@@ -321,7 +354,7 @@ export default class AddCourse extends Component {
 											<option value="7">ดนตรี</option>
 											<option value="8">อื่น ๆ</option>
 										</Input>
-									</FormGroup>
+									</div>
 								</Col>
 							</Row>
 
@@ -332,7 +365,7 @@ export default class AddCourse extends Component {
 								</Col>{' '}
 								<Col md={8} className="lessonTags">
 									<div className="tag-full-w d-flex">
-										{/* <Col > */}
+
 										<ReactTags
 											handleDelete={this.handleDelete}
 											handleAddition={this.handleAddition}
@@ -342,7 +375,7 @@ export default class AddCourse extends Component {
 											labelField={'name'}
 											placeholder="เช่น บทที่ 1 การทำระบบยืนยันตัวตน (กด Enter เพื่อยืนยัน) ได้มากกว่า 1 ข้อ"
 										/>
-										{/* </Col> */}
+
 									</div>
 								</Col>
 							</Row>
@@ -364,6 +397,16 @@ export default class AddCourse extends Component {
 								<Col>
 									<Input type="file" name="file_video" id="exampleFile2" onChange={this.onChangeVideo} />
 									<FormText color="muted">เลือกวิดิโอของคอร์สเรียนของคุณ</FormText>
+								</Col>
+							</Row>
+
+							<Row className="upVideo">
+								<Col md={4} className="TextAddCourse">
+									เลือกไฟล์เอกสารของคุณ
+								</Col>
+								<Col>
+									<Input type="file" name="file_sheet" id="exampleFile3" onChange={this.onChangeFile} />
+									<FormText color="muted">เลือกเอกสารของคอร์สเรียนของคุณ</FormText>
 								</Col>
 							</Row>
 

@@ -10,7 +10,7 @@ import {
 	VolumeMenuButton
 } from 'video-react'
 import { Link } from 'react-router-dom'
-
+import './CourseCardDatailMyCourse.css'
 import 'video-react/dist/video-react.css'
 
 import {
@@ -46,8 +46,8 @@ export default class CourseCardDatailMyCourse extends Component {
 		const url2 = '/videounpublic/'
 		const url = 'http://localhost:3013/'
 		return (
-			<Col md={3}>
-				<Card className="fullCardUnPublic">
+			<Col md={3} className="mb-4">
+				<Card className="fullCardMyCourse">
 					<CardImg top width="100%" src={`${url}${path}`} alt="Card image cap" />
 					<CardBody>
 						<CardTitle>{title}</CardTitle>
@@ -57,7 +57,7 @@ export default class CourseCardDatailMyCourse extends Component {
 						<CardText>{subtitle}</CardText>
 						{/* <CardText> ราคา {price}</CardText> */}
 						<Link to={`${url2}${id}`}>
-							<Button className="btn-vdiUnPublic">คลิกเพื่อเข้าชม</Button>
+							<Button className="btn-vdiMyCourse">คลิกเพื่อเข้าชม</Button>
 						</Link>
 					</CardBody>
 				</Card>

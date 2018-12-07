@@ -30,10 +30,10 @@ import {
 	CardTitle,
 	CardSubtitle
 } from 'reactstrap'
-import './CourseCardDetailUnPublic.css'
-import EachVideo from '../EachVideo/EachVideo'
+import './CourseCardDeleted.css'
 
-export default class CourseCardDetailUnPublic extends Component {
+
+export default class CourseCardDeleted extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
@@ -55,11 +55,11 @@ export default class CourseCardDetailUnPublic extends Component {
 
 	render() {
 		const { id, title, subtitle, path ,fuser , luser ,price} = this.props
-		const url2 = '/videounpublic/'
+		const url2 = '/coursedeleted/'
 		const url = 'http://localhost:3013/'
 		return (
 			<Col md={3} className="mb-4">
-				<Card className="fullCardUnPublic">
+				<Card className="fullCardDeleted">
 					<CardImg top width="100%" src={`${url}${path}`} alt="Card image cap" />
 					<CardBody>
 						<CardTitle>{title}</CardTitle>
@@ -67,7 +67,7 @@ export default class CourseCardDetailUnPublic extends Component {
 						<CardText>{subtitle}</CardText>
 						{/* <CardText> ราคา {price}</CardText> */}
 						<Link to={`${url2}${id}`}>
-							<Button className="btn-vdiUnPublic">คลิกเพื่อเข้าชม</Button>
+							<Button className="btn-vdiDeleted">คลิกเพื่อเข้าชม</Button>
 						</Link>
 					</CardBody>
 				</Card>
