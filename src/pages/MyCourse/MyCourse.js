@@ -14,9 +14,9 @@ export default class MyCourse extends Component {
 		let uId = userDecoded.id
 		console.log('getting')
 		axios.get(`http://localhost:3013/z-api/users/${uId}`).then(res => {
-			console.log('DATA RES = ', res)
+			console.log('DATA MY COURSE = ', res)
 			const { data } = res
-			this.setState({ data : data.ofCourse})
+			this.setState({ data: data.ofCourse })
 		})
 	}
 	componentDidMount() {
@@ -26,7 +26,7 @@ export default class MyCourse extends Component {
 	render() {
 		return (
 			<Container className="mt-5">
-				my course
+				<h2>my course</h2>
 				<Row>
 					{this.state.data.map((course, index) => {
 						if (course.pathProfileCourse == '') {

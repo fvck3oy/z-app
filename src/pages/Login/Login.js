@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Button, Form } from 'reactstrap'
+import { Button, Form  } from 'reactstrap'
+import { Image } from 'react-bootstrap'
 import './Login.css'
 import axios from 'axios'
 import auth from '../../service/index'
@@ -14,6 +15,7 @@ const Container = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
 `
 const IconUser = User.extend`
 	color: #44c0e2;
@@ -86,7 +88,7 @@ class Login extends Component {
 	render() {
 		const { email, password } = this.state
 		return (
-			<Container>
+			<Container>	
 				<div
 					style={{
 						display: 'flex',
@@ -94,7 +96,10 @@ class Login extends Component {
 						textAlign: 'center'
 					}}
 				>
-					<div className="iconRealxiz">CourseHub</div>
+				<div className="d-flex">
+			<Image className="Logo" src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/46882025_1929000807187859_437138648945655808_n.jpg?_nc_cat=110&_nc_ht=scontent.fbkk5-4.fna&oh=95558a03adea5dea67e6dd410a67ac09&oe=5CAC8BD0" />
+		</div>
+
 					<div className="iconRealxiz">เว็บไซต์แหล่งรวบรวมความรู้ออนไลน์</div>
 					<Form onSubmit={this.handleSubmit}>
 						<div className="ipp">

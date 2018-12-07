@@ -10,7 +10,7 @@ import {
 	VolumeMenuButton
 } from 'video-react'
 import 'video-react/dist/video-react.css'
-import './EachVideo.css'
+import './EachVideoUnPublic.css'
 import {
 	Form,
 	FormGroup,
@@ -80,7 +80,7 @@ const CheckIcon = Check.extend`
 		position: relative;
 		flex-direction: row-reverse;
 `
-export default class EachVideo extends Component {
+export default class EachVideoUnPublic extends Component {
 	constructor(props, context) {
 		super(props, context)
 
@@ -173,7 +173,7 @@ export default class EachVideo extends Component {
 
 		return (
 			<Container className="TitleVdi">
-				{/* <div className="check">{uRole == 1 && <div onClick={() => this.onPublic(data.course.id)}>{this.state.iconCheck}</div>}</div> */}
+				<div className="check">{uRole == 1 && <div onClick={() => this.onPublic(data.course.id)}>{this.state.iconCheck}</div>}</div>
 				<Row>
 					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
 						{data.course.title}

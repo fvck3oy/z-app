@@ -335,7 +335,7 @@ class Header extends Component {
 							onClick={() => {
 								this.toPublic()
 							}}
-							style={{ cursor: 'pointer' }}
+							style={{ cursor: 'pointer'}}
 						>
 							ToPublic
 						</NavLink>

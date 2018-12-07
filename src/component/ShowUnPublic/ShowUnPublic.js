@@ -39,7 +39,8 @@ export default class ShowUnPublic extends Component {
 		return (
 			<Container>
 				{' '}
-				Show All Course UnPublic
+				<h2>Show All Course UnPublic</h2>
+				
 				<Row className="mt-5 ml-1 mr-1">
 					<Col md={12}>
 						<Row>
