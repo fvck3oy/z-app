@@ -43,8 +43,8 @@ export default class MyCourse extends Component {
 								title={course.course.title}
 								subtitle={course.course.subtitle}
 								path={course.course.pathProfileCourse}
-								// fuser={course.course.users.firstname}
-								// luser={course.course.users.lastname}
+								fuser={course.users.firstname}
+								luser={course.users.lastname}
 								price={course.course.price}
 							/>
 						)

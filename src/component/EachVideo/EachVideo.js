@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import {
 	Player,
 	ControlBar,
@@ -148,13 +149,12 @@ export default class EachVideo extends Component {
 			id: e,
 			isDisable: 1
 		}
-		await axios.put(`http://localhost:3013/z-api/course/delete`,data).then($res => {
+		await axios.put(`http://localhost:3013/z-api/course/delete`, data).then($res => {
 			const { data } = $res
 			console.log('data after Delete : ', data)
 		})
 		this.props.history.push(`/overview`)
 	}
-
 
 	componentDidMount() {
 		console.log('ei ')
@@ -183,8 +183,17 @@ export default class EachVideo extends Component {
 		} else {
 			console.log('had pic')
 		}
-		const url = 'http://localhost:3013/'
+		const url2 = `http://localhost:3013/${this.state.data.course.pathFile}`
+		// let url = window.URL.createObjectURL(url2)
+    //       let aTag = document.createElement('a')
+    //       document.body.appendChild(aTag)
+    //       aTag.href = url
+    //       aTag.download = products_report_$.{moment().format('DD/MM/YYYY')}.xlsx
+    //       aTag.click()
+    //       window.URL.revokeObjectURL(url)
+    //       document.body.removeChild(aTag)
 
+		const url = 'http://localhost:3013/'
 		return (
 			<Container className="TitleVdi">
 				<div className="check">{uRole == 1 && <div onClick={() => this.onDelete(data.course.id)}>{this.state.iconCheck}</div>}</div>
@@ -245,7 +254,10 @@ export default class EachVideo extends Component {
 
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile mt-2">
-						1. {this.state.iconFile} CH1.pdf
+						1. {this.state.iconFile}{' '}
+						<a href={url2} download >
+							CH1.pdf
+						</a>
 					</Col>
 				</Row>
 

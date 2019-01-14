@@ -43,7 +43,7 @@ export default class CourseCardDatailMyCourse extends Component {
 
 	render() {
 		const { id, title, subtitle, path, fuser, luser, price } = this.props
-		const url2 = '/videounpublic/'
+		const url2 = '/video/'
 		const url = 'http://localhost:3013/'
 		return (
 			<Col md={3} className="mb-4">

@@ -286,6 +286,7 @@ class Header extends Component {
 		const url = 'http://localhost:3013/'
 		const { data } = this.state
 
+		
 		if (this.state.data.pathProfile == '') {
 			console.log('-----', this.state.data.pathProfile)
 			console.log('dont had pic')
@@ -294,6 +295,8 @@ class Header extends Component {
 		} else {
 			console.log('had pic')
 		}
+
+
 		return (
 			<div>
 				<Navbar
