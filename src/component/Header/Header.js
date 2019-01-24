@@ -372,7 +372,7 @@ class Header extends Component {
 							สวัสดีคุณ {uFn} {uLn}
 						</div>
 
-						<Image className="ProfilePicHeader" onClick={()=>{this.myCourse()}} src={`${url}${data.pathProfile}`} />
+						{/* <Image className="ProfilePicHeader" onClick={()=>{this.myCourse()}} src={`${url}${data.pathProfile}`} /> */}
 
 						<NavLink
 							onClick={() => {

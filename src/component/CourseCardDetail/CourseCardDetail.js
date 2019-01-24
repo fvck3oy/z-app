@@ -54,7 +54,7 @@ export default class CourseCardDetail extends Component {
 	}
 
 	render() {
-		const { id, title, subtitle, path ,fuser , luser ,price} = this.props
+		const { id , title , subtitle , path ,fuser , luser , price } = this.props
 		const url2 = '/video/'
 		const url = 'http://localhost:3013/'
 		return (

@@ -119,7 +119,6 @@ export default class EachVideo extends Component {
 		axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			console.log('data card : ', res)
 			const { data } = res
-
 			// console.log('data0', data[0].title)
 			this.setState({ data: data[0] })
 		})
