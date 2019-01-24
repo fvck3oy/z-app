@@ -29,7 +29,7 @@ export default class AddCourse extends Component {
 			file_sheet: null,
 			file_picture: null,
 			data: '',
-			// inputs: ['input-0']
+
 			tags: [],
 			ofCourse: [],
 			id: '',
@@ -395,7 +395,7 @@ export default class AddCourse extends Component {
 									เลือกวิดิโอ
 								</Col>
 								<Col>
-									<Input type="file" name="file_video" id="exampleFile2" onChange={this.onChangeVideo} />
+									<Input type="file" name="file_video" id="exampleFile2" onChange={this.onChangeVideo} multiple/>
 									<FormText color="muted">เลือกวิดิโอของคอร์สเรียนของคุณ</FormText>
 								</Col>
 							</Row>
@@ -405,7 +405,7 @@ export default class AddCourse extends Component {
 									เลือกไฟล์เอกสารของคุณ
 								</Col>
 								<Col>
-									<Input type="file" name="file_sheet" id="exampleFile3" onChange={this.onChangeFile} />
+									<Input type="file" name="file_sheet" id="exampleFile3" onChange={this.onChangeFile} multiple/>
 									<FormText color="muted">เลือกเอกสารของคอร์สเรียนของคุณ</FormText>
 								</Col>
 							</Row>
