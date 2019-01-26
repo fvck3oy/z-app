@@ -16,7 +16,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router basename={'/z-app/build'}>
+			<Router basename={'z-app/build'}>
 				<Switch>
 					<Route exact path="/" component={withRouter(Login)} />
 					<Route exact path="/forgotpass" component={withRouter(ForgotPass)} />

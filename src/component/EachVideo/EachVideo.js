@@ -38,6 +38,7 @@ import { Check } from 'styled-icons/fa-solid/Check'
 import { X } from 'styled-icons/octicons/X'
 import axios from 'axios'
 import auth from '../../service/index'
+import Comment from '../Comment/Comment'
 
 const FileIcon = FileAlt.extend`
     width : 1.3rem;
@@ -107,7 +108,8 @@ export default class EachVideo extends Component {
 			iconPhone: <PhoneIcon className="icon" />,
 			iconEmail: <EmailIcon className="icon" />,
 			iconCheck: <DeleteIcon className="icon" />,
-			data: null
+			data: null,
+			dataComment:''
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -116,12 +118,24 @@ export default class EachVideo extends Component {
 	}
 
 	async getEachCourse() {
-		axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
+		 axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			console.log('data card : ', res)
 			const { data } = res
 			// console.log('data0', data[0].title)
 			this.setState({ data: data[0] })
+		
+			console.log('find id course : ', data[0].id);
+			
 		})
+
+		//  axios.get(`http://localhost:3013/z-api/eachcourse/${this.props.match.params.id}`).then(res => {
+		// 	console.log('data Comment  : ', res)
+		// 	const { data } = res
+		// 	console.log('data Comment : ', data[0])
+		// 	this.setState({ dataComment: data[0] })
+		// })
+
+
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -184,13 +198,13 @@ export default class EachVideo extends Component {
 		}
 		const url2 = `http://localhost:3013/${this.state.data.course.pathFile}`
 		// let url = window.URL.createObjectURL(url2)
-    //       let aTag = document.createElement('a')
-    //       document.body.appendChild(aTag)
-    //       aTag.href = url
-    //       aTag.download = products_report_$.{moment().format('DD/MM/YYYY')}.xlsx
-    //       aTag.click()
-    //       window.URL.revokeObjectURL(url)
-    //       document.body.removeChild(aTag)
+		//       let aTag = document.createElement('a')
+		//       document.body.appendChild(aTag)
+		//       aTag.href = url
+		//       aTag.download = products_report_$.{moment().format('DD/MM/YYYY')}.xlsx
+		//       aTag.click()
+		//       window.URL.revokeObjectURL(url)
+		//       document.body.removeChild(aTag)
 
 		const url = 'http://localhost:3013/'
 		return (
@@ -301,9 +315,9 @@ export default class EachVideo extends Component {
 						{this.state.iconEmail} อีเมลล์ : {data.users.email}
 					</Col>
 				</Row>
-				<Row>
-					<Col className="mb-5" />
-				</Row>
+
+				<Comment courseId={data.course.id}/>
+
 			</Container>
 		)
 	}
