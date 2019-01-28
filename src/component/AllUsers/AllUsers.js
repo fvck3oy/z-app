@@ -25,7 +25,7 @@ export default class AllUsers extends Component {
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
 		await axios.get(`http://localhost:3013/z-api/users/allusers`).then(res => {
-			console.log('DATA RES = ', res)
+			// console.log('DATA RES = ', res)
 			const { data } = res
 			this.setState({ data })
 		})

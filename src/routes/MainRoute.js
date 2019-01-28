@@ -8,7 +8,7 @@ import AddCourse from '../pages/AddCourse/AddCourse'
 import MyCourse from '../pages/MyCourse/MyCourse'
 import CourseDeleted from '../pages/CourseDeleted/CourseDeleted'
 
-import UploadFile from '../component/Uploadfile/UploadFile'
+
 import ToPublicCourse from '../component/ToPublicCourse/ToPublicCourse'
 import EachVideoUnPublic from '../component/EachVideoUnPublic/EachVideoUnPublic';
 import EachVideoDeleted from '../component/EachVideoDeleted/EachVideoDeleted';

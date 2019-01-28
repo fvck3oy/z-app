@@ -14,7 +14,7 @@ import { ExitToApp } from 'styled-icons/material/ExitToApp'
 import { withRouter } from 'react-router-dom'
 import './Header.css'
 import auth from '../../service/index'
-import { Image } from 'react-bootstrap'
+
 import axios from 'axios'
 
 const FolderClose = Folder.extend`
@@ -249,10 +249,8 @@ class Header extends Component {
 		this.props.history.push('/')
 	}
 
-	myCourse=e=>{
-		console.log('my course');
+	myCourse = e => {
 		this.props.history.push('/mycourse')
-		
 	}
 	componentWillReceiveProps() {
 		this.update()
@@ -262,7 +260,6 @@ class Header extends Component {
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
 		await axios.get(`http://localhost:3013/z-api/users/${uId}`).then(res => {
-			console.log('DATA RES = ', res)
 			const { data } = res
 			this.setState({ data })
 		})
@@ -272,30 +269,22 @@ class Header extends Component {
 		try {
 			this.update()
 			this.getData()
-		} catch (error) {
-			console.log('cant get data at setting page', error)
-		}
+		} catch (error) {}
 	}
 	render() {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
-		let uId = userDecoded.id
+		// let uId = userDecoded.id
 		let uFn = userDecoded.firstname
 		let uLn = userDecoded.lastname
 		let uRole = userDecoded.role
-		const url = 'http://localhost:3013/'
+		// const url = 'http://localhost:3013/'
 		const { data } = this.state
 
-		
-		if (this.state.data.pathProfile == '') {
-			console.log('-----', this.state.data.pathProfile)
-			console.log('dont had pic')
+		if (this.state.data.pathProfile === '') {
 			this.state.data.pathProfile = 'upload/image/default_profile.jpg'
-			console.log('')
 		} else {
-			console.log('had pic')
 		}
-
 
 		return (
 			<div>
@@ -326,7 +315,7 @@ class Header extends Component {
 
 					*/}
 
-					{uRole == 1 && (
+					{uRole === 1 && (
 						<NavLink
 							onClick={() => {
 								this.changePersonIcon()
@@ -336,23 +325,23 @@ class Header extends Component {
 						</NavLink>
 					)}
 
-					{uRole == 1 && (
+					{uRole === 1 && (
 						<NavLink
 							onClick={() => {
 								this.toPublic()
 							}}
-							style={{ cursor: 'pointer'}}
+							style={{ cursor: 'pointer' }}
 						>
 							UnPublic
 						</NavLink>
 					)}
 
-						{uRole == 1 && (
+					{uRole === 1 && (
 						<NavLink
 							onClick={() => {
 								this.coursedeleted()
 							}}
-							style={{ cursor: 'pointer'}}
+							style={{ cursor: 'pointer' }}
 						>
 							CourseDeleted
 						</NavLink>

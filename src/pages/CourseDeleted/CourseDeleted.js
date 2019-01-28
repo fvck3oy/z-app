@@ -24,7 +24,7 @@ export default class CourseDeleted extends Component {
 	getData = e => {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
-		let uId = userDecoded.id
+		// let uId = userDecoded.id
 		console.log('getting')
 		axios.get(`http://localhost:3013/z-api/course/alldeleted/`).then(res => {
 			console.log('DATA MY COURSE = ', res)
@@ -35,10 +35,10 @@ export default class CourseDeleted extends Component {
 	componentDidMount() {
     let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
-    let uId = userDecoded.id
+    // let uId = userDecoded.id
     let uRole = userDecoded.role
 		console.log('did mount')
-    if (uRole != 3) {
+    if (uRole !== 3) {
       this.getData()
     } else {
       this.props.history.push(`/overview`)
@@ -54,7 +54,7 @@ export default class CourseDeleted extends Component {
 					<Col md={12} className="mt-3">
 						<Row>
 							{this.state.data.map((course, index) => {
-								if (course.pathProfileCourse == '') {
+								if (course.pathProfileCourse === '') {
 									course.pathProfileCourse = 'upload/image/default_picCourse.jpg'
 								}
 								return (

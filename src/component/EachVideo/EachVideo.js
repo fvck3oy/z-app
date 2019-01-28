@@ -102,14 +102,13 @@ export default class EachVideo extends Component {
 		this.state = {
 			// playerSource: 'https://www.youtube.com/embed/7pvk_zflkwU',
 			playerSource: '',
-
 			inputVideoUrl: 'http://www.w3schools.com/html/mov_bbb.mp4',
 			iconFile: <FileIcon className="icon" />,
 			iconPhone: <PhoneIcon className="icon" />,
 			iconEmail: <EmailIcon className="icon" />,
 			iconCheck: <DeleteIcon className="icon" />,
 			data: null,
-			dataComment:''
+			dataComment: ''
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -118,24 +117,17 @@ export default class EachVideo extends Component {
 	}
 
 	async getEachCourse() {
-		 axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
-			console.log('data card : ', res)
+		await axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			const { data } = res
-			// console.log('data0', data[0].title)
 			this.setState({ data: data[0] })
-		
-			console.log('find id course : ', data[0].id);
-			
+			// console.log('kuy kuy kuy kuy ', data)
 		})
 
-		//  axios.get(`http://localhost:3013/z-api/eachcourse/${this.props.match.params.id}`).then(res => {
-		// 	console.log('data Comment  : ', res)
+		// await axios.get(`http://localhost:3013/z-api/comment/eachcourse/${this.props.match.params.id}`).then(res => {
 		// 	const { data } = res
-		// 	console.log('data Comment : ', data[0])
-		// 	this.setState({ dataComment: data[0] })
+		// 	this.setState({ dataComment: data })
+		// 	console.log('data comment ', data)
 		// })
-
-
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -157,21 +149,17 @@ export default class EachVideo extends Component {
 		})
 	}
 	async onDelete(e) {
-		console.log('DELETE ------ ', e)
 		const data = {
 			id: e,
 			isDisable: 1
 		}
 		await axios.put(`http://localhost:3013/z-api/course/delete`, data).then($res => {
 			const { data } = $res
-			console.log('data after Delete : ', data)
 		})
 		this.props.history.push(`/overview`)
 	}
 
 	componentDidMount() {
-		console.log('ei ')
-
 		this.getEachCourse()
 	}
 	render() {
@@ -180,21 +168,15 @@ export default class EachVideo extends Component {
 		let uId = userDecoded.id
 		let uRole = userDecoded.role
 
-		const { data } = this.state
-
-		console.log('Data', data)
+		const { data, dataComment } = this.state
 
 		if (!data) {
 			return <div>Loading</div>
 		}
 
 		if (this.state.data.users.pathProfile == '') {
-			console.log('-----', this.state.data.users.pathProfile)
-			console.log('dont had pic')
 			this.state.data.users.pathProfile = 'upload/image/default_profile.jpg'
-			console.log('')
 		} else {
-			console.log('had pic')
 		}
 		const url2 = `http://localhost:3013/${this.state.data.course.pathFile}`
 		// let url = window.URL.createObjectURL(url2)
@@ -268,7 +250,7 @@ export default class EachVideo extends Component {
 				<Row>
 					<Col md={{ size: 8, offset: 3 }} className="desFile mt-2">
 						1. {this.state.iconFile}{' '}
-						<a href={url2} download >
+						<a href={url2} download>
 							CH1.pdf
 						</a>
 					</Col>
@@ -316,8 +298,10 @@ export default class EachVideo extends Component {
 					</Col>
 				</Row>
 
-				<Comment courseId={data.course.id}/>
-
+				{/* {this.state.dataComment.map(comment => {
+					return <Comment key={comment.id} text={comment.text} />
+				})} */}
+				<Comment courseId={data.course.id} />
 			</Container>
 		)
 	}

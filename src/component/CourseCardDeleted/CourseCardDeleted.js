@@ -14,19 +14,14 @@ import { Link } from 'react-router-dom'
 import 'video-react/dist/video-react.css'
 
 import {
-	Form,
-	FormGroup,
-	Label,
-	Input,
+	
 	Col,
-	Row,
-	Container,
 	Button,
 	Card,
 	CardImg,
 	CardText,
 	CardBody,
-	CardLink,
+
 	CardTitle,
 	CardSubtitle
 } from 'reactstrap'

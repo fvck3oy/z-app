@@ -10,7 +10,7 @@ import { PencilAlt } from 'styled-icons/fa-solid/PencilAlt'
 import EditProfile from '../../component/EditProfile/EditProfile'
 import EditPictureProfile from '../../component/EditPictureProfile/EditPictureProfile'
 import Loader from '../../component/Loader'
-import UploadFile from '../../component/Uploadfile/UploadFile'
+// import UploadFile from '../../component/Uploadfile/UploadFile'
 
 const Edit = EditIcon.extend`
 	position: relative;
@@ -111,16 +111,11 @@ export default class Setting extends Component {
 
 		const { data } = this.state
 		const { toggleAddModal, toggleAddModal2 } = this.state
-
 		const url = 'http://localhost:3013/'
 
-		if (this.state.data.pathProfile == '') {
-			console.log('-----', this.state.data.pathProfile)
-			console.log('dont had pic')
+		if (this.state.data.pathProfile === '') {
 			this.state.data.pathProfile = 'upload/image/default_profile.jpg'
-			console.log('')
 		} else {
-			console.log('had pic')
 		}
 
 		return (
