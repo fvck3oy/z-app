@@ -4,6 +4,7 @@ import {
 	FormGroup,
 	Label,
 	Input,
+	InputGroup,
 	Col,
 	Row,
 	Container,
@@ -16,16 +17,22 @@ import {
 	CardTitle,
 	CardSubtitle
 } from 'reactstrap'
+import { Image } from 'react-bootstrap'
 import axios from 'axios'
 import auth from '../../service/index'
+import './Comment.css'
 
 export default class Comment extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			dataComment: '',
-			data: []
+			data: [],
+			textComment: '',
+			comment:'',
+			message:''
 		}
+		this.sentComment = this.sentComment.bind(this)
 	}
 	getData = e => {
 		const data = {
@@ -34,9 +41,36 @@ export default class Comment extends Component {
 
 		axios.get(`http://localhost:3013/z-api/comment/eachcourse/${data.id}`, data).then(res => {
 			const { data } = res
-			// console.log('data Comment kuy : ', data)
 			this.setState({ data: data })
+			console.log('data : ', data)
 		})
+	}
+
+	async sentComment(courseId){
+		let user = auth.getToken()
+		let userDecoded = auth.decodeToken(user)
+		let uId = userDecoded.id
+		const dataComment = {
+			text: this.state.comment,
+			user: uId,
+			course: this.props.courseId
+		}
+		console.log('coming : ',dataComment);
+		
+		await axios.post(`http://localhost:3013/z-api/comment`, dataComment).then($res => {
+			const { data } = $res
+			console.log('comment is : ', data)
+
+			// const { data } = $res
+			// this.setState({ message: data.message })
+		})
+	}
+
+	handleInputChange = e => {
+		const { name, value } = e.target
+		this.setState({ [name]: value })
+		this.setState({ message: '' })
+		console.log({ [name]: value })
 	}
 
 	componentDidMount() {
@@ -44,25 +78,52 @@ export default class Comment extends Component {
 	}
 	render() {
 		const { data } = this.state
+
+		let user = auth.getToken()
+		let userDecoded = auth.decodeToken(user)
+		let uId = userDecoded.id
+		let uFn = userDecoded.firstname
+		let uLn = userDecoded.lastname
+		let uRole = userDecoded.role
+		let uPath = userDecoded.pathProfile
 		// console.log('data', data)
 
 		const { courseId } = this.props
+		const url = 'http://localhost:3013/'
 		return (
-			<div>
-				{/* <Row>
-					<Col md={{ size: 6, offset: 3 }} className="contact mt-5 mb-5">
-						Hee{courseId}
-					</Col>
-                    
-                </Row> */}
-				<ul>
+			<Container className="con-comment pl-0 pr-0">
+			{/* onSubmit={this.sentComment({ courseId })} */}
+				<Form  onSubmit={this.sentComment} className="mt-3 mb-3">
+					<Row className="d-flex m-auto user-comment">
+						<div>
+							<Image className="profile-comment" src={`${url}${uPath}`} />
+						</div>
+						<div className="input-comment">
+							<Input
+								placeholder="แสดงความคิดเห็นของคุณ"
+								name="comment"
+								type="text"
+								value={this.state.comment}
+								onChange={this.handleInputChange}
+							/>
+						</div>
+						<div>
+							<Button className="sent-comment-btn ml-3" size="">
+								Confirm
+							</Button>
+						</div>
+					</Row>
+				</Form>
+				<div className="all-comment">
 					{this.state.data.map((comment, index) => (
-						<li key={index}>
-							{comment.id} {comment.text}
-						</li>
+						<Row key={index} className="block-comment mt-2 b-2">
+							<Image className="profile-comment" src={`${url}${comment.users.pathProfile}`} />
+							<div className="username-comment">{comment.users.firstname}</div>
+							<div className="text-comment"> {comment.text}</div>
+						</Row>
 					))}
-				</ul>
-			</div>
+				</div>
+			</Container>
 		)
 	}
 }

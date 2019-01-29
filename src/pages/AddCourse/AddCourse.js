@@ -29,7 +29,6 @@ export default class AddCourse extends Component {
 			file_sheet: null,
 			file_picture: null,
 			data: '',
-
 			tags: [],
 			ofCourse: [],
 			id: '',
@@ -129,7 +128,6 @@ export default class AddCourse extends Component {
 				// this.setState({ message: data.message })
 			})
 		})
-
 	}
 
 	handleInputChange = e => {
@@ -365,7 +363,6 @@ export default class AddCourse extends Component {
 								</Col>{' '}
 								<Col md={8} className="lessonTags">
 									<div className="tag-full-w d-flex">
-
 										<ReactTags
 											handleDelete={this.handleDelete}
 											handleAddition={this.handleAddition}
@@ -375,7 +372,6 @@ export default class AddCourse extends Component {
 											labelField={'name'}
 											placeholder="เช่น บทที่ 1 การทำระบบยืนยันตัวตน (กด Enter เพื่อยืนยัน) ได้มากกว่า 1 ข้อ"
 										/>
-
 									</div>
 								</Col>
 							</Row>
@@ -395,7 +391,7 @@ export default class AddCourse extends Component {
 									เลือกวิดิโอ
 								</Col>
 								<Col>
-									<Input type="file" name="file_video" id="exampleFile2" onChange={this.onChangeVideo} multiple/>
+									<Input type="file" name="file_video" id="exampleFile2" onChange={this.onChangeVideo} multiple />
 									<FormText color="muted">เลือกวิดิโอของคอร์สเรียนของคุณ</FormText>
 								</Col>
 							</Row>
@@ -405,7 +401,7 @@ export default class AddCourse extends Component {
 									เลือกไฟล์เอกสารของคุณ
 								</Col>
 								<Col>
-									<Input type="file" name="file_sheet" id="exampleFile3" onChange={this.onChangeFile} multiple/>
+									<Input type="file" name="file_sheet" id="exampleFile3" onChange={this.onChangeFile} multiple />
 									<FormText color="muted">เลือกเอกสารของคอร์สเรียนของคุณ</FormText>
 								</Col>
 							</Row>

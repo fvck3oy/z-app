@@ -1,0 +1,38 @@
+.con-comment {
+	font-size: 20px;
+}
+.all-comment {
+	display: flex;
+	flex-direction: column;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.block-comment {
+	border-radius: 20px;
+	/* margin-top: 5px;
+	margin-bottom: 5px; */
+	padding: 20px;
+	/* border: 1px solid black; */
+	background-color: aliceblue;
+}
+.user-comment{
+  border-radius: 20px;
+
+	padding: 20px;
+	/* border: 1px solid black; */
+	background-color: aliceblue;
+}
+.profile-comment {
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	width: 30px;
+	height: 30px;
+	margin-right: 20px;
+}
+.input-comment{
+  width: 950px;
+}
+.username-comment {
+	color: rgb(38, 84, 168);
+	margin-right: 20px;
+}

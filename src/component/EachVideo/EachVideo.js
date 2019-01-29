@@ -190,6 +190,7 @@ export default class EachVideo extends Component {
 
 		const url = 'http://localhost:3013/'
 		return (
+			<div>
 			<Container className="TitleVdi">
 				<div className="check">{uRole == 1 && <div onClick={() => this.onDelete(data.course.id)}>{this.state.iconCheck}</div>}</div>
 				<Row>
@@ -292,7 +293,7 @@ export default class EachVideo extends Component {
 						{this.state.iconPhone} โทร : {data.users.tel}
 					</Col>
 				</Row>
-				<Row>
+				<Row className="pb-5">
 					<Col md={{ size: 6, offset: 3 }} className="contact">
 						{this.state.iconEmail} อีเมลล์ : {data.users.email}
 					</Col>
@@ -301,8 +302,9 @@ export default class EachVideo extends Component {
 				{/* {this.state.dataComment.map(comment => {
 					return <Comment key={comment.id} text={comment.text} />
 				})} */}
-				<Comment courseId={data.course.id} />
 			</Container>
+				<Comment courseId={data.course.id} />
+				</div>
 		)
 	}
 }

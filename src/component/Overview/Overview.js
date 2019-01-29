@@ -103,14 +103,14 @@ export default class Overview extends Component {
 
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
-		console.log(userDecoded)
+
 		let uId = userDecoded.id
 		let uFn = userDecoded.firstname
 		let uLn = userDecoded.lastname
 		let uRole = userDecoded.role
 		// this.setState({ loginUserId })
-		console.log('id is : ', uId, uFn, uLn)
-		console.log('role is : ', uRole)
+
+
 
 		const { data } = this.state
 
