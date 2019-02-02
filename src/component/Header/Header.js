@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter, Navbar, NavLink } from 'reactstrap'
+import { Image } from 'react-bootstrap'
 import { Folder } from 'styled-icons/fa-regular/Folder'
 import { FolderOpen } from 'styled-icons/fa-solid/FolderOpen'
 import { PersonOutline } from 'styled-icons/material/PersonOutline'
@@ -8,13 +9,11 @@ import { Settings } from 'styled-icons/feather/Settings'
 import { Gear } from 'styled-icons/octicons/Gear'
 import { ListAlt } from 'styled-icons/fa-regular/ListAlt'
 import { ListAlt as ListSolid } from 'styled-icons/fa-solid/ListAlt'
-import { Navbar, NavLink } from 'reactstrap'
 import { AddToPhotos } from 'styled-icons/material/AddToPhotos'
 import { ExitToApp } from 'styled-icons/material/ExitToApp'
 import { withRouter } from 'react-router-dom'
 import './Header.css'
 import auth from '../../service/index'
-
 import axios from 'axios'
 
 const FolderClose = Folder.extend`
@@ -278,7 +277,7 @@ class Header extends Component {
 		let uFn = userDecoded.firstname
 		let uLn = userDecoded.lastname
 		let uRole = userDecoded.role
-		// const url = 'http://localhost:3013/'
+		const url = 'http://localhost:3013/'
 		const { data } = this.state
 
 		if (this.state.data.pathProfile === '') {
@@ -361,7 +360,13 @@ class Header extends Component {
 							สวัสดีคุณ {uFn} {uLn}
 						</div>
 
-						{/* <Image className="ProfilePicHeader" onClick={()=>{this.myCourse()}} src={`${url}${data.pathProfile}`} /> */}
+						<Image
+							className="ProfilePicHeader"
+							onClick={() => {
+								this.myCourse()
+							}}
+							src={`${url}${data.pathProfile}`}
+						/>
 
 						<NavLink
 							onClick={() => {

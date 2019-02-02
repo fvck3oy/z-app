@@ -91,6 +91,9 @@
 	border: 0.5px solid #5bc2e1;
 	outline-width: 0px;
 }
+.InputAddCourse::-webkit-input-placeholder {
+	color: #b4b4b4;
+}
 
 .TextNewAddCourse {
 	text-align: center;

@@ -27,7 +27,8 @@ import {
 	CardBody,
 	CardLink,
 	CardTitle,
-	CardSubtitle
+	CardSubtitle,
+
 } from 'reactstrap'
 import { Image } from 'react-bootstrap'
 import { Collections } from 'styled-icons/material'
@@ -297,6 +298,7 @@ export default class EachVideo extends Component {
 					<Col md={{ size: 6, offset: 3 }} className="contact">
 						{this.state.iconEmail} อีเมลล์ : {data.users.email}
 					</Col>
+
 				</Row>
 
 				{/* {this.state.dataComment.map(comment => {

@@ -94,7 +94,7 @@ class EditProfile extends Component {
 		this.getData()
 	}
 	componentWillReceiveProps(props) {
-		console.log(props)
+		// console.log(props)
 	}
 	render() {
 		// const { firstname, lastname, email, tel, password, password2 } = this.props.data
@@ -106,8 +106,6 @@ class EditProfile extends Component {
 						<div className="title">EditProfile</div>
 					</ModalHeader>
 
-			
-					
 					<ModalBody>
 						<Container>
 							<div

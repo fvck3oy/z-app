@@ -10,7 +10,7 @@ import {
 	VolumeMenuButton
 } from 'video-react'
 import { Link } from 'react-router-dom'
-import './CourseCardDatailMyCourse.css'
+import './EditCourseLink.css'
 import 'video-react/dist/video-react.css'
 
 import {
@@ -31,9 +31,7 @@ import {
 	CardSubtitle
 } from 'reactstrap'
 
-import EachVideo from '../EachVideo/EachVideo'
-
-export default class CourseCardDatailMyCourse extends Component {
+export default class EditCourseLink extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
@@ -57,7 +55,7 @@ export default class CourseCardDatailMyCourse extends Component {
 						<CardText>{subtitle}</CardText>
 						{/* <CardText> ราคา {price}</CardText> */}
 						<Link to={`${url2}${id}`}>
-							<Button className="btn-vdiMyCourse">คลิกเพื่อเข้าชม</Button>
+							<Button className="btn-vdiMyCourse">คลิกเพื่อแก้ไข</Button>
 						</Link>
 					</CardBody>
 				</Card>

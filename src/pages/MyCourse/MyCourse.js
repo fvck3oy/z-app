@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import axios from 'axios'
 import auth from '../../service'
-import CourseCardDatailMyCourse from '../../component/CourseCardDetailMyCourse/CourseCardDatailMyCourse'
+import EditCourseLink from '../../component/EditCourseLink/EditCourseLink'
 export default class MyCourse extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { data: [] }
+		this.state = {
+			data: []
+		}
 	}
 	getData = e => {
 		let user = auth.getToken()
@@ -19,6 +21,7 @@ export default class MyCourse extends Component {
 			this.setState({ data })
 		})
 	}
+
 	componentDidMount() {
 		console.log('did mount')
 		this.getData()
@@ -37,7 +40,7 @@ export default class MyCourse extends Component {
 							course.pathProfileCourse = 'upload/image/default_picCourse.jpg'
 						}
 						return (
-							<CourseCardDatailMyCourse
+							<EditCourseLink
 								key={course.course.id}
 								id={course.course.id}
 								title={course.course.title}
@@ -46,6 +49,7 @@ export default class MyCourse extends Component {
 								fuser={course.users.firstname}
 								luser={course.users.lastname}
 								price={course.course.price}
+								modal={true}
 							/>
 						)
 					})}

@@ -33,7 +33,8 @@ export default class AddCourse extends Component {
 			ofCourse: [],
 			id: '',
 			pathProfileCourse: '',
-			IdToPathProfileCourse: ''
+			IdToPathProfileCourse: '',
+			editmode: false
 		}
 		this.fileUpload = this.fileUpload.bind(this)
 		this.videoUpload = this.videoUpload.bind(this)
@@ -200,20 +201,34 @@ export default class AddCourse extends Component {
 		}
 		return post(url, formData, config)
 	}
+	
+	componentDidMount = () => {
+		if (this.props.editmode) {
+			this.toggle()
+		}
+	}
 
 	render() {
 		const { tags, suggestions, type, nLesson } = this.state
+		const { editmode } = this.props
+
 		return (
 			<Container className="con">
-				<Row md={12}>
+				<Row>
 					<Col md={12}>
-						<Form onSubmit={this.sentData}>
+						{editmode === true && (
+							<Col md={3} className="TextNewAddCourse">
+								Edit Your Course
+							</Col>
+						)}
+						{this.state.editmode === false && (
 							<Row md={12} className="mt-2">
 								<Col md={3} className="TextNewAddCourse">
 									New Your Course
 								</Col>
 							</Row>
-
+						)}
+						<Form onSubmit={this.sentData}>
 							<Row md={12} className="mt-2">
 								<Col md={4} className="TextAddCourse">
 									หัวข้อ
@@ -225,7 +240,7 @@ export default class AddCourse extends Component {
 											name="title"
 											className="InputAddCourse"
 											type="text"
-											placeholder=""
+											placeholder="สอนการทำเว็บด้วย React"
 											onChange={this.handleInputChange}
 											value={this.state.title}
 											// invalid={String(this.state.invalidemail)}
@@ -234,7 +249,6 @@ export default class AddCourse extends Component {
 									</div>
 								</Col>
 							</Row>
-
 							<Row className="mt-2">
 								<Col md={4} className="TextAddCourse">
 									คำเชิญชวน
@@ -247,7 +261,7 @@ export default class AddCourse extends Component {
 											name="subtitle"
 											className="InputAddCourse"
 											type="text"
-											placeholder=""
+											placeholder="React ดีอย่างไร คลิก !"
 											onChange={this.handleInputChange}
 											value={this.state.subtitle}
 											// invalid={String(this.state.invalidemail)}
@@ -256,7 +270,6 @@ export default class AddCourse extends Component {
 									</div>
 								</Col>
 							</Row>
-
 							<Row className="mt-2">
 								<Col md={4} className="TextAddCourse">
 									รายละเอียด
@@ -270,7 +283,7 @@ export default class AddCourse extends Component {
 											className="InputAddCourse"
 											style={{ height: '150px' }}
 											type="text"
-											placeholder=""
+											placeholder="เป็นคอร์สสอนการพัฒนาเว็บไซต์ด้วย React Framework"
 											onChange={this.handleInputChange}
 											value={this.state.detail}
 											// invalid={String(this.state.invalidemail)}
@@ -279,7 +292,6 @@ export default class AddCourse extends Component {
 									</div>
 								</Col>
 							</Row>
-
 							<Row className="mt-2">
 								<Col md={4} className="TextAddCourse">
 									เกี่ยวกับผู้สอน
@@ -292,7 +304,7 @@ export default class AddCourse extends Component {
 											name="about"
 											className="InputAddCourse"
 											type="text"
-											placeholder=""
+											placeholder="สอนโดย Pumin มีประสบการณ์เป็น Web Developer มามากกว่า 3ปี !"
 											onChange={this.handleInputChange}
 											value={this.state.about}
 											// invalid={String(this.state.invalidemail)}
@@ -301,7 +313,6 @@ export default class AddCourse extends Component {
 									</div>
 								</Col>
 							</Row>
-
 							<Row className="mt-2">
 								<Col md={4} className="TextAddCourse">
 									ราคา
@@ -314,7 +325,7 @@ export default class AddCourse extends Component {
 											name="price"
 											className="InputAddCourse"
 											type="number"
-											placeholder=""
+											placeholder="0"
 											onChange={this.handleInputChange}
 											value={this.state.price}
 											// invalid={String(this.state.invalidemail)}
@@ -326,7 +337,6 @@ export default class AddCourse extends Component {
 									บาท
 								</Col>
 							</Row>
-
 							<Row className="mt-2">
 								<Col md={4} className="TextAddCourse">
 									Type
@@ -337,7 +347,7 @@ export default class AddCourse extends Component {
 											type="select"
 											name="type"
 											value={type}
-											defaultValue="0"
+											// defaultValue='0'
 											onChange={this.handleInputChange}
 											style={{ width: '160px' }}
 											required
@@ -355,8 +365,7 @@ export default class AddCourse extends Component {
 									</div>
 								</Col>
 							</Row>
-
-							<Row className="mt-2">
+							{/* <Row className="mt-2">
 								{' '}
 								<Col md={4} className="TextAddCourse">
 									บทเรียน
@@ -374,8 +383,7 @@ export default class AddCourse extends Component {
 										/>
 									</div>
 								</Col>
-							</Row>
-
+							</Row> */}
 							<Row className="upPicture">
 								<Col md={4} className="TextAddCourse middle">
 									เลือกภาพหน้าปกของคอร์ส
@@ -385,8 +393,7 @@ export default class AddCourse extends Component {
 									<FormText color="muted">เลือกภาพหน้าปกของคอร์สเรียนของคุณ</FormText>
 								</Col>
 							</Row>
-
-							<Row className="upVideo">
+							{/* <Row className="upVideo">
 								<Col md={4} className="TextAddCourse">
 									เลือกวิดิโอ
 								</Col>
@@ -404,8 +411,7 @@ export default class AddCourse extends Component {
 									<Input type="file" name="file_sheet" id="exampleFile3" onChange={this.onChangeFile} multiple />
 									<FormText color="muted">เลือกเอกสารของคอร์สเรียนของคุณ</FormText>
 								</Col>
-							</Row>
-
+							</Row> */}
 							{/* <FormGroup className="upSheet">
 								<Label for="exampleFile">Choose Your Sheet</Label>
 								<Input type="file" name="fil_sheet" id="exampleFile" onChange={this.onChangeSheet} />

@@ -6,6 +6,7 @@ import EachVideo from '../component/EachVideo/EachVideo'
 import AllUsers from '../component/AllUsers/AllUsers'
 import AddCourse from '../pages/AddCourse/AddCourse'
 import MyCourse from '../pages/MyCourse/MyCourse'
+import EditEachMyCourse from '../pages/EditEachMyCourse/EditEachMyCourse'
 import CourseDeleted from '../pages/CourseDeleted/CourseDeleted'
 
 
@@ -26,6 +27,7 @@ class MainRoute extends Component {
 				<PrivateRoute path="/videounpublic/:id" component={EachVideoUnPublic} />
 				<PrivateRoute exact path="/unpublic" component={ToPublicCourse} />
 				<PrivateRoute exact path="/mycourse" component={MyCourse} />
+				<PrivateRoute exact path="/mycourse/edit/:id" component={EditEachMyCourse} />
 				<PrivateRoute exact path="/coursedeleted" component={CourseDeleted} />
 				<PrivateRoute path="/coursedeleted/:id" component={EachVideoDeleted} />
 				
