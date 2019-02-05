@@ -22,18 +22,18 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './EditEachMyCourse.css'
-
 import axios from 'axios'
 import auth from '../../service'
-
 import ModalEditCourse from '../../component/ModalEditCourse/ModalEditCourse'
-
+import ModalAddLesson from '../../component/ModalAddLesson/ModalAddLesson'
 export default class EditEachMyCourse extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			data: [],
+			dataUser: [],
 			editmode: false,
+			addmode: false,
 			title: '',
 			message: '',
 			subtitle: '',
@@ -52,7 +52,7 @@ export default class EditEachMyCourse extends Component {
 		axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			console.log('DATA MY EACH COURSE = ', data[0])
-			this.setState({ data: data[0] })
+			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users })
 		})
 	}
 	async sentData(e) {
@@ -90,6 +90,12 @@ export default class EditEachMyCourse extends Component {
 		this.setState({ editmode: !editmode })
 	}
 
+	toggleAdd = () => {
+		console.log('kuy');
+		const { addmode } = this.state
+		this.setState({ addmode: !addmode })
+	}
+
 	handleInputChange = e => {
 		const { name, value } = e.target
 		this.setState({ [name]: value })
@@ -100,10 +106,10 @@ export default class EditEachMyCourse extends Component {
 	componentDidMount() {
 		this.getData()
 	}
-	
+
 	render() {
 		const url = 'http://localhost:3013/'
-		const { data, editmode, type } = this.state
+		const { data, editmode, type, dataUser, addmode } = this.state
 		const { modal, id } = this.props
 
 		return (
@@ -116,18 +122,43 @@ export default class EditEachMyCourse extends Component {
 							<CardBody>
 								<CardTitle>{data.title}</CardTitle>
 								<CardSubtitle>
-									by {data.fuser} {data.luser}{' '}
+									by {dataUser.firstname} {dataUser.lastname}{' '}
 								</CardSubtitle>
-								<CardText>{data.subtitle}</CardText>
+								<CardText>{data.subtitle}</CardText>{' '}
+								<Button color="danger" onClick={() => this.toggleEdit(true)}>
+									Edit
+								</Button>
 							</CardBody>
 						</Card>
 					</Col>
+					<Col md={9} className="course-detail">
+						<div>
+							Title : {data.title}
+							<br />
+							Subtitle : {data.subtitle}
+							<br />
+							Detail : {data.detail}
+							<br />
+							About : {data.about}
+							<br />
+							Price : {data.price}
+							<br />
+							Rating : {data.rating}
+						</div>
+					</Col>
+				</Row>
+
+				<Row>
+					<Col md={3} className="">
+						<div>
+							<Button color="success" className="btn-add-lesson" onClick={() => this.toggleAdd(true)}>
+								Add Lesson
+							</Button>{' '}
+						</div>
+					</Col>
 				</Row>
 				{editmode && <ModalEditCourse id={this.props.match.params.id} onClose={() => this.toggleEdit(false)} />}
-				<button type="button" onClick={() => this.toggleEdit(true)}>
-					{' '}
-					edit
-				</button>
+				{addmode && <ModalAddLesson id={this.props.match.params.id} onClose={() => this.toggleAdd(false)} />}
 			</Container>
 		)
 	}

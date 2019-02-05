@@ -99,7 +99,7 @@ export default class ModalEditCourse extends Component {
 		const { type } = this.state
 		return (
 			<div>
-				<Modal style={{ fontSize: '1rem' }} size="5" isOpen={this.state.open} toggle={onClose}>
+				<Modal style={{ fontSize: '1rem' }} size="lg" isOpen={this.state.open} toggle={onClose}>
 					<ModalHeader toggle={onClose}>
 						<div className="title">EditProfile</div>
 					</ModalHeader>

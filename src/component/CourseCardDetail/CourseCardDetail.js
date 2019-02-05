@@ -31,7 +31,7 @@ import {
 	CardSubtitle
 } from 'reactstrap'
 import './CourseCardDetail.css'
-import EachVideo from '../EachVideo/EachVideo'
+
 
 export default class CourseCardDetail extends Component {
 	constructor(props) {
