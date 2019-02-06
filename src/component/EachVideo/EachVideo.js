@@ -27,8 +27,8 @@ import {
 	CardBody,
 	CardLink,
 	CardTitle,
-	CardSubtitle,
-
+	Collapse,
+	CardSubtitle
 } from 'reactstrap'
 import { Image } from 'react-bootstrap'
 import { Collections } from 'styled-icons/material'
@@ -40,6 +40,7 @@ import { X } from 'styled-icons/octicons/X'
 import axios from 'axios'
 import auth from '../../service/index'
 import Comment from '../Comment/Comment'
+import EachLesson from '../EachLesson/EachLesson'
 
 const FileIcon = FileAlt.extend`
     width : 1.3rem;
@@ -109,7 +110,10 @@ export default class EachVideo extends Component {
 			iconEmail: <EmailIcon className="icon" />,
 			iconCheck: <DeleteIcon className="icon" />,
 			data: null,
-			dataComment: ''
+			dataLesson: [],
+			collapse: false,
+			pathVideo: '',
+			pathFile: ''
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -117,18 +121,22 @@ export default class EachVideo extends Component {
 		this.onDelete = this.onDelete.bind(this)
 	}
 
+	toggleCollapse = () => {
+		this.setState({ collapse: !this.state.collapse })
+	}
+
 	async getEachCourse() {
 		await axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ data: data[0] })
-			// console.log('kuy kuy kuy kuy ', data)
+			console.log('kuy kuy kuy kuy ', data)
 		})
 
-		// await axios.get(`http://localhost:3013/z-api/comment/eachcourse/${this.props.match.params.id}`).then(res => {
-		// 	const { data } = res
-		// 	this.setState({ dataComment: data })
-		// 	console.log('data comment ', data)
-		// })
+		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
+			const { data } = res
+			this.setState({ dataLesson: data })
+			console.log('data lesson : ', data)
+		})
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -169,7 +177,7 @@ export default class EachVideo extends Component {
 		let uId = userDecoded.id
 		let uRole = userDecoded.role
 
-		const { data, dataComment } = this.state
+		const { data, dataLesson } = this.state
 
 		if (!data) {
 			return <div>Loading</div>
@@ -192,121 +200,137 @@ export default class EachVideo extends Component {
 		const url = 'http://localhost:3013/'
 		return (
 			<div>
-			<Container className="TitleVdi">
-				<div className="check">{uRole == 1 && <div onClick={() => this.onDelete(data.course.id)}>{this.state.iconCheck}</div>}</div>
-				<Row>
-					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
-						{data.course.title}
-					</Col>
-				</Row>
-				<Row>
-					<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-2">
-						{data.course.subtitle}
-					</Col>
-				</Row>
-				<Row>
-					<Col className="vdi" md={{ size: 6, offset: 3 }}>
-						<Player ref="player" videoId="video-1">
-							<source src={`${url}${this.state.data.course.pathVideo}`} />
-						</Player>
-					</Col>
-				</Row>
-				<Row>
-					<Col md={{ size: 6, offset: 3 }} className="des">
-						{data.course.detail}
-					</Col>
-				</Row>
+				<Container className="TitleVdi">
+					<div className="check">{uRole == 1 && <div onClick={() => this.onDelete(data.course.id)}>{this.state.iconCheck}</div>}</div>
+					<Row>
+						<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-5">
+							{data.course.title}
+						</Col>
+					</Row>
+					<Row>
+						<Col md={{ size: 6, offset: 3 }} className="desFirstTitle mt-2">
+							{data.course.subtitle}
+						</Col>
+					</Row>
+					{/* <Row>
+						<Col className="vdi" md={{ size: 6, offset: 3 }}>
+							<Player ref="player" videoId="video-1">
+								<source src={`${url}${this.state.data.course.pathVideo}`} />
+							</Player>
+						</Col>
+					</Row> */}
+					<Row>
+						<Col md={{ size: 6, offset: 3 }} className="des">
+							{data.course.detail}
+						</Col>
+					</Row>
 
-				<Row>
-					<Col md={{ size: 6, offset: 2 }} className="desTitle mt-4">
-						เรียนรู้ในเนื้อหาตามบทเรียน ดังนี้
-					</Col>
-				</Row>
+					<Row>
+						<h1>Lesson</h1>
+					</Row>
 
-				<Row>
-					<Col md={{ size: 7, offset: 3 }} className="contact mt-2">
-						{data.course.lesson.map((lesson, index) => (
-							<li key={index}>{lesson.name}</li>
-						))}
-					</Col>
-				</Row>
+					{this.state.dataLesson.map((each, index) => {
+						return (
+							<div key={each.id}>
+								<EachLesson
+									idL={index+1}
+									titleLesson={each.titleLesson}
+									detailLesson={each.detailLesson}
+									pathVideo={each.pathVideo}
+									pathFile={each.pathFile}
+								/>
+							</div>
+						)
+					})}
 
-				<Row>
-					<Col md={{ size: 6, offset: 2 }} className="desTitle mt-4">
-						เกี่ยวกับผู้สอน
-					</Col>
-				</Row>
+					{/* <Row>
+						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-4">
+							เรียนรู้ในเนื้อหาตามบทเรียน ดังนี้
+						</Col>
+					</Row> */}
 
-				<Row>
-					<Col md={{ size: 7, offset: 3 }} className="contact">
-						{data.course.about}
-					</Col>
-				</Row>
+					{/* <Row>
+						<Col md={{ size: 7, offset: 3 }} className="contact mt-2">
+							{data.course.lesson.map((lesson, index) => (
+								<li key={index}>{lesson.name}</li>
+							))}
+						</Col>
+					</Row> */}
 
-				<Row>
-					<Col md={{ size: 8, offset: 2 }} className="desTitle mt-4">
-						เอกสารประกอบการเรียน
-					</Col>
-				</Row>
+					{/* <Row>
+						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-4">
+							เกี่ยวกับผู้สอน
+						</Col>
+					</Row>
 
-				<Row>
-					<Col md={{ size: 8, offset: 3 }} className="desFile mt-2">
-						1. {this.state.iconFile}{' '}
-						<a href={url2} download>
-							CH1.pdf
-						</a>
-					</Col>
-				</Row>
+					<Row>
+						<Col md={{ size: 7, offset: 3 }} className="contact">
+							{data.course.about}
+						</Col>
+					</Row>
 
-				<Row>
-					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						2. {this.state.iconFile} CH2.pdf
-					</Col>
-				</Row>
+					<Row>
+						<Col md={{ size: 8, offset: 2 }} className="desTitle mt-4">
+							เอกสารประกอบการเรียน
+						</Col>
+					</Row>
 
-				<Row>
-					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						3. {this.state.iconFile} CH3.pdf
-					</Col>
-				</Row>
+					<Row>
+						<Col md={{ size: 8, offset: 3 }} className="desFile mt-2">
+							1. {this.state.iconFile}{' '}
+							<a href={url2} download>
+								CH1.pdf
+							</a>
+						</Col>
+					</Row>
 
-				<Row>
-					<Col md={{ size: 8, offset: 3 }} className="desFile">
-						4. {this.state.iconFile} CH4.pdf
-					</Col>
-				</Row>
-				<Row />
+					<Row>
+						<Col md={{ size: 8, offset: 3 }} className="desFile">
+							2. {this.state.iconFile} CH2.pdf
+						</Col>
+					</Row>
 
-				<Row>
-					<Col md={{ size: 6, offset: 2 }} className="desTitle mt-3">
-						ติดต่อ คุณ {data.users.firstname} {data.users.lastname}
-					</Col>
-				</Row>
+					<Row>
+						<Col md={{ size: 8, offset: 3 }} className="desFile">
+							3. {this.state.iconFile} CH3.pdf
+						</Col>
+					</Row>
 
-				<Row md={12} className="middle mt-2">
-					{/* <Col md={{ size: 10, offset: 2 }} className="mt-2"> */}
-					<Image className="ProfileUsersOfCourse" src={`${url}${data.users.pathProfile}`} />
-					{/* </Col> */}
-				</Row>
+					<Row>
+						<Col md={{ size: 8, offset: 3 }} className="desFile">
+							4. {this.state.iconFile} CH4.pdf
+						</Col>
+					</Row> */}
 
-				<Row>
-					<Col md={{ size: 6, offset: 3 }} className="contact">
-						{this.state.iconPhone} โทร : {data.users.tel}
-					</Col>
-				</Row>
-				<Row className="pb-5">
-					<Col md={{ size: 6, offset: 3 }} className="contact">
-						{this.state.iconEmail} อีเมลล์ : {data.users.email}
-					</Col>
+					<Row>
+						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-3">
+							ติดต่อ คุณ {data.users.firstname} {data.users.lastname}
+						</Col>
+					</Row>
 
-				</Row>
+					<Row md={12} className="middle mt-2">
+						{/* <Col md={{ size: 10, offset: 2 }} className="mt-2"> */}
+						<Image className="ProfileUsersOfCourse" src={`${url}${data.users.pathProfile}`} />
+						{/* </Col> */}
+					</Row>
 
-				{/* {this.state.dataComment.map(comment => {
+					<Row>
+						<Col md={{ size: 6, offset: 3 }} className="contact">
+							{this.state.iconPhone} โทร : {data.users.tel}
+						</Col>
+					</Row>
+					<Row className="pb-5">
+						<Col md={{ size: 6, offset: 3 }} className="contact">
+							{this.state.iconEmail} อีเมลล์ : {data.users.email}
+						</Col>
+					</Row>
+
+					{/* {this.state.dataComment.map(comment => {
 					return <Comment key={comment.id} text={comment.text} />
 				})} */}
-			</Container>
+				</Container>
 				<Comment courseId={data.course.id} />
-				</div>
+			</div>
 		)
 	}
 }

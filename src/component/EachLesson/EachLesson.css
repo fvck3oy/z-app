@@ -1,0 +1,13 @@
+.lesson-body {
+	font-size: 26px;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+
+    margin: 1.5rem 0 0;
+}
+.lesson-video {
+	/* width: 60%; */
+	flex-direction: column;
+	justify-content: center;
+}

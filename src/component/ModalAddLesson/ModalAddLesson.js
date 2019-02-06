@@ -131,7 +131,7 @@ export default class ModalAddLesson extends Component {
 				pathVideoLesson: response.data.file.path
 			}
 
-			axios.post(`http://localhost:3013/z-api/pathvideo/SavePathVideoCourse`, dataPic).then($res => {
+			axios.post(`http://localhost:3013/z-api/lesson/SavePathVideoCourse`, dataPic).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 			})
@@ -144,7 +144,7 @@ export default class ModalAddLesson extends Component {
 				pathFile: response.data.file.path
 			}
 
-			axios.post(`http://localhost:3013/z-api/pathfile/SavePathFileCourse`, data).then($res => {
+			axios.post(`http://localhost:3013/z-api/lesson/SavePathFileCourse`, data).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 			})
