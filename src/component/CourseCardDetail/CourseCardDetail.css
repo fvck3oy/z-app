@@ -4,7 +4,7 @@
   margin: 0px 0px 20px 0px;
 }
 .fullCard:hover{
-  border: 1px solid #44c0e2 !important;
+  border: 1px solid rgb(70, 176, 247) !important;
   box-shadow: 3px 3px 10px -3px #0ba5ec !important;
 }
 .ma{
@@ -12,18 +12,18 @@ margin: 10px;
 }
 
 .card{
-  border: 1px solid #44c0e2 !important;
-  box-shadow: 3px 3px 10px -3px #78e1f4 !important;
+  border: 1px solid rgb(70, 176, 247) !important;
+  box-shadow: 3px 3px 10px -3px rgb(70, 176, 247) !important;
 }
 
 .btn-vdi{
-  background-color: #44c0e2 !important ;
+  background-color: rgb(70, 176, 247) !important ;
   color: aliceblue !important;
-  border-color: #44c0e2 !important;
+  border-color: rgb(70, 176, 247) !important;
 }
 
 .btn-vdi:hover{
-  box-shadow: 3px 3px 10px 1px #78e1f4;
+  box-shadow: 3px 3px 10px 1px rgb(70, 176, 247);
 }
 .card-img-top{
   height: 220px;

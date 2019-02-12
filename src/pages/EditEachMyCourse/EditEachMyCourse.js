@@ -26,6 +26,8 @@ import axios from 'axios'
 import auth from '../../service'
 import ModalEditCourse from '../../component/ModalEditCourse/ModalEditCourse'
 import ModalAddLesson from '../../component/ModalAddLesson/ModalAddLesson'
+import EditEachLesson from '../../component/EditEachLesson/EditEachLesson'
+import ModalEditLesson from '../../component/ModalEditLesson/ModalEditLesson'
 export default class EditEachMyCourse extends Component {
 	constructor(props) {
 		super(props)
@@ -34,6 +36,7 @@ export default class EditEachMyCourse extends Component {
 			dataUser: [],
 			editmode: false,
 			addmode: false,
+			editlesson: false,
 			title: '',
 			message: '',
 			subtitle: '',
@@ -41,18 +44,27 @@ export default class EditEachMyCourse extends Component {
 			lesson: '',
 			about: '',
 			price: '',
-			type: ''
+			type: '',
+			dataLesson: [],
+			courseId:''
 		}
 		this.sentData = this.sentData.bind(this)
+		this.getData = this.getData.bind(this)
 	}
-	getData = e => {
+	async getData(e) {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			console.log('DATA MY EACH COURSE = ', data[0])
-			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users })
+			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users,courseId:data[0].id })
+		})
+
+		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
+			const { data } = res
+			this.setState({ dataLesson: data })
+			console.log('data lesson : ', data)
 		})
 	}
 	async sentData(e) {
@@ -91,10 +103,14 @@ export default class EditEachMyCourse extends Component {
 	}
 
 	toggleAdd = () => {
-		console.log('kuy');
 		const { addmode } = this.state
 		this.setState({ addmode: !addmode })
 	}
+
+	// toggleEditLesson = () => {
+	// 	const { editlesson } = this.state
+	// 	this.setState({ editlesson: !editlesson })
+	// }
 
 	handleInputChange = e => {
 		const { name, value } = e.target
@@ -109,7 +125,7 @@ export default class EditEachMyCourse extends Component {
 
 	render() {
 		const url = 'http://localhost:3013/'
-		const { data, editmode, type, dataUser, addmode } = this.state
+		const { data, editmode, type, dataUser, addmode, editlesson,courseId } = this.state
 		const { modal, id } = this.props
 
 		return (
@@ -125,7 +141,7 @@ export default class EditEachMyCourse extends Component {
 									by {dataUser.firstname} {dataUser.lastname}{' '}
 								</CardSubtitle>
 								<CardText>{data.subtitle}</CardText>{' '}
-								<Button color="danger" onClick={() => this.toggleEdit(true)}>
+								<Button color="danger" onClick={() => this.toggleEdit(true)} className="m-2">
 									Edit
 								</Button>
 							</CardBody>
@@ -141,14 +157,13 @@ export default class EditEachMyCourse extends Component {
 							<br />
 							About : {data.about}
 							<br />
-							Price : {data.price}
+							Price : {data.price} บาท
 							<br />
 							Rating : {data.rating}
 						</div>
 					</Col>
 				</Row>
-
-				<Row>
+				{/* <Row>
 					<Col md={3} className="">
 						<div>
 							<Button color="success" className="btn-add-lesson" onClick={() => this.toggleAdd(true)}>
@@ -156,9 +171,30 @@ export default class EditEachMyCourse extends Component {
 							</Button>{' '}
 						</div>
 					</Col>
-				</Row>
+				</Row> */}
+				<Button color="success" onClick={() => this.toggleAdd(true)}>
+					Add Lesson
+				</Button>{' '}
+				{this.state.dataLesson.map((each, index) => {
+					return (
+						<div key={each.id}>
+							<EditEachLesson
+								idL={index + 1}
+								idC={courseId}
+								titleLesson={each.titleLesson}
+								detailLesson={each.detailLesson}
+								pathVideo={each.pathVideo}
+								pathFile={each.pathFile}
+							/>
+							{/* <Button color="danger" onClick={() => this.toggleEditLesson(true)} className="m-2">
+								Edit
+							</Button> */}
+						</div>
+					)
+				})}
 				{editmode && <ModalEditCourse id={this.props.match.params.id} onClose={() => this.toggleEdit(false)} />}
 				{addmode && <ModalAddLesson id={this.props.match.params.id} onClose={() => this.toggleAdd(false)} />}
+				{/* {editlesson && <ModalEditLesson id={this.props.match.params.id} onClose={() => this.toggleEditLesson(false)} />} */}
 			</Container>
 		)
 	}

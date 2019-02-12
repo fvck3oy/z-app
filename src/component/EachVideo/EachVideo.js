@@ -46,7 +46,6 @@ const FileIcon = FileAlt.extend`
     width : 1.3rem;
     height :1.3rem;
     color : black;
-
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
@@ -113,7 +112,8 @@ export default class EachVideo extends Component {
 			dataLesson: [],
 			collapse: false,
 			pathVideo: '',
-			pathFile: ''
+			pathFile: '',
+			playbackTime: 0
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -225,82 +225,25 @@ export default class EachVideo extends Component {
 						</Col>
 					</Row>
 
-					<Row>
-						<h1>Lesson</h1>
+					<Row className="ml-2">
+						<h2>Lesson</h2>
 					</Row>
 
 					{this.state.dataLesson.map((each, index) => {
+						let videoToken = Number(localStorage.getItem(`video${each.id}`))
 						return (
 							<div key={each.id}>
 								<EachLesson
-									idL={index+1}
+									idL={index + 1}
 									titleLesson={each.titleLesson}
 									detailLesson={each.detailLesson}
 									pathVideo={each.pathVideo}
 									pathFile={each.pathFile}
+									playbackTime={videoToken}
 								/>
 							</div>
 						)
 					})}
-
-					{/* <Row>
-						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-4">
-							เรียนรู้ในเนื้อหาตามบทเรียน ดังนี้
-						</Col>
-					</Row> */}
-
-					{/* <Row>
-						<Col md={{ size: 7, offset: 3 }} className="contact mt-2">
-							{data.course.lesson.map((lesson, index) => (
-								<li key={index}>{lesson.name}</li>
-							))}
-						</Col>
-					</Row> */}
-
-					{/* <Row>
-						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-4">
-							เกี่ยวกับผู้สอน
-						</Col>
-					</Row>
-
-					<Row>
-						<Col md={{ size: 7, offset: 3 }} className="contact">
-							{data.course.about}
-						</Col>
-					</Row>
-
-					<Row>
-						<Col md={{ size: 8, offset: 2 }} className="desTitle mt-4">
-							เอกสารประกอบการเรียน
-						</Col>
-					</Row>
-
-					<Row>
-						<Col md={{ size: 8, offset: 3 }} className="desFile mt-2">
-							1. {this.state.iconFile}{' '}
-							<a href={url2} download>
-								CH1.pdf
-							</a>
-						</Col>
-					</Row>
-
-					<Row>
-						<Col md={{ size: 8, offset: 3 }} className="desFile">
-							2. {this.state.iconFile} CH2.pdf
-						</Col>
-					</Row>
-
-					<Row>
-						<Col md={{ size: 8, offset: 3 }} className="desFile">
-							3. {this.state.iconFile} CH3.pdf
-						</Col>
-					</Row>
-
-					<Row>
-						<Col md={{ size: 8, offset: 3 }} className="desFile">
-							4. {this.state.iconFile} CH4.pdf
-						</Col>
-					</Row> */}
 
 					<Row>
 						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-3">

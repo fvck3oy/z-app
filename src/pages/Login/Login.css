@@ -29,7 +29,7 @@
 	color: #b4b4b4 ;
 }
 .inputform:focus {
-	border: 0.5px solid #5bc2e1;
+	border: 0.5px solid rgb(70, 176, 247);
 	outline-width: 0px;
 }
 
@@ -52,15 +52,15 @@
 	margin-top: 10px;
 	width: 100%;
 	border-radius: 30px !important;
-	background: #5bc2e1;
-	background: linear-gradient(to right, #44c0e2, #78e1f4);
+	background: rgb(70, 176, 247);
+	background: linear-gradient(to right, rgb(70, 176, 247), #78e1f4);
 	color: white;
 	padding: 3px 0 3px 0 !important;
 	box-shadow: 3px 3px 10px -3px #cacaca;
 }
 .btn-submit:active {
 	background: linear-gradient(to right, #44c0e2, #78e1f4) !important;
-	background: #5bc2e1;
+	background: rgb(70, 176, 247);
 }
 
 /* of resetPass */

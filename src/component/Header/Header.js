@@ -289,12 +289,14 @@ class Header extends Component {
 			<div>
 				<Navbar
 					fixed="top"
+					className="color-header"
 					style={{
 						paddingBottom: '0',
 						paddingTop: '0',
 						paddingLeft: '5px',
-						paddingRight: '5px',
-						backgroundColor: '#5bc2e1'
+						paddingRight: '5px'
+						// backgroundColor: '#5bc2e1'
+						// background-image:linear-gradient(270deg,rgb(113, 104, 241),rgb(70, 176, 247));
 					}}
 				>
 					<NavLink

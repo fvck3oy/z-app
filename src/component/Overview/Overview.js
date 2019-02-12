@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, UncontrolledCarousel } from 'reactstrap'
 import auth from '../../service/index'
 import axios from 'axios'
-
 import CourseCardDetail from '../CourseCardDetail/CourseCardDetail'
 import styled from 'styled-components'
 import './Overview.css'
-
 import Loader from '../../component/Loader'
 
 const Container = styled.div`
@@ -23,7 +21,31 @@ const Container = styled.div`
 export default class Overview extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { data: [], fillter: '0', loader: true }
+		this.state = {
+			data: [],
+			fillter: '0',
+			loader: true,
+			items: [
+				{
+					src: 'http://localhost:3013/upload/image/1542306368062_9755.jpg',
+					altText: 'Slide 1',
+					caption: 'Slide 1',
+					header: 'Slide 1 Header'
+				},
+				{
+					src: 'http://localhost:3013/upload/image/1542304189911_4259.jpg',
+					altText: 'Slide 2',
+					caption: 'Slide 2',
+					header: 'Slide 2 Header'
+				},
+				{
+					src: 'http://localhost:3013/upload/image/1542303541148_5140.jpg',
+					altText: 'Slide 3',
+					caption: 'Slide 3',
+					header: 'Slide 3 Header'
+				}
+			]
+		}
 	}
 
 	getDataUsers = api => {
@@ -36,12 +58,6 @@ export default class Overview extends Component {
 		this.setState({ fillter: api })
 		this.selectURL(api)
 
-		// axios.get(`http://localhost:3013/z-api/course/type/${api}`).then(res => {
-		// 	console.log('data card : ', res)
-
-		// 	const { data } = res
-		// 	this.setState({ data })
-		// })
 	}
 
 	selectURL(api) {
@@ -110,16 +126,13 @@ export default class Overview extends Component {
 		let uRole = userDecoded.role
 		// this.setState({ loginUserId })
 
-
-
 		const { data } = this.state
 
 		return (
 			<Container>
-				{/* <Row className="mt-5 mb-5 ml-1 mr-1"><Col md={{ size: 6, offset: 2 }}>
-				<div className="banner">pic</div></Col></Row> */}
+				<Row className="mr-1 ml-1" />
 				<Row className="mt-5 ml-1 mr-1">
-					<Col md={3}>
+					<Col md={3} className=" pb-5">
 						<div className="course-list d-flex flex-column">
 							<div className="title-list text-center">หมวดหมู่</div>
 							<div className="list" onClick={() => this.getDataUsers()}>
@@ -151,28 +164,39 @@ export default class Overview extends Component {
 							</div>
 						</div>
 					</Col>
-
-					<Col md={9}>
-						<Row>
-							{this.state.data.map((course, index) => {
-								if (course.pathProfileCourse == '') {
-									course.pathProfileCourse = 'upload/image/default_picCourse.jpg'
-								}
-								return (
-									<CourseCardDetail
-										key={course.id}
-										id={course.id}
-										title={course.title}
-										subtitle={course.subtitle}
-										path={course.pathProfileCourse}
-										fuser={course.ofCourse[0].users.firstname}
-										luser={course.ofCourse[0].users.lastname}
-										price={course.price}
-									/>
-								)
-							})}
+					<Col md={9} className="p-0">
+						<Row className="pl-3 pr-3">
+							<Col md={{ size: 12, offset: 0 }}>
+								{/* md={{ size: 8, offset: 2 }} */}
+								<UncontrolledCarousel items={this.state.items} className="" />
+							</Col>
 						</Row>
 					</Col>
+
+					<Row className="">
+						<Col md={3} />
+						<Col md={9} className="pl-4 pr-4">
+							<Row>
+								{this.state.data.map((course, index) => {
+									if (course.pathProfileCourse == '') {
+										course.pathProfileCourse = 'upload/image/default_picCourse.jpg'
+									}
+									return (
+										<CourseCardDetail
+											key={course.id}
+											id={course.id}
+											title={course.title}
+											subtitle={course.subtitle}
+											path={course.pathProfileCourse}
+											fuser={course.ofCourse[0].users.firstname}
+											luser={course.ofCourse[0].users.lastname}
+											price={course.price}
+										/>
+									)
+								})}
+							</Row>
+						</Col>
+					</Row>
 				</Row>
 			</Container>
 		)

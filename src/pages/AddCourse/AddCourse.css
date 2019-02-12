@@ -120,8 +120,8 @@
 	margin-bottom: 10px;
 	width: 350px;
 	border-radius: 30px !important;
-	background: #5bc2e1;
-	background: linear-gradient(to right, #44c0e2, #78e1f4);
+	/* background: #5bc2e1; */
+	background: linear-gradient(to right, rgb(70, 176, 247),rgb(70, 176, 247));
 	color: white;
 	padding: 3px 0 3px 0 !important;
 	box-shadow: 3px 3px 10px -3px #cacaca;

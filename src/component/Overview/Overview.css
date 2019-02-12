@@ -14,17 +14,17 @@
 	width: 50%;
 }
 .course-list {
-	border: 1px solid #44c0e2;
-	box-shadow: 3px 3px 10px -3px #78e1f4;
-	width: 300px;
+	border: 1px solid rgb(70, 176, 247);
+	box-shadow: 3px 3px 10px -3px rgb(70, 176, 247);
+	/* width: 300px; */
 	/* text-align: center; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0px 0px 20px 0px;
+	/* margin: 0px 0px 20px 0px; */
   border-radius: 5px;
-	margin-left: 20px;
-	position: fixed;
+	/* margin-left: 20px; */
+	/* position: fixed; */
 }
 .list {
 	cursor: pointer;
@@ -33,15 +33,27 @@
 }
 .list:hover {
 	color: #fff;
-  background-color: #5bc2e1;
+  background-color: rgb(70, 176, 247);
 
 }
 .title-list {
 	font-size: 20px;
-	width: 300px;
+	width: 100%;
 	color: #fff;
 	border-radius: 5px 5px 0px 0px;
-	background-color: #5bc2e1;
+	background-color: rgb(70, 176, 247);
 	padding: 10px 0px 10px 0px;
 
 }
+
+.carousel-item.active{
+	max-height: 448px !important;
+	/* border-radius: 5px !important; */
+}
+
+.carousel-inner{
+	border: 1px solid rgb(70, 176, 247);
+	box-shadow: 3px 3px 10px -3px rgb(70, 176, 247);
+	border-radius: 5px !important;
+}
+

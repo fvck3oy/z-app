@@ -29,8 +29,8 @@ export default class Comment extends Component {
 			dataComment: '',
 			data: [],
 			textComment: '',
-			comment:'',
-			message:''
+			comment: '',
+			message: ''
 		}
 		this.sentComment = this.sentComment.bind(this)
 	}
@@ -46,7 +46,8 @@ export default class Comment extends Component {
 		})
 	}
 
-	async sentComment(courseId){
+	sentComment = e => {
+		e.preventDefault()
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
@@ -55,9 +56,8 @@ export default class Comment extends Component {
 			user: uId,
 			course: this.props.courseId
 		}
-		console.log('coming : ',dataComment);
-		
-		await axios.post(`http://localhost:3013/z-api/comment`, dataComment).then($res => {
+		console.log('coming : ', dataComment)
+		axios.post(`http://localhost:3013/z-api/comment`, dataComment).then($res => {
 			const { data } = $res
 			console.log('comment is : ', data)
 
@@ -92,8 +92,8 @@ export default class Comment extends Component {
 		const url = 'http://localhost:3013/'
 		return (
 			<Container className="con-comment pl-0 pr-0">
-			{/* onSubmit={this.sentComment({ courseId })} */}
-				<Form  onSubmit={this.sentComment} className="mt-3 mb-3">
+				{/* onSubmit={this.sentComment({ courseId })} */}
+				<Form onSubmit={this.sentComment} className="mt-3 mb-3">
 					<Row className="d-flex m-auto user-comment">
 						<div>
 							<Image className="profile-comment" src={`${url}${uPath}`} />
