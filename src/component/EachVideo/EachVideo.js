@@ -242,11 +242,11 @@ export default class EachVideo extends Component {
 
 					{this.state.dataLesson.map((each, index) => {
 
-						
+
 						return (
 							<div key={each.id}>
 								<EachLesson
-									// idL={index + 1}
+									idLesson={index + 1}
 									idL={each.id}
 									uId={uId}
 									titleLesson={each.titleLesson}

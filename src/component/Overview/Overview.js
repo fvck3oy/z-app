@@ -26,27 +26,30 @@ export default class Overview extends Component {
 			data: [],
 			fillter: '0',
 			loader: true,
-			items: [
-				{
-					src: 'http://localhost:3013/upload/image/1542306368062_9755.jpg',
-					altText: 'Slide 1',
-					caption: 'Slide 1',
-					header: 'Slide 1 Header'
-				},
-				{
-					src: 'http://localhost:3013/upload/image/1542304189911_4259.jpg',
-					altText: 'Slide 2',
-					caption: 'Slide 2',
-					header: 'Slide 2 Header'
-				},
-				{
-					src: 'http://localhost:3013/upload/image/1542303541148_5140.jpg',
-					altText: 'Slide 3',
-					caption: 'Slide 3',
-					header: 'Slide 3 Header'
-				}
-			]
+			items: [],
+			items2: []
 		}
+		this.getBanner = this.getBanner.bind(this)
+	}
+	async getBanner() {
+		await axios.get(`http://localhost:3013/z-api/course/getbanner`).then($res => {
+			const { data } = $res
+
+			data.map(e => {
+				const url = 'http://localhost:3013/'
+				let data2 = {
+					src: `${url}${e.pathProfileCourse}`,
+					alt: e.pathProfileCourse,
+					caption: e.subtitle,
+					header: e.title
+				}
+				this.state.items2.push(data2)
+			})
+			this.setState({ items: this.state.items2 })
+
+			console.log('new data ', this.state.items)
+			// this.setState({items : this.state.items})
+		})
 	}
 
 	getDataUsers = api => {
@@ -107,6 +110,7 @@ export default class Overview extends Component {
 	}
 	componentDidMount() {
 		this.getDataUsers()
+		this.getBanner()
 	}
 
 	render() {
@@ -183,7 +187,7 @@ export default class Overview extends Component {
 								/>
 							</div>
 							{/* <div className="mid"> */}
-								{/* <h4>CourseHub Online</h4> */}
+							{/* <h4>CourseHub Online</h4> */}
 							{/* </div> */}
 						</Col>
 						<Col md={9} className="pl-4 pr-4">

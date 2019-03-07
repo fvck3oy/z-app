@@ -49,7 +49,7 @@ export default class Comment extends Component {
 			// const date = data[0].created.toDateString()
 
 			
-			console.log('kuy' , data[0].created);
+			// console.log('kuy' , data[0].created);
 		})
 	}
 

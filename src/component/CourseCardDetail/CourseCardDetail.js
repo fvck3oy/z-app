@@ -65,7 +65,7 @@ export default class CourseCardDetail extends Component {
 						<CardTitle>{title}</CardTitle>
 						<CardSubtitle>by {fuser} {luser} </CardSubtitle>
 						<CardText>{subtitle}</CardText>
-						{/* <CardText> ราคา {price}</CardText> */}
+						<CardText> ราคา {price} บาท</CardText>
 						<Link to={`${url2}${id}`}>
 							<Button className="btn-vdi w-100">คลิกเพื่อเข้าชม</Button>
 						</Link>

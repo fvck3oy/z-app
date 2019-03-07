@@ -89,8 +89,8 @@ export default class EachLesson extends Component {
 	}
 
 	async getTimer() {
-		console.log('get timer');
-		
+		console.log('get timer')
+
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
@@ -116,9 +116,9 @@ export default class EachLesson extends Component {
 		}
 		console.log('data', data)
 
-		// await axios.patch(`http://localhost:3013/z-api/eachtimeplayback/update`, data).then($res => {
-		// 	console.log('saved timer !')
-		// })
+		await axios.patch(`http://localhost:3013/z-api/eachtimeplayback/update`, data).then($res => {
+			console.log('saved timer !')
+		})
 
 		this.setState({ currentCount: this.state.currentCount + 1 })
 	}
@@ -141,7 +141,7 @@ export default class EachLesson extends Component {
 	}
 
 	render() {
-		const { titleLesson, detailLesson, pathVideo, pathFile, idL, playbackTime, uId } = this.props
+		const { titleLesson, detailLesson, pathVideo, pathFile, idL, idLesson, playbackTime, uId } = this.props
 		const id = String({ idL })
 		const url = 'http://localhost:3013/'
 		return (
@@ -150,7 +150,7 @@ export default class EachLesson extends Component {
 				<div className="d-flex justify-content-between title-lesson" onClick={this.toggleCollapse}>
 					<div>
 						{/* {this.state.currentCount} */}
-						บทที่ {idL} {titleLesson}
+						บทที่ {idLesson} {titleLesson}
 					</div>
 					<div className="show-lesson"> V </div>
 				</div>

@@ -39,8 +39,10 @@ export default class Register extends Component {
 	register = e => {
 		e.preventDefault()
 		try {
-			if (this.state.firstname && this.state.lastname && this.state.email && this.state.password === this.state.password2) {
+			if (this.state.firstname && this.state.lastname && this.state.email && this.state.password === this.state.password2 ) {
 				if (this.state.password.length > 5 && this.state.password2.length > 5) {
+
+					if(this.state.tel.length==10){
 					const data = {
 						firstname: this.state.firstname,
 						lastname: this.state.lastname,
@@ -59,6 +61,11 @@ export default class Register extends Component {
 							this.props.history.push(`/`)
 						}
 					})
+
+				}
+				else{
+					this.setState({ message: 'Number Telephone must 10' })
+				}
 				} else {
 					this.setState({ message: 'Please fill password more than 5' })
 				}
