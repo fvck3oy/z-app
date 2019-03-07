@@ -62,7 +62,7 @@ export default class CourseCardDeleted extends Component {
 						<CardText>{subtitle}</CardText>
 						{/* <CardText> ราคา {price}</CardText> */}
 						<Link to={`${url2}${id}`}>
-							<Button className="btn-vdiDeleted">คลิกเพื่อเข้าชม</Button>
+							<Button className="btn-vdiDeleted w-100">คลิกเพื่อเข้าชม</Button>
 						</Link>
 					</CardBody>
 				</Card>

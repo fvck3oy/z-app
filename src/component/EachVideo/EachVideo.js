@@ -113,7 +113,8 @@ export default class EachVideo extends Component {
 			collapse: false,
 			pathVideo: '',
 			pathFile: '',
-			playbackTime: 0
+			playbackTime: 0,
+			dataTime: []
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -126,10 +127,13 @@ export default class EachVideo extends Component {
 	}
 
 	async getEachCourse() {
+		let user = auth.getToken()
+		let userDecoded = auth.decodeToken(user)
+		let uId = userDecoded.id
 		await axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ data: data[0] })
-			console.log('kuy kuy kuy kuy ', data)
+			// console.log('kuy kuy kuy kuy ', data)
 		})
 
 		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
@@ -137,6 +141,13 @@ export default class EachVideo extends Component {
 			this.setState({ dataLesson: data })
 			console.log('data lesson : ', data)
 		})
+
+
+	// 	await axios.get(`http://localhost:3013/z-api/eachtimeplayback/eachlesson`,data).then(res => {
+	// 		const { data } = res
+	// 		this.setState({ dataTime: data })
+	// 		console.log('data time : ', data)
+	// 	})
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -177,7 +188,7 @@ export default class EachVideo extends Component {
 		let uId = userDecoded.id
 		let uRole = userDecoded.role
 
-		const { data, dataLesson } = this.state
+		const { data, dataLesson, dataTime } = this.state
 
 		if (!data) {
 			return <div>Loading</div>
@@ -225,21 +236,24 @@ export default class EachVideo extends Component {
 						</Col>
 					</Row>
 
-					<Row className="ml-2">
+					{/* <Row className="ml-2">
 						<h2>Lesson</h2>
-					</Row>
+					</Row> */}
 
 					{this.state.dataLesson.map((each, index) => {
-						let videoToken = Number(localStorage.getItem(`video${each.id}`))
+
+						
 						return (
 							<div key={each.id}>
 								<EachLesson
-									idL={index + 1}
+									// idL={index + 1}
+									idL={each.id}
+									uId={uId}
 									titleLesson={each.titleLesson}
 									detailLesson={each.detailLesson}
 									pathVideo={each.pathVideo}
 									pathFile={each.pathFile}
-									playbackTime={videoToken}
+									// playbackTime={100}
 								/>
 							</div>
 						)

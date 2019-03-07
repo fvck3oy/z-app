@@ -11,6 +11,7 @@ import { ListAlt } from 'styled-icons/fa-regular/ListAlt'
 import { ListAlt as ListSolid } from 'styled-icons/fa-solid/ListAlt'
 import { AddToPhotos } from 'styled-icons/material/AddToPhotos'
 import { ExitToApp } from 'styled-icons/material/ExitToApp'
+// import { Bin } from 'styled-icons/icomoon/Bin'
 import { withRouter } from 'react-router-dom'
 import './Header.css'
 import auth from '../../service/index'
@@ -145,6 +146,32 @@ border-radius: 25%
 position: relative;
 `
 
+// const Binz = Bin.extend`
+//     width : 1.3rem;
+//     height : 1.3rem;
+//     color : white;
+//     &:hover ${Binz} {
+//       transition-duration: 300ms;
+//       top: -1px;
+//     }
+//     display: inline-block;
+//     cursor: pointer;
+//     line-height: 84px;
+//     border-radius: 25%
+// 		position: relative;
+// 		margin-top: -5px;
+// `
+// const BinSolidz = Bin.extend`
+// width : 1.3rem;
+// height : 1.3rem;
+// color : white;
+// display: inline-block;
+// cursor: pointer;
+// line-height: 84px;
+// border-radius: 25%
+// position: relative;
+// `
+
 const LogOut = ExitToApp.extend`
     width : 1.3rem;
     height : 1.3rem;
@@ -171,13 +198,15 @@ class Header extends Component {
 			list: <ListAltReg className="icon" />,
 			add: <AddReg className="icon" />,
 			logout: <LogOut className="icon" />,
+			// binz: <Bin className="icon" />,
 			icondefault: {
 				folder: <FolderClose className="icon" />,
 				person: <PersonReg className="icon" />,
 				setting: <SettingReg className="icon" />,
 				list: <ListAltReg className="icon" />,
 				add: <AddReg className="icon" />,
-				logout: <LogOut className="icon" />
+				logout: <LogOut className="icon" />,
+				// binz: <BinSolidz className="icon" />
 			},
 			toggleAddModal: false,
 			toggleLogOut: false,
@@ -212,6 +241,8 @@ class Header extends Component {
 		this.props.history.push('/unpublic')
 	}
 	coursedeleted = e => {
+		// this.clear()
+		// this.setState({ list: <BinSolidz className="icon" /> })
 		this.props.history.push('/coursedeleted')
 	}
 	clear() {
@@ -221,7 +252,8 @@ class Header extends Component {
 			person: def.person,
 			setting: def.setting,
 			list: def.list,
-			add: def.add
+			add: def.add,
+			// binz: def.binz
 		})
 	}
 	toggleAddModal = state => {
@@ -242,6 +274,7 @@ class Header extends Component {
 		if (window.location.pathname === '/z-app/build/addcourse') this.setState({ folder: <AddRegSolidz className="icon" /> })
 		if (window.location.pathname === '/z-app/build/setting') this.setState({ setting: <SettingSolid className="icon" /> })
 		if (window.location.pathname === '/z-app/build/overview') this.setState({ list: <ListAltSolidz className="icon" /> })
+		// if (window.location.pathname === '/z-app/build/overview') this.setState({ binz: <BinSolidz className="icon" /> })
 	}
 	logOut() {
 		auth.clearToken()
@@ -344,6 +377,7 @@ class Header extends Component {
 							}}
 							style={{ cursor: 'pointer' }}
 						>
+							{/* {this.state.binz} */}
 							CourseDeleted
 						</NavLink>
 					)}

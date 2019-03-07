@@ -67,7 +67,7 @@ export default class CourseCardDetailUnPublic extends Component {
 						<CardText>{subtitle}</CardText>
 						{/* <CardText> ราคา {price}</CardText> */}
 						<Link to={`${url2}${id}`}>
-							<Button className="btn-vdiUnPublic">คลิกเพื่อเข้าชม</Button>
+							<Button className="btn-vdiUnPublic w-100">คลิกเพื่อเข้าชม</Button>
 						</Link>
 					</CardBody>
 				</Card>

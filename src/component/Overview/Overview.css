@@ -22,19 +22,18 @@
 	justify-content: center;
 	align-items: center;
 	/* margin: 0px 0px 20px 0px; */
-  border-radius: 5px;
+	border-radius: 5px;
 	/* margin-left: 20px; */
 	/* position: fixed; */
 }
 .list {
 	cursor: pointer;
-  width: 100%;
-  padding: 10px 20px 10px 50px;
+	width: 100%;
+	padding: 10px 20px 10px 50px;
 }
 .list:hover {
 	color: #fff;
-  background-color: rgb(70, 176, 247);
-
+	background-color: rgb(70, 176, 247);
 }
 .title-list {
 	font-size: 20px;
@@ -43,17 +42,19 @@
 	border-radius: 5px 5px 0px 0px;
 	background-color: rgb(70, 176, 247);
 	padding: 10px 0px 10px 0px;
-
 }
 
-.carousel-item.active{
+.carousel-item.active {
 	max-height: 448px !important;
 	/* border-radius: 5px !important; */
 }
 
-.carousel-inner{
+.carousel-inner {
 	border: 1px solid rgb(70, 176, 247);
 	box-shadow: 3px 3px 10px -3px rgb(70, 176, 247);
 	border-radius: 5px !important;
 }
 
+.logo {
+	max-width: 320px;
+}

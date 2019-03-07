@@ -54,21 +54,20 @@ export default class EditEachLesson extends Component {
 		let uId = userDecoded.id
 		await axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
 			const { data } = res
-			console.log('DATA MY EACH COURSE = ', data[0])
+			// console.log('DATA MY EACH COURSE = ', data[0])
 			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users })
 		})
 
 		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataLesson: data })
-			console.log('data lesson : ', data)
+			// console.log('data lesson : ', data)
 		})
 	}
 	toggleCollapse = () => {
 		this.setState({ collapse: !this.state.collapse })
 	}
 	toggleEditLesson = () => {
-		console.log('click ')
 		const { editlesson } = this.state
 		this.setState({ editlesson: !editlesson })
 	}
@@ -82,15 +81,16 @@ export default class EditEachLesson extends Component {
 			<div>
 				<hr />
 				<div className="">
-					<Button color="primary" onClick={this.toggleCollapse} style={{ marginBottom: '1rem', marginTop: '1rem' }}>
+					<Button className="w-100" color="primary" onClick={this.toggleCollapse} style={{ marginBottom: '1rem', marginTop: '1rem' }}>
 						บทที่ {idL} {titleLesson}
 					</Button>
-					<Button color="danger" onClick={() => this.toggleEditLesson(true)} className="m-2">
-						Edit
-					</Button>
+					
 				</div>
 				<Collapse isOpen={this.state.collapse}>
 					<Card>
+					<Button color="danger" onClick={() => this.toggleEditLesson(true)} className="m-2">
+						Edit
+					</Button>
 						<CardBody className="d-flex lesson-body">
 							<div className="mid">{titleLesson}</div>
 							<div className="mid">{detailLesson}</div>

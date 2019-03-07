@@ -26,7 +26,7 @@
 }
 .inputform::placeholder {
 	font-size: 18px;
-	color: #b4b4b4 ;
+	color: #b4b4b4;
 }
 .inputform:focus {
 	border: 0.5px solid rgb(70, 176, 247);
@@ -77,10 +77,9 @@
 	text-align: center;
 	align-items: center;
 }
-.Logo{
-
-	width: 300px;
-	height: 300px;
+.Logo {
+	width: 250px;
+	height: 250px;
 }
 
 @media (max-width: 320.98px) {

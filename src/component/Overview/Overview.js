@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, UncontrolledCarousel } from 'reactstrap'
+import { Image } from 'react-bootstrap'
 import auth from '../../service/index'
 import axios from 'axios'
 import CourseCardDetail from '../CourseCardDetail/CourseCardDetail'
@@ -57,7 +58,6 @@ export default class Overview extends Component {
 		let uId = userDecoded.id
 		this.setState({ fillter: api })
 		this.selectURL(api)
-
 	}
 
 	selectURL(api) {
@@ -85,10 +85,8 @@ export default class Overview extends Component {
 
 	async fetchData(url) {
 		console.log('fetch', url)
-
 		await axios.get(url).then(res => {
 			this.loading()
-			console.log('data card : ', res)
 			const { data } = res
 			this.setState({ data })
 		})
@@ -96,7 +94,6 @@ export default class Overview extends Component {
 
 	loading = e => {
 		console.log('loading')
-
 		setTimeout(() => {
 			this.setState({
 				loader: false
@@ -124,6 +121,9 @@ export default class Overview extends Component {
 		let uFn = userDecoded.firstname
 		let uLn = userDecoded.lastname
 		let uRole = userDecoded.role
+		if (user == null || uId == null || uFn == null || uLn == null || uRole == null) {
+			this.props.history.push('/')
+		}
 		// this.setState({ loginUserId })
 
 		const { data } = this.state
@@ -174,7 +174,18 @@ export default class Overview extends Component {
 					</Col>
 
 					<Row className="">
-						<Col md={3} />
+						<Col md={3} className="">
+							{' '}
+							<div className="">
+								<Image
+									className="logo"
+									src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/46882025_1929000807187859_437138648945655808_n.jpg?_nc_cat=110&_nc_ht=scontent.fbkk5-4.fna&oh=95558a03adea5dea67e6dd410a67ac09&oe=5CAC8BD0"
+								/>
+							</div>
+							{/* <div className="mid"> */}
+								{/* <h4>CourseHub Online</h4> */}
+							{/* </div> */}
+						</Col>
 						<Col md={9} className="pl-4 pr-4">
 							<Row>
 								{this.state.data.map((course, index) => {

@@ -22,7 +22,7 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './EditEachMyCourse.css'
-import axios from 'axios'
+import axios , { post } from 'axios'
 import auth from '../../service'
 import ModalEditCourse from '../../component/ModalEditCourse/ModalEditCourse'
 import ModalAddLesson from '../../component/ModalAddLesson/ModalAddLesson'
@@ -46,10 +46,16 @@ export default class EditEachMyCourse extends Component {
 			price: '',
 			type: '',
 			dataLesson: [],
-			courseId:''
+			courseId:'',
+			pathProfileCourse: '',
+			IdToPathProfileCourse: '',
+			file: null,
+			file_picture: null,
 		}
 		this.sentData = this.sentData.bind(this)
+		this.upload = this.upload.bind(this)
 		this.getData = this.getData.bind(this)
+		this.fileUpload = this.fileUpload.bind(this)
 	}
 	async getData(e) {
 		let user = auth.getToken()
@@ -57,14 +63,14 @@ export default class EditEachMyCourse extends Component {
 		let uId = userDecoded.id
 		await axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
 			const { data } = res
-			console.log('DATA MY EACH COURSE = ', data[0])
+			// console.log('DATA MY EACH COURSE = ', data[0])
 			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users,courseId:data[0].id })
 		})
 
 		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataLesson: data })
-			console.log('data lesson : ', data)
+			// console.log('data lesson : ', data)
 		})
 	}
 	async sentData(e) {
@@ -97,6 +103,25 @@ export default class EditEachMyCourse extends Component {
 			console.log('sent error')
 		}
 	}
+	async upload() {
+		await this.fileUpload(this.state.file).then(response => {
+			console.log('res . data : ', response.data)
+			const dataPic = {
+				id: this.state.IdToPathProfileCourse,
+				pathProfileCourse: response.data.file.path
+			}
+			// const { data } = response.data
+			axios.post(`http://localhost:3013/z-api/course/SavePathPictureCourse`, dataPic).then($res => {
+				const { data } = $res
+				console.log('what is the path : ', data)
+
+				// const { data } = $res
+				// this.setState({ message: data.message })
+			})
+		})
+		
+	}
+
 	toggleEdit = () => {
 		const { editmode } = this.state
 		this.setState({ editmode: !editmode })
@@ -105,6 +130,21 @@ export default class EditEachMyCourse extends Component {
 	toggleAdd = () => {
 		const { addmode } = this.state
 		this.setState({ addmode: !addmode })
+	}
+	onChangePicture = e => {
+		this.setState({ file: e.target.files[0] })
+	}
+	fileUpload(file) {
+		const url = 'http://localhost:3013/z-api/course/UploadPictureCourse'
+		const formData = new FormData()
+		// formData.append('file', file)
+		formData.append('imageData', file)
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data'
+			}
+		}
+		return post(url, formData, config)
 	}
 
 	// toggleEditLesson = () => {
@@ -141,7 +181,7 @@ export default class EditEachMyCourse extends Component {
 									by {dataUser.firstname} {dataUser.lastname}{' '}
 								</CardSubtitle>
 								<CardText>{data.subtitle}</CardText>{' '}
-								<Button color="danger" onClick={() => this.toggleEdit(true)} className="m-2">
+								<Button color="danger" onClick={() => this.toggleEdit(true)} className="w-100">
 									Edit
 								</Button>
 							</CardBody>
@@ -173,7 +213,7 @@ export default class EditEachMyCourse extends Component {
 					</Col>
 				</Row> */}
 				<Button color="success" onClick={() => this.toggleAdd(true)}>
-					Add Lesson
+					Add Lessons
 				</Button>{' '}
 				{this.state.dataLesson.map((each, index) => {
 					return (

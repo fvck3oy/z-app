@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FormText, Input, Form, Modal, ModalHeader, ModalBody, Container, Row, Button, Col } from 'reactstrap'
-import axios from 'axios'
+import axios, { post } from 'axios'
 import auth from '../../service'
 
 export default class ModalEditCourse extends Component {
@@ -17,9 +17,16 @@ export default class ModalEditCourse extends Component {
 			about: '',
 			price: '',
 			type: '',
-			data: ''
+			data: '',
+			pathProfileCourse: '',
+			IdToPathProfileCourse: '',
+			file: null,
+			file_picture: null
 		}
 		this.sentData = this.sentData.bind(this)
+		this.upload = this.upload.bind(this)
+		this.getData = this.getData.bind(this)
+		this.fileUpload = this.fileUpload.bind(this)
 	}
 	toggle() {
 		this.setState({ open: !this.state.open })
@@ -30,6 +37,21 @@ export default class ModalEditCourse extends Component {
 		this.setState({ [name]: value })
 		this.setState({ message: '' })
 		console.log({ [name]: value })
+	}
+	onChangePicture = e => {
+		this.setState({ file: e.target.files[0] })
+	}
+	fileUpload(file) {
+		const url = 'http://localhost:3013/z-api/course/UploadPictureCourse'
+		const formData = new FormData()
+		// formData.append('file', file)
+		formData.append('imageData', file)
+		const config = {
+			headers: {
+				'content-type': 'multipart/form-data'
+			}
+		}
+		return post(url, formData, config)
 	}
 	getData = () => {
 		let user = auth.getToken()
@@ -82,11 +104,30 @@ export default class ModalEditCourse extends Component {
 				// .then(this.props.history.push(`/mycourse/edit/${data.id}`))
 			})
 			console.log('-----------uploading------------')
-			// await this.upload().then(this.props.history.push(`/overview`))
+			await this.upload()
 			console.log('-----------uploaded------------')
 		} catch (error) {
 			console.log('sent error')
 		}
+	}
+	async upload() {
+		await this.fileUpload(this.state.file).then(response => {
+			console.log('res . data : ', response.data)
+			const dataPic = {
+				id: this.props.id,
+				pathProfileCourse: response.data.file.path
+			}
+			console.log('dataPic' , dataPic);
+			
+			// const { data } = response.data
+			axios.post(`http://localhost:3013/z-api/course/UpdatePathPictureCourse`, dataPic).then($res => {
+				const { data } = $res
+				console.log('what is the path : ', data)
+
+				// const { data } = $res
+				// this.setState({ message: data.message })
+			})
+		})
 	}
 
 	componentDidMount() {

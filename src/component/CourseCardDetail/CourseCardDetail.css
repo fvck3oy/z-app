@@ -20,6 +20,7 @@ margin: 10px;
   background-color: rgb(70, 176, 247) !important ;
   color: aliceblue !important;
   border-color: rgb(70, 176, 247) !important;
+  background-image: linear-gradient(270deg,rgb(113, 104, 241),rgb(70, 176, 247));
 }
 
 .btn-vdi:hover{

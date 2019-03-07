@@ -55,7 +55,7 @@ export default class EditCourseLink extends Component {
 						<CardText>{subtitle}</CardText>
 						{/* <CardText> ราคา {price}</CardText> */}
 						<Link to={`${url2}${id}`}>
-							<Button className="btn-vdiMyCourse">คลิกเพื่อแก้ไข</Button>
+							<Button className="btn-vdiMyCourse w-100">คลิกเพื่อแก้ไข</Button>
 						</Link>
 					</CardBody>
 				</Card>

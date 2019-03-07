@@ -11,11 +11,6 @@ export class PrivateRoute extends Component {
 			user = null
 		}
 
-		// if(user.role.id !=1){
-		// 	console.log('not admin');
-		// 	// user=null
-		// }
-
 		return !!(token && user)
 	}
 	render() {
@@ -26,7 +21,7 @@ export class PrivateRoute extends Component {
 		return (
 			<Route
 				{...rest}
-				render={props => (isAuthenticated ? <InnerComponent {...props} /> : <Redirect to={{ pathname: '/', state: { from: location } }} />)}
+				render={props => (isAuthenticated ? <InnerComponent {...props} /> : <Redirect to={{ pathname: '/overview', state: { from: location } }} />)}
 			/>
 		)
 	}
