@@ -117,7 +117,7 @@ export default class EachVideo extends Component {
 			pathFile: '',
 			playbackTime: 0,
 			dataTime: [],
-			rating: 5,
+			rating: 0,
 			editmode: false
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
@@ -147,9 +147,9 @@ export default class EachVideo extends Component {
 
 		await axios.get(`http://localhost:3013/z-api/rating/${this.props.match.params.id}`).then(res => {
 			const { data } = res
+			
 			this.setState({ rating: data })
-
-			console.log('data rating : ', data)
+			console.log('data rating : ', this.state.rating)
 		})
 
 		// 	await axios.get(`http://localhost:3013/z-api/eachtimeplayback/eachlesson`,data).then(res => {
@@ -266,10 +266,10 @@ export default class EachVideo extends Component {
 								<StarRatingComponent
 									name="rate1"
 									starCount={5}
-									// editing={false}
-									value={2.5}
+									editing={false}
+									value={rating}
 									// onStarClick={this.onStarClick.bind(this)}
-									onStarHover={this.onStarHover.bind(this)}
+									// onStarHover={this.onStarHover.bind(this)}
 								/>
 							</div>
 						</Col>

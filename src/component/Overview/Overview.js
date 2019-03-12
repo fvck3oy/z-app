@@ -206,7 +206,6 @@ export default class Overview extends Component {
 											fuser={course.ofCourse[0].users.firstname}
 											luser={course.ofCourse[0].users.lastname}
 											price={course.price}
-											rating={course.rating}
 										/>
 									)
 								})}
