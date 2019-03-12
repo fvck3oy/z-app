@@ -9,6 +9,9 @@ import { Settings } from 'styled-icons/feather/Settings'
 import { Gear } from 'styled-icons/octicons/Gear'
 import { ListAlt } from 'styled-icons/fa-regular/ListAlt'
 import { ListAlt as ListSolid } from 'styled-icons/fa-solid/ListAlt'
+import { Delete } from 'styled-icons/material/Delete'
+import { DeleteForever } from 'styled-icons/material/DeleteForever'
+import { Public } from 'styled-icons/material/Public'
 import { AddToPhotos } from 'styled-icons/material/AddToPhotos'
 import { ExitToApp } from 'styled-icons/material/ExitToApp'
 // import { Bin } from 'styled-icons/icomoon/Bin'
@@ -56,7 +59,7 @@ const PersonReg = PersonOutline.extend`
 	}
 	display: inline-block;
 	border-radius: 25%;
-	margin-top: -5px;
+	margin-top: 0px;
 `
 
 const PersonSolid = Person.extend`
@@ -66,7 +69,7 @@ const PersonSolid = Person.extend`
 	cursor: pointer;
 	display: inline-block;
 	border-radius: 25%;
-	margin-top: -5px;
+	margin-top: 0px;
 `
 const SettingReg = Settings.extend`
 	width: 1.3rem;
@@ -103,10 +106,11 @@ const ListAltReg = ListAlt.extend`
     }
     display: inline-block;
     cursor: pointer;
-    line-height: 84px;
-    border-radius: 25%
-    position: relative;
-    padding-top:1px;
+		border-radius: 25%
+		line-height: 84px;
+		position: relative;
+		margin-top:6px;
+
 `
 
 const ListAltSolidz = ListSolid.extend`
@@ -117,7 +121,9 @@ const ListAltSolidz = ListSolid.extend`
     cursor: pointer;
     line-height: 84px;
     border-radius: 25%
-    position: relative;
+		position: relative;
+		margin-top 6px;
+
 
 `
 const AddReg = AddToPhotos.extend`
@@ -133,7 +139,7 @@ const AddReg = AddToPhotos.extend`
     line-height: 84px;
     border-radius: 25%
 		position: relative;
-		margin-top: -5px;
+		margin-top: 0px;
 `
 const AddRegSolidz = AddToPhotos.extend`
 width : 1.3rem;
@@ -172,6 +178,66 @@ position: relative;
 // position: relative;
 // `
 
+const Bin = Delete.extend`
+    width : 1.5rem;
+    height : 1.5rem;
+    color : white;
+    &:hover ${Bin} {
+      transition-duration: 300ms;
+      top: -1px;
+    }
+    display: inline-block;
+    cursor: pointer;
+    line-height: 84px;
+    border-radius: 25%
+		position: relative;
+		margin-top: 0px;
+`
+const BinSolidz = DeleteForever.extend`
+width : 1.5rem;
+height : 1.5rem;
+color : white;
+display: inline-block;
+&:hover ${BinSolidz} {
+	transition-duration: 300ms;
+	top: -1px;
+}
+cursor: pointer;
+line-height: 84px;
+border-radius: 25%
+position: relative;
+`
+
+const UnPublic = Public.extend`
+    width : 1.3rem;
+    height : 1.3rem;
+    color : white;
+    &:hover ${UnPublic} {
+      transition-duration: 300ms;
+      top: -1px;
+    }
+    display: inline-block;
+    cursor: pointer;
+    line-height: 84px;
+    border-radius: 25%
+		position: relative;
+		margin-top: 0px;
+`
+const UnPublicSolidz = Public.extend`
+width : 1.3rem;
+height : 1.3rem;
+color : white;
+display: inline-block;
+&:hover ${UnPublicSolidz} {
+	transition-duration: 300ms;
+	top: -1px;
+}
+cursor: pointer;
+line-height: 84px;
+border-radius: 25%
+position: relative;
+`
+
 const LogOut = ExitToApp.extend`
     width : 1.3rem;
     height : 1.3rem;
@@ -198,7 +264,8 @@ class Header extends Component {
 			list: <ListAltReg className="icon" />,
 			add: <AddReg className="icon" />,
 			logout: <LogOut className="icon" />,
-			// binz: <Bin className="icon" />,
+			bin: <Bin className="icon" />,
+			unpublic: <UnPublic className="icon" />,
 			icondefault: {
 				folder: <FolderClose className="icon" />,
 				person: <PersonReg className="icon" />,
@@ -206,7 +273,8 @@ class Header extends Component {
 				list: <ListAltReg className="icon" />,
 				add: <AddReg className="icon" />,
 				logout: <LogOut className="icon" />,
-				// binz: <BinSolidz className="icon" />
+				bin: <Bin className="icon" />,
+				unpublic: <UnPublic className="icon" />
 			},
 			toggleAddModal: false,
 			toggleLogOut: false,
@@ -237,12 +305,14 @@ class Header extends Component {
 		this.setState({ list: <ListAltSolidz className="icon" /> })
 		this.props.history.push('/overview')
 	}
-	toPublic = e => {
+	toPublic() {
+		this.clear()
+		this.setState({ unpublic: <UnPublicSolidz className="icon" /> })
 		this.props.history.push('/unpublic')
 	}
-	coursedeleted = e => {
-		// this.clear()
-		// this.setState({ list: <BinSolidz className="icon" /> })
+	coursedeleted() {
+		this.clear()
+		this.setState({ bin: <BinSolidz className="icon" /> })
 		this.props.history.push('/coursedeleted')
 	}
 	clear() {
@@ -253,7 +323,8 @@ class Header extends Component {
 			setting: def.setting,
 			list: def.list,
 			add: def.add,
-			// binz: def.binz
+			bin: def.bin,
+			unpublic: def.unpublic
 		})
 	}
 	toggleAddModal = state => {
@@ -274,7 +345,18 @@ class Header extends Component {
 		if (window.location.pathname === '/z-app/build/addcourse') this.setState({ folder: <AddRegSolidz className="icon" /> })
 		if (window.location.pathname === '/z-app/build/setting') this.setState({ setting: <SettingSolid className="icon" /> })
 		if (window.location.pathname === '/z-app/build/overview') this.setState({ list: <ListAltSolidz className="icon" /> })
-		// if (window.location.pathname === '/z-app/build/overview') this.setState({ binz: <BinSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/overview') this.setState({ bin: <BinSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/allusers') this.setState({ bin: <BinSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/unpublic') this.setState({ bin: <BinSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/addcourse') this.setState({ bin: <BinSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/mycourse') this.setState({ bin: <BinSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/setting') this.setState({ bin: <BinSolidz className="icon" /> })
+
+		if (window.location.pathname === '/z-app/build/overview') this.setState({ unpublic: <UnPublicSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/allusers') this.setState({ unpublic: <UnPublicSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/addcourse') this.setState({ unpublic: <UnPublicSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/mycourse') this.setState({ unpublic: <UnPublicSolidz className="icon" /> })
+		if (window.location.pathname === '/z-app/build/setting') this.setState({ unpublic: <UnPublicSolidz className="icon" /> })
 	}
 	logOut() {
 		auth.clearToken()
@@ -366,7 +448,7 @@ class Header extends Component {
 							}}
 							style={{ cursor: 'pointer' }}
 						>
-							UnPublic
+							{this.state.unpublic}
 						</NavLink>
 					)}
 
@@ -377,8 +459,7 @@ class Header extends Component {
 							}}
 							style={{ cursor: 'pointer' }}
 						>
-							{/* {this.state.binz} */}
-							CourseDeleted
+							{this.state.bin}
 						</NavLink>
 					)}
 

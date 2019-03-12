@@ -41,6 +41,8 @@ import axios from 'axios'
 import auth from '../../service/index'
 import Comment from '../Comment/Comment'
 import EachLesson from '../EachLesson/EachLesson'
+import StarRatingComponent from 'react-star-rating-component'
+import ModalRating from '../ModalRating/ModalRating'
 
 const FileIcon = FileAlt.extend`
     width : 1.3rem;
@@ -114,7 +116,9 @@ export default class EachVideo extends Component {
 			pathVideo: '',
 			pathFile: '',
 			playbackTime: 0,
-			dataTime: []
+			dataTime: [],
+			rating: 5,
+			editmode: false
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -133,7 +137,6 @@ export default class EachVideo extends Component {
 		await axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ data: data[0] })
-			// console.log('kuy kuy kuy kuy ', data)
 		})
 
 		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
@@ -142,12 +145,18 @@ export default class EachVideo extends Component {
 			console.log('data lesson : ', data)
 		})
 
+		await axios.get(`http://localhost:3013/z-api/rating/${this.props.match.params.id}`).then(res => {
+			const { data } = res
+			this.setState({ rating: data })
 
-	// 	await axios.get(`http://localhost:3013/z-api/eachtimeplayback/eachlesson`,data).then(res => {
-	// 		const { data } = res
-	// 		this.setState({ dataTime: data })
-	// 		console.log('data time : ', data)
-	// 	})
+			console.log('data rating : ', data)
+		})
+
+		// 	await axios.get(`http://localhost:3013/z-api/eachtimeplayback/eachlesson`,data).then(res => {
+		// 		const { data } = res
+		// 		this.setState({ dataTime: data })
+		// 		console.log('data time : ', data)
+		// 	})
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -178,6 +187,18 @@ export default class EachVideo extends Component {
 		})
 		this.props.history.push(`/overview`)
 	}
+	onStarClick(nextValue, prevValue, name) {
+		this.setState({ rating: nextValue })
+	}
+	onStarHover(nextValue, prevValue, name) {
+		this.setState({ rating: nextValue })
+		console.log('rating : ', nextValue)
+	}
+
+	toggleEdit = () => {
+		const { editmode } = this.state
+		this.setState({ editmode: !editmode })
+	}
 
 	componentDidMount() {
 		this.getEachCourse()
@@ -188,7 +209,7 @@ export default class EachVideo extends Component {
 		let uId = userDecoded.id
 		let uRole = userDecoded.role
 
-		const { data, dataLesson, dataTime } = this.state
+		const { data, dataLesson, dataTime, rating, editmode } = this.state
 
 		if (!data) {
 			return <div>Loading</div>
@@ -239,10 +260,22 @@ export default class EachVideo extends Component {
 					{/* <Row className="ml-2">
 						<h2>Lesson</h2>
 					</Row> */}
+					<Row>
+						<Col className="mid mt-2">
+							<div className="rating animated infinite flash delay-2s slow" onClick={() => this.toggleEdit(true)}>
+								<StarRatingComponent
+									name="rate1"
+									starCount={5}
+									// editing={false}
+									value={2.5}
+									// onStarClick={this.onStarClick.bind(this)}
+									onStarHover={this.onStarHover.bind(this)}
+								/>
+							</div>
+						</Col>
+					</Row>
 
 					{this.state.dataLesson.map((each, index) => {
-
-
 						return (
 							<div key={each.id}>
 								<EachLesson
@@ -285,6 +318,8 @@ export default class EachVideo extends Component {
 					{/* {this.state.dataComment.map(comment => {
 					return <Comment key={comment.id} text={comment.text} />
 				})} */}
+
+					{editmode && <ModalRating id={this.props.match.params.id} onClose={() => this.toggleEdit(false)} />}
 				</Container>
 				<Comment courseId={data.course.id} />
 			</div>

@@ -116,9 +116,9 @@ export default class EachLesson extends Component {
 		}
 		console.log('data', data)
 
-		await axios.patch(`http://localhost:3013/z-api/eachtimeplayback/update`, data).then($res => {
-			console.log('saved timer !')
-		})
+		// await axios.patch(`http://localhost:3013/z-api/eachtimeplayback/update`, data).then($res => {
+		// 	console.log('saved timer !')
+		// })
 
 		this.setState({ currentCount: this.state.currentCount + 1 })
 	}
@@ -148,11 +148,11 @@ export default class EachLesson extends Component {
 			<div>
 				<hr />
 				<div className="d-flex justify-content-between title-lesson" onClick={this.toggleCollapse}>
-					<div>
+					<div className="pl-2">
 						{/* {this.state.currentCount} */}
 						บทที่ {idLesson} {titleLesson}
 					</div>
-					<div className="show-lesson"> V </div>
+					<div className="show-lesson pr-2"><i className="fas fa-sort-down"></i></div>
 				</div>
 				<Collapse isOpen={this.state.collapse}>
 					<Card>

@@ -10,9 +10,7 @@ import {
 	VolumeMenuButton
 } from 'video-react'
 import { Link } from 'react-router-dom'
-
 import 'video-react/dist/video-react.css'
-
 import {
 	Form,
 	FormGroup,
@@ -31,7 +29,7 @@ import {
 	CardSubtitle
 } from 'reactstrap'
 import './CourseCardDetail.css'
-
+import StarRatingComponent from 'react-star-rating-component'
 
 export default class CourseCardDetail extends Component {
 	constructor(props) {
@@ -54,7 +52,7 @@ export default class CourseCardDetail extends Component {
 	}
 
 	render() {
-		const { id , title , subtitle , path ,fuser , luser , price } = this.props
+		const { id, title, subtitle, path, fuser, luser, price, rating } = this.props
 		const url2 = '/video/'
 		const url = 'http://localhost:3013/'
 		return (
@@ -63,9 +61,16 @@ export default class CourseCardDetail extends Component {
 					<CardImg top width="100%" src={`${url}${path}`} alt="Card image cap" />
 					<CardBody>
 						<CardTitle>{title}</CardTitle>
-						<CardSubtitle>by {fuser} {luser} </CardSubtitle>
-						<CardText>{subtitle}</CardText>
-						<CardText> ราคา {price} บาท</CardText>
+						<CardSubtitle className="animated infinite flash delay-2s slow">{subtitle}</CardSubtitle>
+						<CardText>
+							by {fuser} {luser}
+						</CardText>
+						<StarRatingComponent
+							name="rate1"
+							starCount={5}
+							value={rating}
+						/>
+						{/* <CardText> ราคา {price} บาท</CardText> */}
 						<Link to={`${url2}${id}`}>
 							<Button className="btn-vdi w-100">คลิกเพื่อเข้าชม</Button>
 						</Link>

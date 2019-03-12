@@ -1,10 +1,42 @@
-@media (min-width: 768px) {
+
+
+@media (max-width: 320px) {
+	.course-list{
+		margin-top:50px;
+	}
+}
+@media (min-width: 321px) and (max-width: 575.98px) {
+	.course-list{
+		margin-top:70px;
+	}
+}
+@media (min-width: 576px) and (max-width: 682px) {
+	.course-list{
+		margin-top:50px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
 	.col-md-3 {
 		-ms-flex: 0 0 25%;
 		flex: 0 0 25%;
 		max-width: 24% !important;
 	}
+	.logo {
+		max-width: 200px !important;
+	}
 }
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.logo {
+		max-width: 250px !important;
+	}
+}
+
+@media (min-width: 1200px) {
+
+}
+
 
 .con1 {
 	width: 50%;
