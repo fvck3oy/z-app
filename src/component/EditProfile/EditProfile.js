@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Form, Modal, ModalHeader, ModalBody, Container, Row, Button } from 'reactstrap'
-import Register from '../../pages/Register/Register'
 import { Link, withRouter } from 'react-router-dom'
-import styled from 'styled-components'
 import './EditProfile.css'
-import { Upload } from 'styled-icons/fa-solid'
-import UploadFile from '../Uploadfile/UploadFile'
 
 class EditProfile extends Component {
 	constructor(props) {

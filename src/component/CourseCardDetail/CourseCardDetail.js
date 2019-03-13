@@ -74,7 +74,7 @@ export default class CourseCardDetail extends Component {
 						<CardText>
 							by {fuser} {luser}
 						</CardText>
-						<StarRatingComponent name="rate1" starCount={5} value={this.state.rating} className="animated infinite flash delay-2s slow"/>
+						<StarRatingComponent name="rate1" starCount={5} value={this.state.rating} className="animated infinite flash delay-2s slow" editing={false}/>
 						{/* <CardText> ราคา {price} บาท</CardText> */}
 						<Link to={`${url2}${id}`}>
 							<Button className="btn-vdi w-100">คลิกเพื่อเข้าชม</Button>

@@ -32,7 +32,7 @@ const FolderClose = Folder.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
     position: relative;
 `
 const FolderSolid = FolderOpen.extend`
@@ -42,9 +42,9 @@ const FolderSolid = FolderOpen.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
     position: relative;
-}
+
 `
 
 const PersonReg = PersonOutline.extend`
@@ -91,7 +91,7 @@ const SettingSolid = Gear.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
     position: relative;
     
 `
@@ -106,7 +106,7 @@ const ListAltReg = ListAlt.extend`
     }
     display: inline-block;
     cursor: pointer;
-		border-radius: 25%
+		border-radius: 25%;
 		line-height: 84px;
 		position: relative;
 		margin-top:6px;
@@ -120,10 +120,9 @@ const ListAltSolidz = ListSolid.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
 		position: relative;
-		margin-top 6px;
-
+		margin-top: 6px;
 
 `
 const AddReg = AddToPhotos.extend`
@@ -137,7 +136,7 @@ const AddReg = AddToPhotos.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
 		position: relative;
 		margin-top: 0px;
 `
@@ -148,7 +147,7 @@ color : white;
 display: inline-block;
 cursor: pointer;
 line-height: 84px;
-border-radius: 25%
+border-radius: 25%;
 position: relative;
 `
 
@@ -189,7 +188,7 @@ const Bin = Delete.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
 		position: relative;
 		margin-top: 0px;
 `
@@ -204,7 +203,7 @@ display: inline-block;
 }
 cursor: pointer;
 line-height: 84px;
-border-radius: 25%
+border-radius: 25%;
 position: relative;
 `
 
@@ -219,7 +218,7 @@ const UnPublic = Public.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
 		position: relative;
 		margin-top: 0px;
 `
@@ -234,7 +233,7 @@ display: inline-block;
 }
 cursor: pointer;
 line-height: 84px;
-border-radius: 25%
+border-radius: 25%;
 position: relative;
 `
 
@@ -249,7 +248,7 @@ const LogOut = ExitToApp.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
     position: relative;
 
 `

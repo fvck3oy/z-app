@@ -10,12 +10,12 @@ const KeyReset = Key.extend`
 	color: #5bc2e1;
 `
 const Container = styled.div`
-width: 100vw
-height: 100vh
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: white;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
 `
 class ResetPassword extends Component {
 	constructor(props) {

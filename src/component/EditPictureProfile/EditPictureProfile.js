@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Form, Modal, ModalHeader, ModalBody, Container, Row, Button } from 'reactstrap'
-import Register from '../../pages/Register/Register'
 import { Link, withRouter } from 'react-router-dom'
-import styled from 'styled-components'
-// import './EditProfile.css'
-import { Upload } from 'styled-icons/fa-solid'
 import UploadFile from '../Uploadfile/UploadFile'
 
 class EditPictureProfile extends Component {
@@ -116,9 +112,9 @@ class EditPictureProfile extends Component {
 								}}
 							>
 								{/* <Form onSubmit={this.editSubmit}> */}
-									{/* <div className="ipp"> */}
-										<UploadFile />
-									{/* </div> */}
+								{/* <div className="ipp"> */}
+								<UploadFile />
+								{/* </div> */}
 								{/* </Form> */}
 							</div>
 						</Container>
