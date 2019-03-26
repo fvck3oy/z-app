@@ -51,7 +51,7 @@ const FileIcon = FileAlt.extend`
     display: inline-block;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
     position: relative;
 `
 const PhoneIcon = PhoneIphone.extend`
@@ -61,7 +61,7 @@ color : black;
 display: inline-block;
 cursor: pointer;
 line-height: 84px;
-border-radius: 25%
+border-radius: 25%;
 position: relative;
 `
 
@@ -72,7 +72,7 @@ color : black;
 display: inline-block;
 cursor: pointer;
 line-height: 84px;
-border-radius: 25%
+border-radius: 25%;
 position: relative;
 `
 const CheckIcon = Check.extend`
@@ -82,7 +82,7 @@ const CheckIcon = Check.extend`
     display: flex;
     cursor: pointer;
     line-height: 84px;
-    border-radius: 25%
+    border-radius: 25%;
 		position: relative;
 		flex-direction: row-reverse;
 `
@@ -94,7 +94,7 @@ color : red;
 display: flex;
 cursor: pointer;
 line-height: 84px;
-border-radius: 25%
+border-radius: 25%;
 position: relative;
 flex-direction: row-reverse;
 `

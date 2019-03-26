@@ -160,6 +160,7 @@ export default class EditEachMyCourse extends Component {
 	}
 
 	componentDidMount() {
+	
 		this.getData()
 	}
 
@@ -167,8 +168,8 @@ export default class EditEachMyCourse extends Component {
 		const url = 'http://localhost:3013/'
 		const { data, editmode, type, dataUser, addmode, editlesson,courseId } = this.state
 		const { modal, id } = this.props
-
 		return (
+			
 			<Container className="con-edit-course">
 				<h2>EditEachMyCourse</h2>
 				<Row>

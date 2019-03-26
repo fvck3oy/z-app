@@ -19,9 +19,7 @@ class MainRoute extends Component {
 			<div style={{ position: 'relative', overflow: 'hidden' }}>
 				<PrivateRoute exact path="/overview" component={Overview} />
 				<PrivateRoute exact path="/setting" component={Setting} />
-				{/* <PrivateRoute exact path="/video" component={EachVideo} /> */}
 				<PrivateRoute exact path="/allusers" component={AllUsers} />
-				{/* <PrivateRoute exact path="/uploadfile" component={UploadFile} /> */}
 				<PrivateRoute exact path="/addcourse" component={AddCourse} />
 				<PrivateRoute path="/video/:id" component={EachVideo} />
 				<PrivateRoute path="/videounpublic/:id" component={EachVideoUnPublic} />

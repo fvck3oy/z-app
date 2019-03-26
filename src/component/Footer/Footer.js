@@ -3,6 +3,8 @@ import { Navbar, NavLink } from 'reactstrap'
 import './Footer.css'
 import { Image } from 'react-bootstrap'
 
+
+
 export default class Footer extends Component {
 	render() {
 		return (
