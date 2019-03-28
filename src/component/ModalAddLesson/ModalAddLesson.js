@@ -170,7 +170,7 @@ export default class ModalAddLesson extends Component {
 
 								<Form onSubmit={this.sentData}>
 									<div>
-										<Row md={12} className="mt-3 mb-3">
+										<Row className="mt-3 mb-3">
 											<Col md={4} className="">
 												เพิ่มหัวข้อบทเรียน
 											</Col>
@@ -191,7 +191,7 @@ export default class ModalAddLesson extends Component {
 											</Col>
 										</Row>
 
-										<Row md={12} className="mt-3 mb-3">
+										<Row className="mt-3 mb-3">
 											<Col md={4} className="">
 												รายละเอียดเกี่ยวกับบทเรียน
 											</Col>

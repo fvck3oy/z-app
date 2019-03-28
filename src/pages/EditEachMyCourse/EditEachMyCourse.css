@@ -10,3 +10,7 @@
 .btn-add-lesson {
   font-size: 20px !important;
 }
+
+.tab{
+  cursor: pointer;
+}

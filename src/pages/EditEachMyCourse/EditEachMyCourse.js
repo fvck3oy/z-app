@@ -18,16 +18,24 @@ import {
 	CardSubtitle,
 	Modal,
 	ModalHeader,
-	ModalBody
+	ModalBody,
+	TabContent,
+	TabPane,
+	Nav,
+	NavItem,
+	NavLink
 } from 'reactstrap'
+import classnames from 'classnames'
 import { Link } from 'react-router-dom'
 import './EditEachMyCourse.css'
-import axios , { post } from 'axios'
+import axios, { post } from 'axios'
 import auth from '../../service'
 import ModalEditCourse from '../../component/ModalEditCourse/ModalEditCourse'
 import ModalAddLesson from '../../component/ModalAddLesson/ModalAddLesson'
 import EditEachLesson from '../../component/EditEachLesson/EditEachLesson'
+import ModalCreateQuestion from '../../component/ModalCreateQuestion/ModalCreateQuestion'
 import ModalEditLesson from '../../component/ModalEditLesson/ModalEditLesson'
+import Quiz from '../../component/Quiz/Quiz'
 export default class EditEachMyCourse extends Component {
 	constructor(props) {
 		super(props)
@@ -46,11 +54,15 @@ export default class EditEachMyCourse extends Component {
 			price: '',
 			type: '',
 			dataLesson: [],
-			courseId:'',
+			courseId: '',
 			pathProfileCourse: '',
 			IdToPathProfileCourse: '',
 			file: null,
 			file_picture: null,
+			activeTab: '1',
+			toggleQuiz: false,
+			create_question: false,
+			dataQuestion:[]
 		}
 		this.sentData = this.sentData.bind(this)
 		this.upload = this.upload.bind(this)
@@ -64,13 +76,19 @@ export default class EditEachMyCourse extends Component {
 		await axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			// console.log('DATA MY EACH COURSE = ', data[0])
-			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users,courseId:data[0].id })
+			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users, courseId: data[0].id })
 		})
 
 		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataLesson: data })
 			// console.log('data lesson : ', data)
+		})
+
+		await axios.get(`http://localhost:3013/z-api/question/${this.props.match.params.id}`).then(res => {
+			const { data } = res
+			this.setState({ dataQuestion: data })
+		console.log('data question : ', data)
 		})
 	}
 	async sentData(e) {
@@ -119,7 +137,13 @@ export default class EditEachMyCourse extends Component {
 				// this.setState({ message: data.message })
 			})
 		})
-		
+	}
+	toggle(tab) {
+		if (this.state.activeTab !== tab) {
+			this.setState({
+				activeTab: tab
+			})
+		}
 	}
 
 	toggleEdit = () => {
@@ -131,6 +155,12 @@ export default class EditEachMyCourse extends Component {
 		const { addmode } = this.state
 		this.setState({ addmode: !addmode })
 	}
+
+	toggleQuiz = () => {
+		const { create_question } = this.state
+		this.setState({ create_question: !create_question })
+	}
+
 	onChangePicture = e => {
 		this.setState({ file: e.target.files[0] })
 	}
@@ -160,16 +190,14 @@ export default class EditEachMyCourse extends Component {
 	}
 
 	componentDidMount() {
-	
 		this.getData()
 	}
 
 	render() {
 		const url = 'http://localhost:3013/'
-		const { data, editmode, type, dataUser, addmode, editlesson,courseId } = this.state
+		const { data, editmode, type, dataUser, addmode, editlesson, courseId, create_question } = this.state
 		const { modal, id } = this.props
 		return (
-			
 			<Container className="con-edit-course">
 				<h2>EditEachMyCourse</h2>
 				<Row>
@@ -204,37 +232,84 @@ export default class EditEachMyCourse extends Component {
 						</div>
 					</Col>
 				</Row>
-				{/* <Row>
-					<Col md={3} className="">
-						<div>
-							<Button color="success" className="btn-add-lesson" onClick={() => this.toggleAdd(true)}>
-								Add Lesson
-							</Button>{' '}
-						</div>
-					</Col>
-				</Row> */}
-				<Button color="success" onClick={() => this.toggleAdd(true)}>
-					Add Lessons
-				</Button>{' '}
-				{this.state.dataLesson.map((each, index) => {
-					return (
-						<div key={each.id}>
-							<EditEachLesson
-								idL={index + 1}
-								idC={courseId}
-								titleLesson={each.titleLesson}
-								detailLesson={each.detailLesson}
-								pathVideo={each.pathVideo}
-								pathFile={each.pathFile}
-							/>
-							{/* <Button color="danger" onClick={() => this.toggleEditLesson(true)} className="m-2">
-								Edit
-							</Button> */}
-						</div>
-					)
-				})}
+				<div>
+					<Nav tabs>
+						<NavItem className="tab">
+							<NavLink
+								className={classnames({ active: this.state.activeTab === '1' })}
+								onClick={() => {
+									this.toggle('1')
+								}}
+							>
+								Lesson
+							</NavLink>
+						</NavItem>
+						<NavItem className="tab">
+							<NavLink
+								className={classnames({ active: this.state.activeTab === '2' })}
+								onClick={() => {
+									this.toggle('2')
+								}}
+							>
+								Quiz
+							</NavLink>
+						</NavItem>
+					</Nav>
+					<TabContent activeTab={this.state.activeTab}>
+						<TabPane tabId="1">
+							<Row>
+								<Col sm="12">
+									<Button color="success mt-4" onClick={() => this.toggleAdd(true)}>
+										Add Lessons
+									</Button>{' '}
+									{this.state.dataLesson.map((each, index) => {
+										return (
+											<div key={each.id}>
+												<EditEachLesson
+													idL={index + 1}
+													idC={courseId}
+													titleLesson={each.titleLesson}
+													detailLesson={each.detailLesson}
+													pathVideo={each.pathVideo}
+													pathFile={each.pathFile}
+												/>
+											</div>
+										)
+									})}
+								</Col>
+							</Row>
+						</TabPane>
+						<TabPane tabId="2">
+							<Row>
+								<Col sm="12">
+									<Button color="success mt-4" onClick={() => this.toggleQuiz(true)}>
+										Create Quiz
+									</Button>
+									{this.state.dataQuestion.map((each, index) => {
+										return (
+											<div key={each.id}>
+												<Quiz
+												idQ={each.id}
+													no={index + 1}
+													course={each.course.id}
+													question={each.question_text}
+													choice1={each.choice1_text}
+													choice2={each.choice2_text}
+													choice3={each.choice3_text}
+													choice4={each.choice4_text}
+													correct={each.correct}
+												/>
+											</div>
+										)
+									})}
+								</Col>
+							</Row>
+						</TabPane>
+					</TabContent>
+				</div>
 				{editmode && <ModalEditCourse id={this.props.match.params.id} onClose={() => this.toggleEdit(false)} />}
 				{addmode && <ModalAddLesson id={this.props.match.params.id} onClose={() => this.toggleAdd(false)} />}
+				{create_question && <ModalCreateQuestion id={this.props.match.params.id} onClose={() => this.toggleQuiz(false)} />}
 				{/* {editlesson && <ModalEditLesson id={this.props.match.params.id} onClose={() => this.toggleEditLesson(false)} />} */}
 			</Container>
 		)
