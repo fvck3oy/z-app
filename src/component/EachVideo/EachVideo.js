@@ -43,60 +43,61 @@ import Comment from '../Comment/Comment'
 import EachLesson from '../EachLesson/EachLesson'
 import StarRatingComponent from 'react-star-rating-component'
 import ModalRating from '../ModalRating/ModalRating'
+import ToQuiz from '../ToQuiz/ToQuiz'
 
 const FileIcon = FileAlt.extend`
-    width : 1.3rem;
-    height :1.3rem;
-    color : black;
-    display: inline-block;
-    cursor: pointer;
-    line-height: 84px;
-    border-radius: 25%;
-    position: relative;
+	width: 1.3rem;
+	height: 1.3rem;
+	color: black;
+	display: inline-block;
+	cursor: pointer;
+	line-height: 84px;
+	border-radius: 25%;
+	position: relative;
 `
 const PhoneIcon = PhoneIphone.extend`
-width : 1.3rem;
-height :1.3rem;
-color : black;
-display: inline-block;
-cursor: pointer;
-line-height: 84px;
-border-radius: 25%;
-position: relative;
+	width: 1.3rem;
+	height: 1.3rem;
+	color: black;
+	display: inline-block;
+	cursor: pointer;
+	line-height: 84px;
+	border-radius: 25%;
+	position: relative;
 `
 
 const EmailIcon = Email.extend`
-width : 1.3rem;
-height :1.3rem;
-color : black;
-display: inline-block;
-cursor: pointer;
-line-height: 84px;
-border-radius: 25%;
-position: relative;
+	width: 1.3rem;
+	height: 1.3rem;
+	color: black;
+	display: inline-block;
+	cursor: pointer;
+	line-height: 84px;
+	border-radius: 25%;
+	position: relative;
 `
 const CheckIcon = Check.extend`
-    width : 1.3rem;
-    height :1.3rem;
-    color : green;
-    display: flex;
-    cursor: pointer;
-    line-height: 84px;
-    border-radius: 25%;
-		position: relative;
-		flex-direction: row-reverse;
+	width: 1.3rem;
+	height: 1.3rem;
+	color: green;
+	display: flex;
+	cursor: pointer;
+	line-height: 84px;
+	border-radius: 25%;
+	position: relative;
+	flex-direction: row-reverse;
 `
 
 const DeleteIcon = X.extend`
-width : 1.5rem;
-height :1.5rem;
-color : red;
-display: flex;
-cursor: pointer;
-line-height: 84px;
-border-radius: 25%;
-position: relative;
-flex-direction: row-reverse;
+	width: 1.5rem;
+	height: 1.5rem;
+	color: red;
+	display: flex;
+	cursor: pointer;
+	line-height: 84px;
+	border-radius: 25%;
+	position: relative;
+	flex-direction: row-reverse;
 `
 export default class EachVideo extends Component {
 	constructor(props, context) {
@@ -118,12 +119,14 @@ export default class EachVideo extends Component {
 			playbackTime: 0,
 			dataTime: [],
 			rating: 0,
-			editmode: false
+			editmode: false,
+			score: []
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
 		this.getEachCourse = this.getEachCourse.bind(this)
 		this.onDelete = this.onDelete.bind(this)
+		this.getScore = this.getScore.bind(this)
 	}
 
 	toggleCollapse = () => {
@@ -147,7 +150,7 @@ export default class EachVideo extends Component {
 
 		await axios.get(`http://localhost:3013/z-api/rating/${this.props.match.params.id}`).then(res => {
 			const { data } = res
-			
+
 			this.setState({ rating: data })
 			console.log('data rating : ', this.state.rating)
 		})
@@ -157,6 +160,18 @@ export default class EachVideo extends Component {
 		// 		this.setState({ dataTime: data })
 		// 		console.log('data time : ', data)
 		// 	})
+	}
+
+	async getScore() {
+		let user = auth.getToken()
+		let userDecoded = auth.decodeToken(user)
+		let uId = userDecoded.id
+
+		await axios.get(`	http://localhost:3013/z-api/score/${this.props.match.params.id}/${uId}`).then(res => {
+			const { data } = res
+			this.setState({ score: data })
+			console.log(' score is : ', data)
+		})
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -202,6 +217,7 @@ export default class EachVideo extends Component {
 
 	componentDidMount() {
 		this.getEachCourse()
+		this.getScore()
 	}
 	render() {
 		let user = auth.getToken()
@@ -209,7 +225,7 @@ export default class EachVideo extends Component {
 		let uId = userDecoded.id
 		let uRole = userDecoded.role
 
-		const { data, dataLesson, dataTime, rating, editmode } = this.state
+		const { data, dataLesson, dataTime, rating, editmode, score } = this.state
 
 		if (!data) {
 			return <div>Loading</div>
@@ -292,6 +308,16 @@ export default class EachVideo extends Component {
 						)
 					})}
 
+					{score.map((e, index) => (
+						<div key={index}>
+							<h4>
+								รอบที่ {index + 1} ได้คะแนน {e.score}
+							</h4>
+						</div>
+					))}
+
+					<ToQuiz id={this.props.match.params.id} />
+
 					<Row>
 						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-3">
 							ติดต่อ คุณ {data.users.firstname} {data.users.lastname}
@@ -309,15 +335,12 @@ export default class EachVideo extends Component {
 							{this.state.iconPhone} โทร : {data.users.tel}
 						</Col>
 					</Row>
+
 					<Row className="pb-5">
 						<Col md={{ size: 6, offset: 3 }} className="contact">
 							{this.state.iconEmail} อีเมลล์ : {data.users.email}
 						</Col>
 					</Row>
-
-					{/* {this.state.dataComment.map(comment => {
-					return <Comment key={comment.id} text={comment.text} />
-				})} */}
 
 					{editmode && <ModalRating id={this.props.match.params.id} onClose={() => this.toggleEdit(false)} />}
 				</Container>

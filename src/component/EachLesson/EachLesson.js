@@ -64,10 +64,10 @@ export default class EachLesson extends Component {
 	// 			userId: uId,
 	// 			lessonId: e.idL
 	// 		}
-	// 		// axios.patch(`http://localhost:3013/z-api/timeplayback/update`, data).then($res => {
-	// 		// 	const { data } = $res
+	// 		axios.patch(`http://localhost:3013/z-api/timeplayback/update`, data).then($res => {
+	// 			const { data } = $res
 
-	// 		// })
+	// 		})
 	// 		console.log('save time', data)
 	// 	}, 5000)
 	// }
@@ -116,9 +116,9 @@ export default class EachLesson extends Component {
 		}
 		console.log('data', data)
 
-		// await axios.patch(`http://localhost:3013/z-api/eachtimeplayback/update`, data).then($res => {
-		// 	console.log('saved timer !')
-		// })
+		await axios.patch(`http://localhost:3013/z-api/eachtimeplayback/update`, data).then($res => {
+			console.log('saved timer !')
+		})
 
 		this.setState({ currentCount: this.state.currentCount + 1 })
 	}

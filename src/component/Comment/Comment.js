@@ -43,13 +43,7 @@ export default class Comment extends Component {
 			const { data } = res
 			this.setState({ data: data })
 			console.log('data comment : ', data)
-			var ts = new Date();
-			console.log(ts);
-			
-			// const date = data[0].created.toDateString()
-
-			
-			// console.log('kuy' , data[0].created);
+		
 		})
 	}
 
@@ -68,6 +62,8 @@ export default class Comment extends Component {
 			const { data } = $res
 			console.log('comment is : ', data)
 			
+			// console.log(' date => ' , data.created);
+	
 			
 			// const { data } = $res
 			// this.setState({ message: data.message })
@@ -127,7 +123,8 @@ export default class Comment extends Component {
 						<Row key={index} className="block-comment mt-2 b-2">
 							<Image className="profile-comment" src={`${url}${comment.users.pathProfile}`} />
 							<div className="username-comment">{comment.users.firstname}</div>
-							<div className="text-comment"> {comment.text} {comment.created}</div>
+							<div className="text-comment"> {comment.text}</div>
+							{/* {comment.created} */}
 						</Row>
 					))}
 				</div>

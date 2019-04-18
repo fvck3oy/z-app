@@ -62,7 +62,7 @@ export default class EditEachMyCourse extends Component {
 			activeTab: '1',
 			toggleQuiz: false,
 			create_question: false,
-			dataQuestion:[]
+			dataQuestion: []
 		}
 		this.sentData = this.sentData.bind(this)
 		this.upload = this.upload.bind(this)
@@ -88,7 +88,7 @@ export default class EditEachMyCourse extends Component {
 		await axios.get(`http://localhost:3013/z-api/question/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataQuestion: data })
-		console.log('data question : ', data)
+			console.log('data question : ', data)
 		})
 	}
 	async sentData(e) {
@@ -282,14 +282,16 @@ export default class EditEachMyCourse extends Component {
 						<TabPane tabId="2">
 							<Row>
 								<Col sm="12">
-									<Button color="success mt-4" onClick={() => this.toggleQuiz(true)}>
-										Create Quiz
-									</Button>
+									{this.state.dataQuestion.length > 10 && (
+										<Button color="success mt-4" onClick={() => this.toggleQuiz(true)}>
+											Create Quiz
+										</Button>
+									)}
 									{this.state.dataQuestion.map((each, index) => {
 										return (
 											<div key={each.id}>
 												<Quiz
-												idQ={each.id}
+													idQ={each.id}
 													no={index + 1}
 													course={each.course.id}
 													question={each.question_text}
@@ -298,6 +300,7 @@ export default class EditEachMyCourse extends Component {
 													choice3={each.choice3_text}
 													choice4={each.choice4_text}
 													correct={each.correct}
+													checkQuiz={each.length}
 												/>
 											</div>
 										)
