@@ -21,6 +21,7 @@ import { Image } from 'react-bootstrap'
 import axios from 'axios'
 import auth from '../../service/index'
 import './Comment.css'
+import Moment from 'react-moment'
 
 export default class Comment extends Component {
 	constructor(props) {
@@ -43,7 +44,6 @@ export default class Comment extends Component {
 			const { data } = res
 			this.setState({ data: data })
 			console.log('data comment : ', data)
-		
 		})
 	}
 
@@ -61,10 +61,10 @@ export default class Comment extends Component {
 		axios.post(`http://localhost:3013/z-api/comment`, dataComment).then($res => {
 			const { data } = $res
 			console.log('comment is : ', data)
-			
+
+			this.getData()
 			// console.log(' date => ' , data.created);
-	
-			
+
 			// const { data } = $res
 			// this.setState({ message: data.message })
 		})
@@ -123,8 +123,11 @@ export default class Comment extends Component {
 						<Row key={index} className="block-comment mt-2 b-2">
 							<Image className="profile-comment" src={`${url}${comment.users.pathProfile}`} />
 							<div className="username-comment">{comment.users.firstname}</div>
-							<div className="text-comment"> {comment.text}</div>
-							{/* {comment.created} */}
+							<div className="text-comment">
+								{' '}
+								{comment.text}
+								<Moment fromNow className="time-comment">{comment.created}</Moment>
+							</div>
 						</Row>
 					))}
 				</div>

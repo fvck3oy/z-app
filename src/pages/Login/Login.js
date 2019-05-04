@@ -8,6 +8,8 @@ import axios from 'axios'
 import auth from '../../service/index'
 import { User } from 'styled-icons/fa-solid/User'
 import { Key } from 'styled-icons/fa-solid/Key'
+import logoCoursehub from'./logoCoursehub.jpg'
+
 const Container = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -50,6 +52,7 @@ class Login extends Component {
 	}
 	handleSubmit = e => {
 		try {
+			e.preventDefault()
 			const data = {
 				email: this.state.email,
 				password: this.state.password
@@ -68,21 +71,20 @@ class Login extends Component {
 				console.log('cant login')
 			}
 
-			e.preventDefault()
 		} catch (error) {
 			console.error('on error ->', error)
 		}
 	}
 
-	componentDidMount() {
-		try {
-			const user = auth.getToken()
-			const userDecoded = auth.decodeToken(user)
-			if (userDecoded) {
-				this.props.history.push(`/overview`)
-			}
-		} catch (error) { }
-	}
+	// componentDidMount() {
+	// 	try {
+	// 		const user = auth.getToken()
+	// 		const userDecoded = auth.decodeToken(user)
+	// 		if (userDecoded) {
+	// 			this.props.history.push(`/overview`)
+	// 		}
+	// 	} catch (error) { }
+	// }
 
 	render() {
 		const { email, password } = this.state
@@ -96,7 +98,7 @@ class Login extends Component {
 					}}
 				>
 					<div className="mid d-flex ">
-						<Image className="Logo responsive" src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/46882025_1929000807187859_437138648945655808_n.jpg?_nc_cat=110&_nc_ht=scontent.fbkk5-4.fna&oh=95558a03adea5dea67e6dd410a67ac09&oe=5CAC8BD0" />
+						<Image className="Logo responsive" src={''} />
 					</div>
 
 					<div className="iconRealxiz">เว็บไซต์แหล่งรวบรวมความรู้ออนไลน์</div>

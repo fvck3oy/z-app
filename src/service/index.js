@@ -114,6 +114,7 @@ export const auth = {
 			}
 		}
 	},
+	
 	getUserInfo(fromStorage = APP_PERSIST_STORES_TYPES[0], userInfoKey = USER_INFO) {
 		if (fromStorage === APP_PERSIST_STORES_TYPES[0]) {
 			return (localStorage && parse(localStorage.getItem(userInfoKey))) || null
@@ -124,4 +125,5 @@ export const auth = {
 		return null
 	}
 }
+
 export default auth

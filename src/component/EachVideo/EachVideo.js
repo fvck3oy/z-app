@@ -44,6 +44,7 @@ import EachLesson from '../EachLesson/EachLesson'
 import StarRatingComponent from 'react-star-rating-component'
 import ModalRating from '../ModalRating/ModalRating'
 import ToQuiz from '../ToQuiz/ToQuiz'
+import { Doughnut, Line } from 'react-chartjs-2'
 
 const FileIcon = FileAlt.extend`
 	width: 1.3rem;
@@ -120,7 +121,12 @@ export default class EachVideo extends Component {
 			dataTime: [],
 			rating: 0,
 			editmode: false,
-			score: []
+			score: [],
+
+			chartdata: {
+        labels: [],
+        datasets: []
+      },
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -315,6 +321,7 @@ export default class EachVideo extends Component {
 							</h4>
 						</div>
 					))}
+					{/* <Line data={this.state.chartdata} /> */}
 
 					<ToQuiz id={this.props.match.params.id} />
 

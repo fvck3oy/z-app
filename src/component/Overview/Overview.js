@@ -86,8 +86,9 @@ export default class Overview extends Component {
 		}
 	}
 
-	async fetchData(url) {
+	async fetchData(url, e) {
 		console.log('fetch', url)
+		// e.preventdefault();
 		await axios.get(url).then(res => {
 			this.loading()
 			const { data } = res
@@ -97,6 +98,7 @@ export default class Overview extends Component {
 
 	loading = e => {
 		console.log('loading')
+
 		setTimeout(() => {
 			this.setState({
 				loader: false
@@ -120,18 +122,19 @@ export default class Overview extends Component {
 
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
-
-		let uId = userDecoded.id
-		let uFn = userDecoded.firstname
-		let uLn = userDecoded.lastname
-		let uRole = userDecoded.role
-		if (user == null || uId == null || uFn == null || uLn == null || uRole == null) {
+		if (user == null) {
 			this.props.history.push('/')
 		}
+		// let uId = userDecoded.id
+		// let uFn = userDecoded.firstname
+		// let uLn = userDecoded.lastname
+		// let uRole = userDecoded.role
+		// if (user == null || uId == null || uFn == null || uLn == null || uRole == null) {
+		// 	this.props.history.push('/')
+		// }
 		// this.setState({ loginUserId })
 
 		const { data } = this.state
-
 		return (
 			<Container>
 				<Row className="mr-1 ml-1" />

@@ -225,10 +225,6 @@ export default class EditEachMyCourse extends Component {
 							Detail : {data.detail}
 							<br />
 							About : {data.about}
-							<br />
-							Price : {data.price} บาท
-							<br />
-							Rating : {data.rating}
 						</div>
 					</Col>
 				</Row>
@@ -282,7 +278,7 @@ export default class EditEachMyCourse extends Component {
 						<TabPane tabId="2">
 							<Row>
 								<Col sm="12">
-									{this.state.dataQuestion.length > 10 && (
+									{this.state.dataQuestion.length < 10 && (
 										<Button color="success mt-4" onClick={() => this.toggleQuiz(true)}>
 											Create Quiz
 										</Button>

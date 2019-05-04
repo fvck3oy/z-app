@@ -21,7 +21,7 @@ export class PrivateRoute extends Component {
 		return (
 			<Route
 				{...rest}
-				render={props => (isAuthenticated ? <InnerComponent {...props} /> : <Redirect to={{ pathname: '/overview', state: { from: location } }} />)}
+				render={props => (isAuthenticated ? <InnerComponent {...props} /> : <Redirect to={{ pathname: '/', state: { from: location } }} />)}
 			/>
 		)
 	}

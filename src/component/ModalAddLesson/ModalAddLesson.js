@@ -149,6 +149,8 @@ export default class ModalAddLesson extends Component {
 				console.log('what is the path : ', data)
 			})
 		})
+
+		
 	}
 
 	render() {

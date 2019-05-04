@@ -25,6 +25,7 @@
 	.headerName {
 		font-size: 18px;
 		color: aliceblue;
+		cursor: pointer;
 	}
 	.ProfilePicHeader:hover {
 		border: 1px solid #fff;
@@ -60,6 +61,7 @@
 	.headerName {
 		font-size: 15px;
 		color: aliceblue;
+		cursor: pointer;
 	}
 	.ProfilePicHeader:hover {
 		border: 1px solid #fff;
@@ -91,6 +93,7 @@
 	.headerName {
 		font-size: 15px;
 		color: aliceblue;
+		cursor: pointer;
 	}
 	.ProfilePicHeader:hover {
 		border: 1px solid #fff;
@@ -123,6 +126,7 @@
 	.headerName {
 		font-size: 20px;
 		color: aliceblue;
+		cursor: pointer;
 	}
 	.ProfilePicHeader:hover {
 		border: 1px solid #fff;
@@ -155,6 +159,7 @@
 	.headerName {
 		font-size: 20px;
 		color: aliceblue;
+		cursor: pointer;
 	}
 	.ProfilePicHeader:hover {
 		border: 1px solid #fff;
@@ -178,6 +183,7 @@
 	.headerName {
 		font-size: 20px;
 		color: aliceblue;
+		cursor: pointer;
 	}
 	.ProfilePicHeader {
 		display: flex;

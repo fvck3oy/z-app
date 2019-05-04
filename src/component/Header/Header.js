@@ -472,7 +472,9 @@ class Header extends Component {
 
 					<Navbar className="ml-auto" style={{ paddingRight: '0' }}>
 						{/* <NavLink onClick={e => this.toggleAddModal(true)}>{this.state.add}</NavLink> */}
-						<div className="headerName">
+						<div className="headerName" onClick={() => {
+								this.myCourse()
+							}}>
 							สวัสดีคุณ {uFn} {uLn}
 						</div>
 

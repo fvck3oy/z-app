@@ -22,7 +22,6 @@ export default class AddCourse extends Component {
 			detail: '',
 			lesson: '',
 			about: '',
-			price: '',
 			type: '',
 			file: null,
 			file_video: null,
@@ -58,7 +57,6 @@ export default class AddCourse extends Component {
 				subtitle: this.state.subtitle,
 				detail: this.state.detail,
 				about: this.state.about,
-				price: this.state.price,
 				type: this.state.type,
 				lesson: this.state.tags.map($objTag => {
 					return { name: $objTag.name }
@@ -313,30 +311,7 @@ export default class AddCourse extends Component {
 									</div>
 								</Col>
 							</Row>
-							<Row className="mt-2">
-								<Col md={4} className="TextAddCourse">
-									ราคา
-								</Col>
-
-								<Col md={2}>
-									<div className="d-flex">
-										<input
-											style={{ fontSize: '8px !important', width: '200px' }}
-											name="price"
-											className="InputAddCourse"
-											type="number"
-											placeholder="0"
-											onChange={this.handleInputChange}
-											value={this.state.price}
-											// invalid={String(this.state.invalidemail)}
-											required
-										/>
-									</div>
-								</Col>
-								<Col md={6} className="TextAddCourse d-flex" style={{ paddingTop: '2px' }}>
-									บาท
-								</Col>
-							</Row>
+							
 							<Row className="mt-2">
 								<Col md={4} className="TextAddCourse">
 									Type

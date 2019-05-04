@@ -28,7 +28,6 @@ class MainRoute extends Component {
 				<PrivateRoute exact path="/mycourse/edit/:id" component={EditEachMyCourse} />
 				<PrivateRoute exact path="/coursedeleted" component={CourseDeleted} />
 				<PrivateRoute path="/coursedeleted/:id" component={EachVideoDeleted} />
-				
 			</div>
 		)
 	}

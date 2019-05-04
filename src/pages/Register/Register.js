@@ -39,33 +39,30 @@ export default class Register extends Component {
 	register = e => {
 		e.preventDefault()
 		try {
-			if (this.state.firstname && this.state.lastname && this.state.email && this.state.password === this.state.password2 ) {
+			if (this.state.firstname && this.state.lastname && this.state.email && this.state.password === this.state.password2) {
 				if (this.state.password.length > 5 && this.state.password2.length > 5) {
-
-					if(this.state.tel.length==10){
-					const data = {
-						firstname: this.state.firstname,
-						lastname: this.state.lastname,
-						email: this.state.email,
-						tel: this.state.tel,
-						password: this.state.password,
-						roles:3
-					}
-
-					axios.post(`http://localhost:3013/z-api/users`, data).then($res => {
-						const { data } = $res
-						this.setState({ message: data.message })
-						if (data.message === 'Email is already used.') {
-							this.setState({ message: 'Email is already used.' })
-						} else {
-							this.props.history.push(`/`)
+					if (this.state.tel.length == 10) {
+						const data = {
+							firstname: this.state.firstname,
+							lastname: this.state.lastname,
+							email: this.state.email,
+							tel: this.state.tel,
+							password: this.state.password,
+							roles: 3
 						}
-					})
 
-				}
-				else{
-					this.setState({ message: 'Number Telephone must 10' })
-				}
+						axios.post(`http://localhost:3013/z-api/users`, data).then($res => {
+							const { data } = $res
+							this.setState({ message: data.message })
+							if (data.message === 'Email is already used.') {
+								this.setState({ message: 'Email is already used.' })
+							} else {
+								this.props.history.push(`/`)
+							}
+						})
+					} else {
+						this.setState({ message: 'Number Telephone must 10' })
+					}
 				} else {
 					this.setState({ message: 'Please fill password more than 5' })
 				}
@@ -102,7 +99,6 @@ export default class Register extends Component {
 								// invalid={String(this.state.invalidemail)}
 								required
 							/>
-							
 						</div>
 						<div className="ipp">
 							<div className="textInput">สกุล</div>
