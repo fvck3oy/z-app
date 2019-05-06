@@ -6,9 +6,8 @@
 	border-radius: 20px !important;
 	/* border: 0.5px solid #44c0e2; */
 	/* box-shadow: 3px 3px 10px -3px #78e1f4; */
-  margin: 100px;
   padding-bottom: 20px;
-  background-color: aliceblue;
+	background-color: aliceblue;
 }
 .Middle {
 	display: flex;
@@ -195,4 +194,5 @@
 		/* box-shadow: 3px 3px 10px -3px #78e1f4; */
 		margin-bottom: 20px;
 	}
+	
 }

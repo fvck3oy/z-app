@@ -135,10 +135,12 @@ class Login extends Component {
 							Sign In
 						</Button>
 					</Form>
-					<Link to={`/forgotpass`} style={{ textDecoration: 'none' }}>
+
+				
+					<Link to={`/forgotpass`} style={{ textDecoration: 'none' , fontSize:'22px',marginTop:'5px' }}>
 						Forgot password?
 					</Link>
-					<Link to={`/register`} style={{ textDecoration: 'none' }}>
+					<Link to={`/register`} style={{ textDecoration: 'none', fontSize:'22px' }}>
 						Register!
 					</Link>
 					<div className="err">{this.state.message}</div>

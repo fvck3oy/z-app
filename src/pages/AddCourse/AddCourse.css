@@ -79,7 +79,7 @@
 
 .InputAddCourse {
 	font-size: 18px;
-	width: 500px;
+	width: 90%;
 	height: 40px;
 	border-radius: 5px !important;
 	border: 0.5px solid #d2d2d2;
@@ -98,6 +98,8 @@
 .TextNewAddCourse {
 	text-align: center;
 	font-size: 24px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .TextAddCourse {

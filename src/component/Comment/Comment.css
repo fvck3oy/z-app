@@ -13,14 +13,14 @@
 	margin-bottom: 5px; */
 	padding: 20px;
 	/* border: 1px solid black; */
-	background-color: aliceblue;
+	background-color: rgba(131, 216, 255, 0.1);
 }
 .user-comment{
   border-radius: 20px;
 
 	padding: 20px;
 	/* border: 1px solid black; */
-	background-color: aliceblue;
+	background-color: rgba(131, 216, 255, 0.1);
 }
 .profile-comment {
 	border-radius: 50%;
@@ -39,4 +39,10 @@
 
 .time-comment{
 	margin-left: 20px;
+}
+.sent-comment-btn{
+	border-radius: 30px !important;
+	box-shadow: 3px 3px 10px -3px #cacaca;
+	border: none !important;
+	background: linear-gradient(to right, rgb(105, 155, 247),rgb(101, 46, 230)) !important;
 }

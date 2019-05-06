@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Row, Col, Button } from 'reactstrap'
 import ModalQuizzes from '../ModalQuizzes/ModalQuizzes'
 import axios from 'axios'
+import './ToQuiz.css'
 export default class ToQuiz extends Component {
 	constructor(props) {
 		super(props)
@@ -34,13 +35,13 @@ export default class ToQuiz extends Component {
 				<Row>
 					<Col>
 						{dataQuestion.length == 10 && (
-							<Button color="success" onClick={() => this.toggleEdit()}>
+							<Button className="btn-quiz" onClick={() => this.toggleEdit()} block>
 								Start to Quiz
 							</Button>
 						)}
 					</Col>
 				</Row>
-				{editmode && <ModalQuizzes id={this.props.id} onClose={() => this.toggleEdit(false)} />}
+				{editmode && <ModalQuizzes id={this.props.id} onClose={() => this.toggleEdit(false)}/>}
 			</div>
 		)
 	}

@@ -45,7 +45,7 @@ export default class Overview extends Component {
 				}
 				this.state.items2.push(data2)
 			})
-			this.setState({ items: this.state.items2 })
+			this.setState({ items: this.state.items2.slice(0,4) })
 
 			console.log('new data ', this.state.items)
 			// this.setState({items : this.state.items})

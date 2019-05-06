@@ -67,11 +67,11 @@ export default class AllUsers extends Component {
 				<Table hover>
 					<thead style={{ textAlign: 'center' }}>
 						<tr style={{ textAlign: 'center' }}>
-							<th>id user</th>
+							<th>ID</th>
 							<th>First Name</th>
 							<th>Last Name</th>
-							<th>email</th>
-							<th>tel</th>
+							<th>Email</th>
+							<th>Tel</th>
 							<th>Delete</th>
 						</tr>
 					</thead>

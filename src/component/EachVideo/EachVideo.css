@@ -14,7 +14,7 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 20px;
-	background-color: aliceblue;
+	background-color: rgba(131, 216, 255, 0.1);
 	margin-bottom: 20px;
 }
 
@@ -80,6 +80,12 @@
 	padding: 10px;
 	cursor: pointer;
 
+}
+.btn-quiz{
+	border-radius: 30px !important;
+	box-shadow: 3px 3px 10px -3px #cacaca;
+	border: none !important;
+	background: linear-gradient(to right, #44c0e2, #78e1f4) !important;
 }
 
 @media (max-width: 320.98px) {

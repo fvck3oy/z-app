@@ -61,13 +61,12 @@ export default class Comment extends Component {
 		axios.post(`http://localhost:3013/z-api/comment`, dataComment).then($res => {
 			const { data } = $res
 			console.log('comment is : ', data)
-
-			this.getData()
 			// console.log(' date => ' , data.created);
-
 			// const { data } = $res
 			// this.setState({ message: data.message })
+			this.getData()
 		})
+		this.setState({ comment: '' })
 	}
 
 	handleInputChange = e => {
@@ -112,7 +111,7 @@ export default class Comment extends Component {
 							/>
 						</div>
 						<div>
-							<Button className="sent-comment-btn ml-3" size="">
+							<Button className="sent-comment-btn ml-3" size="" color="success">
 								Confirm
 							</Button>
 						</div>
@@ -126,7 +125,9 @@ export default class Comment extends Component {
 							<div className="text-comment">
 								{' '}
 								{comment.text}
-								<Moment fromNow className="time-comment">{comment.created}</Moment>
+								<Moment fromNow className="time-comment">
+									{comment.created}
+								</Moment>
 							</div>
 						</Row>
 					))}

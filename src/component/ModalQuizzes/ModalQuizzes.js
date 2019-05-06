@@ -78,6 +78,7 @@ export default class ModalQuizzes extends Component {
 			this.toggle()
 
 		})
+
 	}
 
 	toggle = () => {

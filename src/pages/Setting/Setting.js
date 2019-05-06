@@ -122,11 +122,17 @@ export default class Setting extends Component {
 			<div id="setting" className="MgTopSetting">
 				{/* <div id="loader" className="loader" /> */}
 				<Container className="bdSetting">
-					Profile Setting
+					<Row>
+						<Col className="Middle mt-4 mb-4">Profile Setting</Col>
+					</Row>
 					<Row>
 						<Col md={12} className="Middle">
 							<Image className="ProfileSetting" src={`${url}${data.pathProfile}`} />
-
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							{' '}
 							<NavLink className="nav-link-addicon" onClick={() => this.toggleEditMember2(true)}>
 								<div className="editmembericon Middle">
 									<u>Edit Pic</u>

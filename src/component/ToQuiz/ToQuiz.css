@@ -1,0 +1,6 @@
+.btn-quiz {
+	border-radius: 30px !important;
+	box-shadow: 3px 3px 10px -3px #cacaca;
+	border: none !important;
+	background: linear-gradient(to right, rgb(105, 155, 247),rgb(101, 46, 230)) !important;
+}

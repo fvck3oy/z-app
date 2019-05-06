@@ -122,11 +122,35 @@ export default class EachVideo extends Component {
 			rating: 0,
 			editmode: false,
 			score: [],
+			labels: [],
+			datasets: [],
 
-			chartdata: {
-        labels: [],
-        datasets: []
-      },
+			dataChartjs: {
+				labels: [],
+				datasets: [
+					{
+						label: '',
+						fill: false,
+						lineTension: 0.1,
+						backgroundColor: 'rgba(75,192,192,0.4)',
+						borderColor: 'rgba(75,192,192,1)',
+						borderCapStyle: 'butt',
+						borderDash: [],
+						borderDashOffset: 0.0,
+						borderJoinStyle: 'miter',
+						pointBorderColor: 'rgba(75,192,192,1)',
+						pointBackgroundColor: '#fff',
+						pointBorderWidth: 1,
+						pointHoverRadius: 5,
+						pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+						pointHoverBorderColor: 'rgba(220,220,220,1)',
+						pointHoverBorderWidth: 2,
+						pointRadius: 1,
+						pointHitRadius: 10,
+						data: []
+					}
+				]
+			}
 		}
 		this.handleValueChange = this.handleValueChange.bind(this)
 		this.updatePlayerInfo = this.updatePlayerInfo.bind(this)
@@ -177,6 +201,41 @@ export default class EachVideo extends Component {
 			const { data } = res
 			this.setState({ score: data })
 			console.log(' score is : ', data)
+
+			this.state.score.map((e, index) => {
+				this.state.datasets.push(e.score)
+				this.state.labels.push(`รอบที่ ${index + 1}`)
+			})
+
+			let dataNew = {
+				labels: this.state.labels,
+				datasets: [
+					{
+						label: 'Score',
+						fill: false,
+						lineTension: 0.1,
+						backgroundColor: 'rgba(70, 176, 247)',
+						borderColor: 'rgba(113, 104, 241,1)',
+						borderCapStyle: 'butt',
+						borderDash: [],
+						borderDashOffset: 5.0,
+						borderJoinStyle: 'miter',
+						pointBorderColor: 'rgba(113, 104, 241,1)',
+						pointBackgroundColor: '#fff',
+						pointBorderWidth: 5,
+						pointHoverRadius: 5,
+						pointHoverBackgroundColor: 'rgba(113, 104, 241,1)',
+						pointHoverBorderColor: 'rgba(70, 176, 247)',
+						pointHoverBorderWidth: 2,
+						pointRadius: 1,
+						pointHitRadius: 10,
+						data: this.state.datasets
+					}
+				]
+			}
+			this.setState({ dataChartjs: dataNew })
+
+			console.log(' - - - - - - - datasets : ', this.state.datasets)
 		})
 	}
 
@@ -313,20 +372,18 @@ export default class EachVideo extends Component {
 							</div>
 						)
 					})}
-
-					{score.map((e, index) => (
-						<div key={index}>
-							<h4>
-								รอบที่ {index + 1} ได้คะแนน {e.score}
-							</h4>
-						</div>
-					))}
-					{/* <Line data={this.state.chartdata} /> */}
+					<Row>
+						<Col className="desFirstTitle">
+							รวมคะแนนการทำแบบทดสอบของคุณ
+							<Line data={this.state.dataChartjs} />
+						</Col>
+					</Row>
 
 					<ToQuiz id={this.props.match.params.id} />
 
 					<Row>
-						<Col md={{ size: 6, offset: 2 }} className="desTitle mt-3">
+						<Col md={12} className="desFirstTitle mt-3">
+							<hr />
 							ติดต่อ คุณ {data.users.firstname} {data.users.lastname}
 						</Col>
 					</Row>

@@ -221,7 +221,7 @@ export default class AddCourse extends Component {
 						)}
 						{this.state.editmode === false && (
 							<Row md={12} className="mt-2">
-								<Col md={3} className="TextNewAddCourse">
+								<Col md={12} className="TextNewAddCourse">
 									New Your Course
 								</Col>
 							</Row>
