@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Navbar, NavLink } from 'reactstrap'
 import './Footer.css'
 import { Image } from 'react-bootstrap'
-
-
+import LogoCourseHub22 from '../../../src/LogoCourseHub22.png'
 
 export default class Footer extends Component {
 	render() {
@@ -16,11 +15,7 @@ export default class Footer extends Component {
 					<br />
 					เพราะครูที่ดีที่สุดคือการเเบ่งปัน
 					<br />  */}
-					© 2019 Coursehub All rights reserved.{' '}
-					<Image
-						className="footer-logo"
-						src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/46882025_1929000807187859_437138648945655808_n.jpg?_nc_cat=110&_nc_ht=scontent.fbkk5-4.fna&oh=95558a03adea5dea67e6dd410a67ac09&oe=5CAC8BD0"
-					/>
+					© 2019 Coursehub All rights reserved. <Image className="footer-logo" src={LogoCourseHub22} />
 				</div>
 			</div>
 		)

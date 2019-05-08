@@ -1,6 +1,13 @@
 .ProfilePicHeader{
 	cursor: pointer;
 }
+.header-logo{
+	width:30px;
+	height: 30px;
+	background-color: white;
+	border-radius: 15px;
+	margin-right: 20px;
+}
 @media (max-width: 320px) {
 	.icon {
 		width: 1rem;

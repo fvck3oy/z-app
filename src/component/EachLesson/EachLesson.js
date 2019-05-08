@@ -64,7 +64,7 @@ export default class EachLesson extends Component {
 	// 			userId: uId,
 	// 			lessonId: e.idL
 	// 		}
-	// 		axios.patch(`http://localhost:3013/z-api/timeplayback/update`, data).then($res => {
+	// 		axios.patch(`http://159.89.195.144:3013/z-api/timeplayback/update`, data).then($res => {
 	// 			const { data } = $res
 
 	// 		})
@@ -98,7 +98,7 @@ export default class EachLesson extends Component {
 			userId: uId,
 			lessonId: this.props.idL
 		}
-		await axios.post(`http://localhost:3013/z-api/eachtimeplayback/eachlesson`, data).then(res => {
+		await axios.post(`http://159.89.195.144:3013/z-api/eachtimeplayback/eachlesson`, data).then(res => {
 			const { data } = res
 			this.setState({ dataTime: data })
 			console.log('data time : ', data)
@@ -116,7 +116,7 @@ export default class EachLesson extends Component {
 		}
 		console.log('data', data)
 
-		await axios.patch(`http://localhost:3013/z-api/eachtimeplayback/update`, data).then($res => {
+		await axios.patch(`http://159.89.195.144:3013/z-api/eachtimeplayback/update`, data).then($res => {
 			console.log('saved timer !')
 		})
 
@@ -143,7 +143,7 @@ export default class EachLesson extends Component {
 	render() {
 		const { titleLesson, detailLesson, pathVideo, pathFile, idL, idLesson, playbackTime, uId } = this.props
 		const id = String({ idL })
-		const url = 'http://localhost:3013/'
+		const url = 'http://159.89.195.144:3013/'
 		return (
 			<div>
 				<hr />

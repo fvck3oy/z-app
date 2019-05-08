@@ -119,14 +119,14 @@ export default class EachVideoUnPublic extends Component {
 	}
 
 	async getEachCourse() {
-		axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
+		axios.get(`http://159.89.195.144:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			// console.log('data card : ', res)
 			const { data } = res
 
 			// console.log('data0', data[0].title)
 			this.setState({ data: data[0] })
 		})
-		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://159.89.195.144:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataLesson: data })
 			console.log('data lesson : ', data)
@@ -157,7 +157,7 @@ export default class EachVideoUnPublic extends Component {
 			id: e,
 			state: 0
 		}
-		await axios.put(`http://localhost:3013/z-api/course/ChangeStateCourse`, data).then($res => {
+		await axios.put(`http://159.89.195.144:3013/z-api/course/ChangeStateCourse`, data).then($res => {
 			const { data } = $res
 			// console.log('data after ChangeState : ', data)
 		})
@@ -169,7 +169,7 @@ export default class EachVideoUnPublic extends Component {
 			id: e,
 			isDisable: 1
 		}
-		await axios.put(`http://localhost:3013/z-api/course/delete`,data).then($res => {
+		await axios.put(`http://159.89.195.144:3013/z-api/course/delete`,data).then($res => {
 			const { data } = $res
 			// console.log('data after Delete : ', data)
 		})
@@ -210,7 +210,7 @@ export default class EachVideoUnPublic extends Component {
 		} else {
 			console.log('had pic')
 		}
-		const url = 'http://localhost:3013/'
+		const url = 'http://159.89.195.144:3013/'
 
 		return (
 			<Container className="TitleVdi">

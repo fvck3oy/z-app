@@ -43,7 +43,7 @@ class EditProfile extends Component {
 						tel: this.state.tel,
 						password: this.state.password
 					}
-					axios.put(`http://localhost:3013/z-api/users/update`, data).then($res => {
+					axios.put(`http://159.89.195.144:3013/z-api/users/update`, data).then($res => {
 						const { data } = $res
 						this.setState({ message: data.message })
 						if (data.message != 'Password Invalid') {
@@ -63,7 +63,7 @@ class EditProfile extends Component {
 		try {
 			if (this.props.id) {
 			}
-			await axios.get(`http://localhost:3013/z-api/users`).then(res => {
+			await axios.get(`http://159.89.195.144:3013/z-api/users`).then(res => {
 				const { data } = res
 
 				data.map(user => {

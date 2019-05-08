@@ -18,7 +18,7 @@ export default class TableUsers extends Component {
 	}
 
 	async deleteDataUsers() {
-		axios.delete(`http://localhost:3013/z-api/users/${this.props.users.id}`).then(res => {
+		axios.delete(`http://159.89.195.144:3013/z-api/${this.props.users.id}`).then(res => {
 			console.log('กำลังลบ .... ', res.data)
 
 			console.log('กำลังดึงใหม่ .... ')

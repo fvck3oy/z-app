@@ -30,7 +30,7 @@ export default class UploadFile extends Component {
 				path: response.data.file.path
 			}
 			// const { data } = response.data
-			axios.put(`http://localhost:3013/z-api/users/SavePathProfile`, data).then($res => {
+			axios.put(`http://159.89.195.144:3013/z-api/users/SavePathProfile`, data).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 

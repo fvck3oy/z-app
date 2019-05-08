@@ -59,7 +59,7 @@ export default class ModalEditQuiz extends Component {
 		let uId = userDecoded.id
 
 
-		axios.get(`http://localhost:3013/z-api/question/idq/${this.props.idQ}`).then(res => {
+		axios.get(`http://159.89.195.144:3013/z-api/question/idq/${this.props.idQ}`).then(res => {
 			const { data } = res
 
 			this.setState({ data: data[0] })
@@ -103,7 +103,7 @@ export default class ModalEditQuiz extends Component {
 
 
 			await axios
-				.patch(`http://localhost:3013/z-api/question/`, data)
+				.patch(`http://159.89.195.144:3013/z-api/question/`, data)
 				.then($res => {
 					const { data } = $res
 

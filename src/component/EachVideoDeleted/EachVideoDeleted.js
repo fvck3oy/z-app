@@ -102,7 +102,7 @@ export default class EachVideoUnPublic extends Component {
 	}
 
 	async getEachCourse() {
-		axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
+		axios.get(`http://159.89.195.144:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			console.log('data card : ', res)
 			const { data } = res
 
@@ -135,7 +135,7 @@ export default class EachVideoUnPublic extends Component {
 			id: e,
 			isDisable: 0
 		}
-		await axios.put(`http://localhost:3013/z-api/course/restore`, data).then($res => {
+		await axios.put(`http://159.89.195.144:3013/z-api/course/restore`, data).then($res => {
 			const { data } = $res
 			console.log('data after ChangeState : ', data)
 		})
@@ -176,7 +176,7 @@ export default class EachVideoUnPublic extends Component {
 		} else {
 			console.log('had pic')
 		}
-		const url = 'http://localhost:3013/'
+		const url = 'http://159.89.195.144:3013/'
 
 		return (
 			<Container className="TitleVdi">

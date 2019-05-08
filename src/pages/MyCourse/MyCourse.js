@@ -15,7 +15,7 @@ export default class MyCourse extends Component {
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
 		console.log('getting')
-		axios.get(`http://localhost:3013/z-api/ofcourse/mycourse/${uId}`).then(res => {
+		axios.get(`http://159.89.195.144:3013/z-api/ofcourse/mycourse/${uId}`).then(res => {
 			console.log('DATA MY COURSE = ', res)
 			const { data } = res
 			this.setState({ data })

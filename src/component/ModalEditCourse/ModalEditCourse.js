@@ -42,7 +42,7 @@ export default class ModalEditCourse extends Component {
 		this.setState({ file: e.target.files[0] })
 	}
 	fileUpload(file) {
-		const url = 'http://localhost:3013/z-api/course/UploadPictureCourse'
+		const url = 'http://159.89.195.144:3013/z-api/course/UploadPictureCourse'
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('imageData', file)
@@ -59,7 +59,7 @@ export default class ModalEditCourse extends Component {
 		let uId = userDecoded.id
 		console.log('course id : ', this.props.id)
 
-		axios.get(`http://localhost:3013/z-api/course/${this.props.id}`).then(res => {
+		axios.get(`http://159.89.195.144:3013/z-api/course/${this.props.id}`).then(res => {
 			const { data } = res
 			console.log('DATA MY EACH COURSE = ', data)
 			this.setState({ data: data[0] })
@@ -95,7 +95,7 @@ export default class ModalEditCourse extends Component {
 				type: this.state.type
 			}
 			console.log('data  = = = ', data)
-			await axios.put(`http://localhost:3013/z-api/course/update`, data).then($res => {
+			await axios.put(`http://159.89.195.144:3013/z-api/course/update`, data).then($res => {
 				const { data } = $res
 				console.log('data Edited Course is ', data)
 				this.setState({ data })
@@ -119,7 +119,7 @@ export default class ModalEditCourse extends Component {
 			console.log('dataPic' , dataPic);
 			
 			// const { data } = response.data
-			axios.post(`http://localhost:3013/z-api/course/UpdatePathPictureCourse`, dataPic).then($res => {
+			axios.post(`http://159.89.195.144:3013/z-api/course/UpdatePathPictureCourse`, dataPic).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 

@@ -55,7 +55,7 @@ export default class Setting extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://localhost:3013/z-api/users/${uId}`).then(res => {
+		await axios.get(`http://159.89.195.144:3013/z-api/users/${uId}`).then(res => {
 			console.log('DATA RES = ', res)
 			const { data } = res
 			this.setState({ data })

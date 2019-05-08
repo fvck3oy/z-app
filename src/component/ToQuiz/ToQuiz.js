@@ -22,7 +22,7 @@ export default class ToQuiz extends Component {
 	}
 	async getData() {
 		console.log('getDataQuestion')
-		await axios.get(`http://localhost:3013/z-api/question/${this.props.id}`).then(res => {
+		await axios.get(`http://159.89.195.144:3013/z-api/question/${this.props.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataQuestion: data })
 			console.log('data question : ', data)

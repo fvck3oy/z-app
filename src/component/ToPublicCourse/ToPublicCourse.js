@@ -18,7 +18,7 @@ export default class ToPublicCourse extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		axios.get(`http://localhost:3013/z-api/course/`).then(res => {
+		axios.get(`http://159.89.195.144:3013/z-api/course/`).then(res => {
 			console.log('DATA RES = ', res)
 			const { data } = res
 			this.setState({ data })

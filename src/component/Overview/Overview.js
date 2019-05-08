@@ -7,7 +7,7 @@ import CourseCardDetail from '../CourseCardDetail/CourseCardDetail'
 import styled from 'styled-components'
 import './Overview.css'
 import Loader from '../../component/Loader'
-
+import LogoCourseHub22 from'../../../src/LogoCourseHub22.png'
 const Container = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -32,11 +32,11 @@ export default class Overview extends Component {
 		this.getBanner = this.getBanner.bind(this)
 	}
 	async getBanner() {
-		await axios.get(`http://localhost:3013/z-api/course/getbanner`).then($res => {
+		await axios.get(`http://159.89.195.144:3013/z-api/course/getbanner`).then($res => {
 			const { data } = $res
 
 			data.map(e => {
-				const url = 'http://localhost:3013/'
+				const url = 'http://159.89.195.144:3013/'
 				let data2 = {
 					src: `${url}${e.pathProfileCourse}`,
 					alt: e.pathProfileCourse,
@@ -66,23 +66,23 @@ export default class Overview extends Component {
 	selectURL(api) {
 		switch (api) {
 			case '1':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			case '2':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			case '3':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			case '4':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			case '5':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			case '6':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			case '7':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			case '8':
-				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
 			default:
-				return this.fetchData(`http://localhost:3013/z-api/course/`)
+				return this.fetchData(`http://159.89.195.144:3013/z-api/course/`)
 		}
 	}
 
@@ -186,7 +186,7 @@ export default class Overview extends Component {
 							<div className="">
 								<Image
 									className="logo"
-									src="https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.0-9/46882025_1929000807187859_437138648945655808_n.jpg?_nc_cat=110&_nc_ht=scontent.fbkk5-4.fna&oh=95558a03adea5dea67e6dd410a67ac09&oe=5CAC8BD0"
+									src={LogoCourseHub22}
 								/>
 							</div>
 							{/* <div className="mid"> */}

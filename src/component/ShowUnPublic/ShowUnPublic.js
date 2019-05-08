@@ -23,7 +23,7 @@ export default class ShowUnPublic extends Component {
     this.getData = this.getData.bind(this)
 	}
 	async getData () {
-		await axios.get(`http://localhost:3013/z-api/course/findUnpublic`).then(res => {
+		await axios.get(`http://159.89.195.144:3013/z-api/course/findUnpublic`).then(res => {
 			console.log('DATA UnPub = ', res)
 			const { data } = res
 			this.setState({ data })

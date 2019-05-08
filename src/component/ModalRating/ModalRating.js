@@ -31,7 +31,7 @@ export default class ModalRating extends Component {
 			userId: uId,
 			courseId: this.props.id
 		}
-		await axios.patch(`http://localhost:3013/z-api/rating/`, data).then($res => {
+		await axios.patch(`http://159.89.195.144:3013/z-api/rating/`, data).then($res => {
 			const { data } = $res
 			console.log('rating : ', data)
 		})

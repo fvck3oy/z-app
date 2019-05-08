@@ -51,7 +51,7 @@ export default class Register extends Component {
 							roles: 3
 						}
 
-						axios.post(`http://localhost:3013/z-api/users`, data).then($res => {
+						axios.post(`http://159.89.195.144:3013/z-api/users`, data).then($res => {
 							const { data } = $res
 							this.setState({ message: data.message })
 							if (data.message === 'Email is already used.') {

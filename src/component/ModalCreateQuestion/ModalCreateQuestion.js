@@ -74,7 +74,7 @@ export default class ModalCreateQuestion extends Component {
 			console.log('data  = = =', data)
 
 			await axios
-				.post(`http://localhost:3013/z-api/question/`, data)
+				.post(`http://159.89.195.144:3013/z-api/question/`, data)
 				.then($res => {
 					const { data } = $res
 					console.log('data question is ', data)

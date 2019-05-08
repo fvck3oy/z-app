@@ -67,7 +67,7 @@ export default class ModalAddLesson extends Component {
 	}
 
 	videoUpload(file) {
-		const url = 'http://localhost:3013/z-api/lesson/UploadVideoCourse'
+		const url = 'http://159.89.195.144:3013/z-api/lesson/UploadVideoCourse'
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('videoData', file)
@@ -80,7 +80,7 @@ export default class ModalAddLesson extends Component {
 	}
 
 	sheetUpload(file) {
-		const url = 'http://localhost:3013/z-api/lesson/UploadFileCourse'
+		const url = 'http://159.89.195.144:3013/z-api/lesson/UploadFileCourse'
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('fileData', file)
@@ -109,7 +109,7 @@ export default class ModalAddLesson extends Component {
 			}
 			console.log('data  = = =', data)
 
-			await axios.post(`http://localhost:3013/z-api/lesson/`, data).then($res => {
+			await axios.post(`http://159.89.195.144:3013/z-api/lesson/`, data).then($res => {
 				const { data } = $res
 				console.log('data lesson is ', data)
 				this.setState({ IdToPathProfileLesson: data.id })
@@ -131,7 +131,7 @@ export default class ModalAddLesson extends Component {
 				pathVideoLesson: response.data.file.path
 			}
 
-			axios.post(`http://localhost:3013/z-api/lesson/SavePathVideoCourse`, dataPic).then($res => {
+			axios.post(`http://159.89.195.144:3013/z-api/lesson/SavePathVideoCourse`, dataPic).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 			})
@@ -144,7 +144,7 @@ export default class ModalAddLesson extends Component {
 				pathFile: response.data.file.path
 			}
 
-			axios.post(`http://localhost:3013/z-api/lesson/SavePathFileCourse`, data).then($res => {
+			axios.post(`http://159.89.195.144:3013/z-api/lesson/SavePathFileCourse`, data).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 			})

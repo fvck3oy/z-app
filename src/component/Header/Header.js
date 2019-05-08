@@ -19,6 +19,8 @@ import { withRouter } from 'react-router-dom'
 import './Header.css'
 import auth from '../../service/index'
 import axios from 'axios'
+import LogoCourseHub22 from '../../../src/LogoCourseHub22.png'
+
 
 const FolderClose = Folder.extend`
     width : 1.3rem;
@@ -372,7 +374,7 @@ class Header extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://localhost:3013/z-api/users/${uId}`).then(res => {
+		await axios.get(`http://159.89.195.144:3013/z-api/users/${uId}`).then(res => {
 			const { data } = res
 			this.setState({ data })
 		})
@@ -391,7 +393,7 @@ class Header extends Component {
 		let uFn = userDecoded.firstname
 		let uLn = userDecoded.lastname
 		let uRole = userDecoded.role
-		const url = 'http://localhost:3013/'
+		const url = 'http://159.89.195.144:3013/'
 		const { data } = this.state
 
 		if (this.state.data.pathProfile === '') {
@@ -413,6 +415,7 @@ class Header extends Component {
 						// background-image:linear-gradient(270deg,rgb(113, 104, 241),rgb(70, 176, 247));
 					}}
 				>
+				<Image className="header-logo" src={LogoCourseHub22} />
 					<NavLink
 						onClick={() => {
 							this.changeListIcon()

@@ -8,7 +8,7 @@ import axios from 'axios'
 import auth from '../../service/index'
 import { User } from 'styled-icons/fa-solid/User'
 import { Key } from 'styled-icons/fa-solid/Key'
-import logoCoursehub from'./logoCoursehub.jpg'
+import LogoCourseHub22 from'../../../src/LogoCourseHub22.png'
 
 const Container = styled.div`
 	width: 100vw;
@@ -59,7 +59,7 @@ class Login extends Component {
 			}
 
 			if (this.state.email && this.state.password) {
-				axios.post('http://localhost:3013/z-api/users/login', data).then($res => {
+				axios.post('http://159.89.195.144:3013/z-api/users/login', data).then($res => {
 					const { data } = $res
 					this.setState({ message: data.message })
 					if (data.message !== 'Email or Password Invalid' && data.message !== 'Invalid password' && data.message !== 'Email not found') {
@@ -98,7 +98,7 @@ class Login extends Component {
 					}}
 				>
 					<div className="mid d-flex ">
-						<Image className="Logo responsive" src={''} />
+						<Image className="Logo responsive" src={LogoCourseHub22}/>
 					</div>
 
 					<div className="iconRealxiz">เว็บไซต์แหล่งรวบรวมความรู้ออนไลน์</div>
