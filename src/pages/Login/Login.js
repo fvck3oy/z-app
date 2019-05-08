@@ -68,7 +68,7 @@ class Login extends Component {
 					}
 				})
 			} else {
-				console.log('cant login')
+				console.log('cant login.')
 			}
 
 		} catch (error) {
