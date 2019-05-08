@@ -63,7 +63,7 @@ class EditPictureProfile extends Component {
 	// 	try {
 	// 		if (this.props.id) {
 	// 		}
-	// 		await axios.get(`http://localhost:3013/z-api/users`).then(res => {
+	// 		await axios.get(`http://159.89.195.144:3013/z-api/users`).then(res => {
 	// 			const { data } = res
 
 	// 			data.map(user => {

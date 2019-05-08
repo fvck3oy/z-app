@@ -194,7 +194,7 @@ export default class EditEachMyCourse extends Component {
 	}
 
 	render() {
-		const url = 'http://localhost:3013/'
+		const url = 'http://159.89.195.144:3013/'
 		const { data, editmode, type, dataUser, addmode, editlesson, courseId, create_question } = this.state
 		const { modal, id } = this.props
 		return (

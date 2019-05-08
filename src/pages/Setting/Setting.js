@@ -111,7 +111,7 @@ export default class Setting extends Component {
 
 		const { data } = this.state
 		const { toggleAddModal, toggleAddModal2 } = this.state
-		const url = 'http://localhost:3013/'
+		const url = 'http://159.89.195.144:3013/'
 
 		if (this.state.data.pathProfile === '') {
 			this.state.data.pathProfile = 'upload/image/default_profile.jpg'

@@ -45,7 +45,7 @@ export default class ModalQuizzes extends Component {
 
 	async getData() {
 		console.log('getDataQuestion')
-		await axios.get(`http://localhost:3013/z-api/question/${this.props.id}`).then(res => {
+		await axios.get(`http://159.89.195.144/localhost:3013/z-api/question/${this.props.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataQuestion: data })
 			this.setState({ question0: data[0] })
@@ -114,7 +114,7 @@ export default class ModalQuizzes extends Component {
 			ans10: this.state.ans10
 		}
 		console.log('data  = = =', data)
-		await axios.patch(`http://localhost:3013/z-api/score/count`, data).then($res => {
+		await axios.patch(`http://159.89.195.144/localhost:3013/z-api/score/count`, data).then($res => {
 			console.log('kuy')
 
 			// const { data } = $res
