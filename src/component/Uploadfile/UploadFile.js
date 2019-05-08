@@ -43,7 +43,7 @@ export default class UploadFile extends Component {
 		this.setState({ file: e.target.files[0] })
 	}
 	fileUpload(file) {
-		const url = 'http://localhost:3013/z-api/users/uploadImage'
+		const url = 'http://159.89.195.144:3013/z-api/users/uploadImage'
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('imageData', file)
