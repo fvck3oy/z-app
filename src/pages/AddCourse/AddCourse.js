@@ -52,7 +52,7 @@ export default class AddCourse extends Component {
 		let uEmail = userDecode.email
 		try {
 			const data = {
-				// id: this.state.id,
+				id: this.state.id,
 				title: this.state.title,
 				subtitle: this.state.subtitle,
 				detail: this.state.detail,
