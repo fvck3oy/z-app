@@ -54,7 +54,7 @@ export default class CourseCardDetailUnPublic extends Component {
 	}
 
 	render() {
-		const { id, title, subtitle, path ,fuser , luser ,price} = this.props
+		const { id, title, subtitle, path ,fuser , luser } = this.props
 		const url2 = '/videounpublic/'
 		const url = 'http://159.89.195.144:3013/'
 		return (
@@ -65,7 +65,7 @@ export default class CourseCardDetailUnPublic extends Component {
 						<CardTitle>{title}</CardTitle>
 						<CardSubtitle>by {fuser} {luser} </CardSubtitle>
 						<CardText>{subtitle}</CardText>
-						{/* <CardText> ราคา {price}</CardText> */}
+
 						<Link to={`${url2}${id}`}>
 							<Button className="btn-vdiUnPublic w-100">คลิกเพื่อเข้าชม</Button>
 						</Link>

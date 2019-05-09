@@ -15,7 +15,7 @@ export default class ModalEditCourse extends Component {
 			subtitle: '',
 			detail: '',
 			about: '',
-			price: '',
+
 			type: '',
 			data: '',
 			pathProfileCourse: '',
@@ -91,7 +91,7 @@ export default class ModalEditCourse extends Component {
 				subtitle: this.state.subtitle,
 				detail: this.state.detail,
 				about: this.state.about,
-				price: this.state.price,
+
 				type: this.state.type
 			}
 			console.log('data  = = = ', data)

@@ -48,7 +48,7 @@ export default class MyCourse extends Component {
 								path={course.course.pathProfileCourse}
 								fuser={course.users.firstname}
 								luser={course.users.lastname}
-								price={course.course.price}
+
 								modal={true}
 							/>
 						)

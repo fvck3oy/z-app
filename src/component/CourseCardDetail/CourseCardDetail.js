@@ -60,7 +60,7 @@ export default class CourseCardDetail extends Component {
 
 	render() {
 		const { rating } = this.state
-		const { id, title, subtitle, path, fuser, luser, price } = this.props
+		const { id, title, subtitle, path, fuser, luser } = this.props
 
 		const url2 = '/video/'
 		const url = 'http://159.89.195.144:3013/'
@@ -75,7 +75,7 @@ export default class CourseCardDetail extends Component {
 							by {fuser} {luser}
 						</CardText>
 						<StarRatingComponent name="rate1" starCount={5} value={this.state.rating} className="animated infinite flash delay-2s slow" editing={false}/>
-						{/* <CardText> ราคา {price} บาท</CardText> */}
+
 						<Link to={`${url2}${id}`}>
 							<Button className="btn-vdi w-100">คลิกเพื่อเข้าชม</Button>
 						</Link>

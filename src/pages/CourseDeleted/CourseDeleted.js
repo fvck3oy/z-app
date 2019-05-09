@@ -66,7 +66,7 @@ export default class CourseDeleted extends Component {
 										path={course.pathProfileCourse}
 										fuser={course.ofCourse[0].users.firstname}
 										luser={course.ofCourse[0].users.lastname}
-										price={course.price}
+
 									/>
 								)
 							})}

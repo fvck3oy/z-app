@@ -101,7 +101,6 @@ export default class ModalAddLesson extends Component {
 		let uEmail = userDecode.email
 		try {
 			const data = {
-
 				titleLesson: this.state.titleLesson,
 				detailLesson: this.state.detailLesson,
         userId: uId,

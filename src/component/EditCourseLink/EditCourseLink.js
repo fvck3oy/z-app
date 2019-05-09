@@ -40,7 +40,7 @@ export default class EditCourseLink extends Component {
 	componentDidMount() {}
 
 	render() {
-		const { id, title, subtitle, path, fuser, luser, price } = this.props
+		const { id, title, subtitle, path, fuser, luser } = this.props
 		const url2 = '/mycourse/edit/'
 		const url = 'http://159.89.195.144:3013/'
 		return (
@@ -53,7 +53,7 @@ export default class EditCourseLink extends Component {
 							by {fuser} {luser}{' '}
 						</CardSubtitle>
 						<CardText>{subtitle}</CardText>
-						{/* <CardText> ราคา {price}</CardText> */}
+
 						<Link to={`${url2}${id}`}>
 							<Button className="btn-vdiMyCourse w-100">คลิกเพื่อแก้ไข</Button>
 						</Link>

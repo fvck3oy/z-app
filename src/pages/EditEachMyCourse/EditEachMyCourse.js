@@ -51,7 +51,7 @@ export default class EditEachMyCourse extends Component {
 			detail: '',
 			lesson: '',
 			about: '',
-			price: '',
+
 			type: '',
 			dataLesson: [],
 			courseId: '',
@@ -105,7 +105,7 @@ export default class EditEachMyCourse extends Component {
 				subtitle: this.state.subtitle,
 				detail: this.state.detail,
 				about: this.state.about,
-				price: this.state.price,
+
 				type: this.state.type
 			}
 
