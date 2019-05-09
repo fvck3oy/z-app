@@ -36,7 +36,7 @@ export default class ModalCreateQuestion extends Component {
 			choice3: '',
 			choice4: '',
       data: '',
-      id:''
+
 		}
 		this.sentData = this.sentData.bind(this)
 		this.toggle = this.toggle.bind(this)
@@ -62,7 +62,7 @@ export default class ModalCreateQuestion extends Component {
 		let uEmail = userDecode.email
 		try {
 			const data = {
-				id: this.state.id,
+				// id: this.state.id,
 				question: this.state.question,
 				choice1: this.state.choice1,
 				choice2: this.state.choice2,

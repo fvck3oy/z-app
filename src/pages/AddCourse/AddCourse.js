@@ -30,7 +30,7 @@ export default class AddCourse extends Component {
 			data: '',
 			tags: [],
 			ofCourse: [],
-			id: '',
+
 			pathProfileCourse: '',
 			IdToPathProfileCourse: '',
 			editmode: false
