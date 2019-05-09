@@ -96,37 +96,37 @@ export default class AddCourse extends Component {
 				// this.setState({ message: data.message })
 			})
 		})
-		await this.videoUpload(this.state.file_video).then(response => {
-			console.log('res . data : ', response.data)
-			const dataPic = {
-				id: this.state.IdToPathProfileCourse,
-				pathVideoCourse: response.data.file.path
-			}
-			// const { data } = response.data
-			axios.post(`http://159.89.195.144:3013/z-api/course/SavePathVideoCourse`, dataPic).then($res => {
-				const { data } = $res
-				console.log('what is the path : ', data)
+		// await this.videoUpload(this.state.file_video).then(response => {
+		// 	console.log('res . data : ', response.data)
+		// 	const dataPic = {
+		// 		id: this.state.IdToPathProfileCourse,
+		// 		pathVideoCourse: response.data.file.path
+		// 	}
+		// 	// const { data } = response.data
+		// 	axios.post(`http://159.89.195.144:3013/z-api/course/SavePathVideoCourse`, dataPic).then($res => {
+		// 		const { data } = $res
+		// 		console.log('what is the path : ', data)
 
-				// const { data } = $res
-				// this.setState({ message: data.message })
-			})
-		})
+		// 		// const { data } = $res
+		// 		// this.setState({ message: data.message })
+		// 	})
+		// })
 
-		await this.sheetUpload(this.state.file_sheet).then(response => {
-			console.log('res . data : ', response.data)
-			const dataPic = {
-				id: this.state.IdToPathProfileCourse,
-				pathFile: response.data.file.path
-			}
-			// const { data } = response.data
-			axios.post(`http://159.89.195.144:3013/z-api/course/SavePathFileCourse`, dataPic).then($res => {
-				const { data } = $res
-				console.log('what is the path : ', data)
+		// await this.sheetUpload(this.state.file_sheet).then(response => {
+		// 	console.log('res . data : ', response.data)
+		// 	const dataPic = {
+		// 		id: this.state.IdToPathProfileCourse,
+		// 		pathFile: response.data.file.path
+		// 	}
+		// 	// const { data } = response.data
+		// 	axios.post(`http://159.89.195.144:3013/z-api/course/SavePathFileCourse`, dataPic).then($res => {
+		// 		const { data } = $res
+		// 		console.log('what is the path : ', data)
 
-				// const { data } = $res
-				// this.setState({ message: data.message })
-			})
-		})
+		// 		// const { data } = $res
+		// 		// this.setState({ message: data.message })
+		// 	})
+		// })
 	}
 
 	handleInputChange = e => {
