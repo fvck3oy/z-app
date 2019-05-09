@@ -58,9 +58,9 @@ export default class AddCourse extends Component {
 				detail: this.state.detail,
 				about: this.state.about,
 				type: this.state.type,
-				lesson: this.state.tags.map($objTag => {
-					return { name: $objTag.name }
-				}),
+				// lesson: this.state.tags.map($objTag => {
+				// 	return { name: $objTag.name }
+				// }),
 				userId: uId
 			}
 			console.log('data  = = =', data)
