@@ -9,7 +9,7 @@ import auth from '../../service/index'
 import { User } from 'styled-icons/fa-solid/User'
 import { Key } from 'styled-icons/fa-solid/Key'
 import LogoCourseHub22 from'../../../src/LogoCourseHub22.png'
-
+import logoCoursehub from './logoCoursehub.jpg'
 const Container = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -98,7 +98,7 @@ class Login extends Component {
 					}}
 				>
 					<div className="mid d-flex ">
-						<Image className="Logo responsive" src={LogoCourseHub22}/>
+						<Image className="Logo responsive " src={LogoCourseHub22} />
 					</div>
 
 					<div className="iconRealxiz">เว็บไซต์แหล่งรวบรวมความรู้ออนไลน์</div>

@@ -7,6 +7,7 @@ import ForgotPass from './pages/Forgot/Forgot'
 import Main from './Main'
 import Register from './pages/Register/Register'
 import ResetPassword from './pages/Resetpass/Resetpass'
+import Apriori from './pages/Apriori/Apriori'
 
 class App extends Component {
 	constructor() {
@@ -18,7 +19,8 @@ class App extends Component {
 		return (
 			<Router basename={'z-app/build'}>
 				<Switch>
-					<Route exact path="/" component={withRouter(Login)} />
+					{/* <Route exact path="/" component={withRouter(Login)} /> */}
+					<Route exact path="/" component={Apriori} />
 					<Route exact path="/forgotpass" component={withRouter(ForgotPass)} />
 					<Route exact path="/register" component={withRouter(Register)} />
 					<Route exact path="/resetpassword/:token" component={withRouter(ResetPassword)} />
