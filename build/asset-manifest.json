@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.ee1c50f0.css",
-  "main.css.map": "static/css/main.ee1c50f0.css.map",
-  "main.js": "static/js/main.c502cda8.js",
-  "main.js.map": "static/js/main.c502cda8.js.map",
+  "main.css": "static/css/main.e8be37ee.css",
+  "main.css.map": "static/css/main.e8be37ee.css.map",
+  "main.js": "static/js/main.f18cc67b.js",
+  "main.js.map": "static/js/main.f18cc67b.js.map",
   "static/media/DB Helvethaica X Ext v3.2.ttf": "static/media/DB Helvethaica X Ext v3.2.ec5ca650.ttf",
   "static/media/LogoCourseHub22.png": "static/media/LogoCourseHub22.980533f5.png",
   "static/media/fontawesome-webfont.eot": "static/media/fontawesome-webfont.674f50d2.eot",
@@ -10,5 +10,6 @@
   "static/media/fontawesome-webfont.ttf?v=4.7.0": "static/media/fontawesome-webfont.b06871f2.ttf",
   "static/media/fontawesome-webfont.woff2?v=4.7.0": "static/media/fontawesome-webfont.af7ae505.woff2",
   "static/media/fontawesome-webfont.woff?v=4.7.0": "static/media/fontawesome-webfont.fee66e71.woff",
+  "static/media/logoCoursehub.jpg": "static/media/logoCoursehub.6054ade7.jpg",
   "static/media/react-tags.scss": "static/media/react-tags.80a88e8d.scss"
 }
