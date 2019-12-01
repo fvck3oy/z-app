@@ -40,7 +40,7 @@ export default class Comment extends Component {
 			id: this.props.courseId
 		}
 
-		axios.get(`http://159.89.195.144:3013/z-api/comment/eachcourse/${data.id}`, data).then(res => {
+		axios.get(`http://localhost:3013/z-api/comment/eachcourse/${data.id}`, data).then(res => {
 			const { data } = res
 			this.setState({ data: data })
 			console.log('data comment : ', data)
@@ -58,7 +58,7 @@ export default class Comment extends Component {
 			course: this.props.courseId
 		}
 		console.log('coming : ', dataComment)
-		axios.post(`http://159.89.195.144:3013/z-api/comment`, dataComment).then($res => {
+		axios.post(`http://localhost:3013/z-api/comment`, dataComment).then($res => {
 			const { data } = $res
 			console.log('comment is : ', data)
 			// console.log(' date => ' , data.created);
@@ -92,7 +92,7 @@ export default class Comment extends Component {
 		// console.log('data', data)
 
 		const { courseId } = this.props
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		return (
 			<Container className="con-comment pl-0 pr-0">
 				{/* onSubmit={this.sentComment({ courseId })} */}

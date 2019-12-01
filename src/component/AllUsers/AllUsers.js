@@ -24,7 +24,7 @@ export default class AllUsers extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://159.89.195.144:3013/z-api/users/allusers`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/users/allusers`).then(res => {
 			// console.log('DATA RES = ', res)
 			const { data } = res
 			this.setState({ data })
@@ -32,7 +32,7 @@ export default class AllUsers extends Component {
 	}
 
 	// async deleteDataUsers() {
-	// 	// axios.delete(`http://159.89.195.144:3013/z-api/users/${this.datas.id}`).then(res => {
+	// 	// axios.delete(`http://localhost:3013/z-api/users/${this.datas.id}`).then(res => {
 	// 	// 	console.log(res)
 	// 	// 	console.log(res.data)
 	// 	// })

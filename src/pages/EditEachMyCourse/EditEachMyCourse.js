@@ -73,19 +73,19 @@ export default class EditEachMyCourse extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://159.89.195.144:3013/z-api/course/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			// console.log('DATA MY EACH COURSE = ', data[0])
 			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users, courseId: data[0].id })
 		})
 
-		await axios.get(`http://159.89.195.144:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataLesson: data })
 			// console.log('data lesson : ', data)
 		})
 
-		await axios.get(`http://159.89.195.144:3013/z-api/question/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/question/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataQuestion: data })
 			console.log('data question : ', data)
@@ -109,7 +109,7 @@ export default class EditEachMyCourse extends Component {
 				type: this.state.type
 			}
 
-			await axios.put(`http://159.89.195.144:3013/z-api/course/update`, data).then($res => {
+			await axios.put(`http://localhost:3013/z-api/course/update`, data).then($res => {
 				const { data } = $res
 				this.setState({ data })
 			})
@@ -129,7 +129,7 @@ export default class EditEachMyCourse extends Component {
 				pathProfileCourse: response.data.file.path
 			}
 			// const { data } = response.data
-			axios.post(`http://159.89.195.144:3013/z-api/course/SavePathPictureCourse`, dataPic).then($res => {
+			axios.post(`http://localhost:3013/z-api/course/SavePathPictureCourse`, dataPic).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 
@@ -165,7 +165,7 @@ export default class EditEachMyCourse extends Component {
 		this.setState({ file: e.target.files[0] })
 	}
 	fileUpload(file) {
-		const url = 'http://159.89.195.144:3013/z-api/course/UploadPictureCourse'
+		const url = 'http://localhost:3013/z-api/course/UploadPictureCourse'
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('imageData', file)
@@ -194,7 +194,7 @@ export default class EditEachMyCourse extends Component {
 	}
 
 	render() {
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		const { data, editmode, type, dataUser, addmode, editlesson, courseId, create_question } = this.state
 		const { modal, id } = this.props
 		return (

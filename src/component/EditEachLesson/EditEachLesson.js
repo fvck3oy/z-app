@@ -52,13 +52,13 @@ export default class EditEachLesson extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://159.89.195.144:3013/z-api/course/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/course/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			// console.log('DATA MY EACH COURSE = ', data[0])
 			this.setState({ data: data[0], dataUser: data[0].ofCourse[0].users })
 		})
 
-		await axios.get(`http://159.89.195.144:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataLesson: data })
 			// console.log('data lesson : ', data)
@@ -76,7 +76,7 @@ export default class EditEachLesson extends Component {
 		const { titleLesson, detailLesson, pathVideo, pathFile, idL ,idC } = this.props
 		const { editlesson } = this.state
 		const { modal, id } = this.props
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		return (
 			<div>
 				<hr />

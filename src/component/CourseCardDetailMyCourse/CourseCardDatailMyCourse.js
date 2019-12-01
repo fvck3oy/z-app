@@ -44,7 +44,7 @@ export default class CourseCardDatailMyCourse extends Component {
 	render() {
 		const { id, title, subtitle, path, fuser, luser } = this.props
 		const url2 = '/mycourse/edit/'
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		return (
 			<Col md={3} className="mb-4">
 				<Card className="fullCardMyCourse">

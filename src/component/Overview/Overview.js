@@ -32,11 +32,11 @@ export default class Overview extends Component {
 		this.getBanner = this.getBanner.bind(this)
 	}
 	async getBanner() {
-		await axios.get(`http://159.89.195.144:3013/z-api/course/getbanner`).then($res => {
+		await axios.get(`http://localhost:3013/z-api/course/getbanner`).then($res => {
 			const { data } = $res
 
 			data.map(e => {
-				const url = 'http://159.89.195.144:3013/'
+				const url = 'http://localhost:3013/'
 				let data2 = {
 					src: `${url}${e.pathProfileCourse}`,
 					alt: e.pathProfileCourse,
@@ -66,23 +66,23 @@ export default class Overview extends Component {
 	selectURL(api) {
 		switch (api) {
 			case '1':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			case '2':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			case '3':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			case '4':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			case '5':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			case '6':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			case '7':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			case '8':
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/type/${api}`)
+				return this.fetchData(`http://localhost:3013/z-api/course/type/${api}`)
 			default:
-				return this.fetchData(`http://159.89.195.144:3013/z-api/course/`)
+				return this.fetchData(`http://localhost:3013/z-api/course/`)
 		}
 	}
 

@@ -56,7 +56,7 @@ export default class CourseCardDetailUnPublic extends Component {
 	render() {
 		const { id, title, subtitle, path ,fuser , luser } = this.props
 		const url2 = '/videounpublic/'
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		return (
 			<Col md={3} className="mb-4">
 				<Card className="fullCardUnPublic">

@@ -51,7 +51,7 @@ export default class CourseCardDetail extends Component {
 	}
 	componentDidMount() {
 		// console.log('ofCourse : : :  : ',this.props.ofCourseId);
-		axios.get(`http://159.89.195.144:3013/z-api/rating/${this.props.id}`).then(res => {
+		axios.get(`http://localhost:3013/z-api/rating/${this.props.id}`).then(res => {
 			const { data } = res
 			this.setState({ rating: data })
 			console.log('data rating : ', this.state.rating)
@@ -63,7 +63,7 @@ export default class CourseCardDetail extends Component {
 		const { id, title, subtitle, path, fuser, luser } = this.props
 
 		const url2 = '/video/'
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		return (
 			<Col md={4}>
 				<Card className="fullCard">

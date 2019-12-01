@@ -52,7 +52,7 @@ export default class ModalQuizzes extends Component {
 	async getData() {
 		console.log('getDataQuestion')
 
-		await axios.get(`http://159.89.195.144:3013/z-api/question/${this.props.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/question/${this.props.id}`).then(res => {
 			const { data } = res
 			const answers = data.map(q => ({ qid: q.id, answer: null }))
 			this.setState({ questions: this.shuffle(data.map(data => ({ ...data, choices: this.shuffle([1, 2, 3, 4]) }))), answers })
@@ -72,7 +72,7 @@ export default class ModalQuizzes extends Component {
 			alert(' please fill i sas !! ')
 			return
 		}
-		await axios.patch(`http://159.89.195.144:3013/z-api/score/count`, { cid: id, answers, uId }).then(res => {
+		await axios.patch(`http://localhost:3013/z-api/score/count`, { cid: id, answers, uId }).then(res => {
 			console.log('kuy')
 			console.log(res)
 			this.toggle()

@@ -167,25 +167,25 @@ export default class EachVideo extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://159.89.195.144:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/ofCourse/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ data: data[0] })
 		})
 
-		await axios.get(`http://159.89.195.144:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/lesson/eachlesson/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 			this.setState({ dataLesson: data })
 			console.log('data lesson : ', data)
 		})
 
-		await axios.get(`http://159.89.195.144:3013/z-api/rating/${this.props.match.params.id}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/rating/${this.props.match.params.id}`).then(res => {
 			const { data } = res
 
 			this.setState({ rating: data })
 			console.log('data rating : ', this.state.rating)
 		})
 
-		// 	await axios.get(`http://159.89.195.144:3013/z-api/eachtimeplayback/eachlesson`,data).then(res => {
+		// 	await axios.get(`http://localhost:3013/z-api/eachtimeplayback/eachlesson`,data).then(res => {
 		// 		const { data } = res
 		// 		this.setState({ dataTime: data })
 		// 		console.log('data time : ', data)
@@ -197,7 +197,7 @@ export default class EachVideo extends Component {
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
 
-		await axios.get(`	http://159.89.195.144:3013/z-api/score/${this.props.match.params.id}/${uId}`).then(res => {
+		await axios.get(`	http://localhost:3013/z-api/score/${this.props.match.params.id}/${uId}`).then(res => {
 			const { data } = res
 			this.setState({ score: data })
 			console.log(' score is : ', data)
@@ -262,7 +262,7 @@ export default class EachVideo extends Component {
 			id: e,
 			isDisable: 1
 		}
-		await axios.put(`http://159.89.195.144:3013/z-api/course/delete`, data).then($res => {
+		await axios.put(`http://localhost:3013/z-api/course/delete`, data).then($res => {
 			const { data } = $res
 		})
 		this.props.history.push(`/overview`)
@@ -300,7 +300,7 @@ export default class EachVideo extends Component {
 			this.state.data.users.pathProfile = 'upload/image/default_profile.jpg'
 		} else {
 		}
-		const url2 = `http://159.89.195.144:3013/${this.state.data.course.pathFile}`
+		const url2 = `http://localhost:3013/${this.state.data.course.pathFile}`
 		// let url = window.URL.createObjectURL(url2)
 		//       let aTag = document.createElement('a')
 		//       document.body.appendChild(aTag)
@@ -310,7 +310,7 @@ export default class EachVideo extends Component {
 		//       window.URL.revokeObjectURL(url)
 		//       document.body.removeChild(aTag)
 
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		return (
 			<div>
 				<Container className="TitleVdi">

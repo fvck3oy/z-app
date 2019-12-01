@@ -37,7 +37,7 @@ class ResetPassword extends Component {
 			}
 			if (this.state.fpass.length > 5 && this.state.spass.length > 5) {
 				if (this.state.fpass === this.state.spass) {
-					axios.post('http://159.89.195.144:3013/z-api/users/resetpass', data).then($res => {
+					axios.post('http://localhost:3013/z-api/users/resetpass', data).then($res => {
 						const { data } = $res
 						this.setState({ message: data.message })
 						if (data.message !== 'Token not found or expired!') {

@@ -66,7 +66,7 @@ export default class ModalEditLesson extends Component {
 	}
 
 	videoUpload(file) {
-		const url = 'http://159.89.195.144:3013/z-api/lesson/UploadVideoCourse'
+		const url = 'http://localhost:3013/z-api/lesson/UploadVideoCourse'
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('videoData', file)
@@ -79,7 +79,7 @@ export default class ModalEditLesson extends Component {
 	}
 
 	sheetUpload(file) {
-		const url = 'http://159.89.195.144:3013/z-api/lesson/UploadFileCourse'
+		const url = 'http://localhost:3013/z-api/lesson/UploadFileCourse'
 		const formData = new FormData()
 		// formData.append('file', file)
 		formData.append('fileData', file)
@@ -97,7 +97,7 @@ export default class ModalEditLesson extends Component {
 		let uId = userDecoded.id
 		console.log('course id : ', this.props.id)
 
-		axios.get(`http://159.89.195.144:3013/z-api/lesson/${this.props.id}`).then(res => {
+		axios.get(`http://localhost:3013/z-api/lesson/${this.props.id}`).then(res => {
 			const { data } = res
 			console.log('DATA Lesson = ', data)
 			this.setState({ idLesson: data.id, titleLesson: data.titleLesson, detailLesson: data.detailLesson })
@@ -120,7 +120,7 @@ export default class ModalEditLesson extends Component {
 			}
 			console.log('data  = = =', data)
 
-			await axios.post(`http://159.89.195.144:3013/z-api/lesson/`, data).then($res => {
+			await axios.post(`http://localhost:3013/z-api/lesson/`, data).then($res => {
 				const { data } = $res
 				console.log('data lesson is ', data)
 				this.setState({ IdToPathProfileLesson: data.id })
@@ -142,7 +142,7 @@ export default class ModalEditLesson extends Component {
 				pathVideoLesson: response.data.file.path
 			}
 
-			axios.post(`http://159.89.195.144:3013/z-api/lesson/SavePathVideoCourse`, dataPic).then($res => {
+			axios.post(`http://localhost:3013/z-api/lesson/SavePathVideoCourse`, dataPic).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 			})
@@ -155,7 +155,7 @@ export default class ModalEditLesson extends Component {
 				pathFile: response.data.file.path
 			}
 
-			axios.post(`http://159.89.195.144:3013/z-api/lesson/SavePathFileCourse`, data).then($res => {
+			axios.post(`http://localhost:3013/z-api/lesson/SavePathFileCourse`, data).then($res => {
 				const { data } = $res
 				console.log('what is the path : ', data)
 			})

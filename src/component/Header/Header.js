@@ -374,7 +374,7 @@ class Header extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://159.89.195.144:3013/z-api/users/${uId}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/users/${uId}`).then(res => {
 			const { data } = res
 			this.setState({ data })
 		})
@@ -393,7 +393,7 @@ class Header extends Component {
 		let uFn = userDecoded.firstname
 		let uLn = userDecoded.lastname
 		let uRole = userDecoded.role
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 		const { data } = this.state
 
 		if (this.state.data.pathProfile === '') {

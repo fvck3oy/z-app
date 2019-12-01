@@ -59,7 +59,7 @@ class Login extends Component {
 			}
 
 			if (this.state.email && this.state.password) {
-				axios.post('http://159.89.195.144:3013/z-api/users/login', data).then($res => {
+				axios.post('http://localhost:3013/z-api/users/login', data).then($res => {
 					const { data } = $res
 					this.setState({ message: data.message })
 					if (data.message !== 'Email or Password Invalid' && data.message !== 'Invalid password' && data.message !== 'Email not found') {

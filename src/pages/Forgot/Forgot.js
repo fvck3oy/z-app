@@ -34,7 +34,7 @@ export default class ForgotPassword extends Component {
 			const data = { email: this.state.email }
 
 			if (this.state.email) {
-				axios.post('http://159.89.195.144:3013/z-api/users/forgotpass', data).then($res => {
+				axios.post('http://localhost:3013/z-api/users/forgotpass', data).then($res => {
 					const { data } = $res
 					this.setState({ message: data.message })
 					if (data.message !== 'Email not found!') {

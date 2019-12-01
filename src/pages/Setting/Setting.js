@@ -55,7 +55,7 @@ export default class Setting extends Component {
 		let user = auth.getToken()
 		let userDecoded = auth.decodeToken(user)
 		let uId = userDecoded.id
-		await axios.get(`http://159.89.195.144:3013/z-api/users/${uId}`).then(res => {
+		await axios.get(`http://localhost:3013/z-api/users/${uId}`).then(res => {
 			console.log('DATA RES = ', res)
 			const { data } = res
 			this.setState({ data })
@@ -111,7 +111,7 @@ export default class Setting extends Component {
 
 		const { data } = this.state
 		const { toggleAddModal, toggleAddModal2 } = this.state
-		const url = 'http://159.89.195.144:3013/'
+		const url = 'http://localhost:3013/'
 
 		if (this.state.data.pathProfile === '') {
 			this.state.data.pathProfile = 'upload/image/default_profile.jpg'
